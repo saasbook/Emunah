@@ -41,10 +41,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'jasmine-rails'
-end
-
-group :test do
-  gem 'rspec-rails', '2.14'
+  gem 'rspec-rails'
   gem 'simplecov', :require => false
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
