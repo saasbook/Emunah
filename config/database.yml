@@ -5,22 +5,22 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: postgresql 
+  adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  database: emunah_db
+  database: db/development.sqlite3
 
 # Do not set this db to the same as development or production.
 test: &test
   <<: *default
-  database: emunah_db_test
+  database: db/test.sqlite3
 
 production:
   <<: *default
-  database: emunah_db_production
+  database: db/production.sqlite3
 
 cucumber:
   <<: *test
