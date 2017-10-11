@@ -14,10 +14,13 @@ development:
   database: emunah_db
 
 # Do not set this db to the same as development or production.
-test:
+test: &test
   <<: *default
   database: emunah_db_test
 
 production:
   <<: *default
   database: emunah_db_production
+
+cucumber:
+  <<: *test
