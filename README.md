@@ -1,5 +1,7 @@
 # README
 
+[https://travis-ci.org/Justinzh1/Emunah.svg?branch=master](https://travis-ci.org/Justinzh1/Emunah.svg?branch=master)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
