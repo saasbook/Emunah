@@ -6,8 +6,16 @@
 
 [![Build Status](https://travis-ci.org/Justinzh1/Emunah.svg?branch=master)](https://travis-ci.org/Justinzh1/Emunah)
 
+Pivotal Tracker: https://www.pivotaltracker.com/n/projects/2117630
+
+Heroku: https://glacial-wildwood-61295.herokuapp.com/
+
+Customer Needs: Extension requested due to customer delay.
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
+
+-------------------------------
 
 Things you may want to cover:
 
