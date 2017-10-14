@@ -10,29 +10,10 @@ Pivotal Tracker: https://www.pivotaltracker.com/n/projects/2117630
 
 Heroku: https://glacial-wildwood-61295.herokuapp.com/
 
-Customer Needs: Extension requested due to customer delay.
+## Customer Needs
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Each person who is given a login will have access to information based on their security clearance.  Database can be accessed by individuals with a two levels of security.  One for basic access (everyone who is tasked to gather and use information) and one for confidential access (only visible by rabbi, administrator, concierge, president and head of membership committee. 
 
--------------------------------
+Each family/individual can be coded as new/outreach member, longtime member, non member, prospective, Friend of BE, ex member, or deceased. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+When you login, you have access to Five Areas.  1) Submittals, 2) Follow up items assigned to you, 3) Search Database by Date (all entries between particular dates), 4) Search Database by Family, and 5) Lists of Families by Category
