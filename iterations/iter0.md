@@ -13,3 +13,5 @@ Justin Zhong: [https://youtu.be/sWy2PkAlLGY](https://youtu.be/sWy2PkAlLGY)
 Casey Takeda: [https://youtu.be/PoTyyBQbCVw](https://youtu.be/PoTyyBQbCVw)
 
 Wesley Wan: [https://youtu.be/RZlqGwXWB-k](https://youtu.be/RZlqGwXWB-k)
+
+Peter Lee: https://youtu.be/61qPpcAsYYY
