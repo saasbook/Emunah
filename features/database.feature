@@ -5,10 +5,13 @@ Feature: Users are allowed to navigate the different categories of the database
   I want to be search different categories within the database
 
 Background: Users have submitted the following information into the family database
-    Given the following categories exist:
-    | family name | tags     |
-    | Emunah      | children |
+  Given the following categories exist:
+  | family name | tags     |
+  | Emunah      | children |
 
+  Given the following items exist:
+  | name  | date   |
+  | Seth    | 17-10-2004 |
 
 Scenario: filter catergories in database
   When I fill in "category" with "children"
@@ -20,11 +23,6 @@ Scenario: protect confidential information from other users
   When I fill in "information" with "confidential"
   And I press "set_as_confidential"
   Then I should see "Information is protected and confidential to other users."
-
-Background: Users have submitted the following itmes into the database marked by date.
-    Given the following items exist:
-    | name  | date   |
-    | Seth    | 17-10-2004 |
 
 Scenario: search items in database by date
   When I fill in "name" with "Seth"
