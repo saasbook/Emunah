@@ -1,6 +1,6 @@
-class UsersController < ApplicationController
+class FamiliesController < ApplicationController
   
-  def user_params
+  def family_params
     params.require(:family).permit(:family_name)
   end
 
@@ -17,7 +17,9 @@ class UsersController < ApplicationController
   end
 
   def create
-  
+    @family = Family.create!(family_params)
+    flash[:notice] = "#{@family.family_name} was successfully created."
+    redirect_to families_path
   end
 
   def edit

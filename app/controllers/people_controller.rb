@@ -1,6 +1,6 @@
-class UsersController < ApplicationController
+class PeopleController < ApplicationController
   
-  def user_params
+  def person_params
     params.require(:person).permit(:full_name, :hebrew_name, :birthday,
       :home_address, :telephone, :telephone_type, :email_address, :employer,
       :occupation, :anniversary, :is_child)

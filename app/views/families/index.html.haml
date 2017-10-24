@@ -1,8 +1,6 @@
--#  This file is app/views/users/index.html.haml
 .container
-	%h1 Welcome Seth!
+	%h1 Families Page.
 	- flash.each do |type, msg|
 		%strong
 			= msg
-	= button_to 'Create User', new_user_path, :method => :get
 	= button_to 'Create Family', new_family_path, :method => :get
