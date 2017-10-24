@@ -23,7 +23,7 @@ Scenario: create a basic user
   And I fill in "Full Name" with "Wesley Wan"
   And I fill in "Status" with "False"
   And I press "Create User"
-  Then I should see "Wesley Wan was successfully created."
+  Then I should see "was successfully created."
 
 Scenario: login as basic user, and see last log-in
   When I fill in "name" with "Wayne Li"
