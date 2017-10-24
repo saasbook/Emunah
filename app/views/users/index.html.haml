@@ -1,4 +1,6 @@
 -#  This file is app/views/users/index.html.haml
 %h1 Welcome Seth!
-
+- flash.each do |type, msg|
+	%strong
+		= msg
 = button_to 'Create User', new_user_path, :method => :get
