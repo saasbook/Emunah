@@ -7,20 +7,23 @@ Feature: Basic users have a variety of actions they can take.
 Background: Rabbi (Seth) has been added as a super user of the Emunah organization
   
   Given the following users exist:
-  | username | password | full name   | status |
+  | username | password | full_name   | status |
   | seth     | abcde    | Seth Emunah | True   |
   | wayne    | 12345    | Wayne Li    | False  |
 
-  And I am on my own dashboard
+  And I am on the home page
+  Then I should see "Welcome Seth!"
 
 # Happy Paths
 
 Scenario: create a basic user
-  When I follow "Create User"
-  And I fill in "name" with "Wesley Wan"
-  And I fill in "password" with "Emunah789"
-  And I press "sign_up_submit"
-  Then I should see "Welcome to Emunah, Wesley."
+  When I press "Create User"
+  And I fill in "Username" with "weswan"
+  And I fill in "Password" with "helloworld"
+  And I fill in "Full Name" with "Wesley Wan"
+  And I fill in "Status" with "False"
+  And I press "Create User"
+  Then I should see "Wesley Wan was successfully created."
 
 Scenario: login as basic user, and see last log-in
   When I fill in "name" with "Wayne Li"

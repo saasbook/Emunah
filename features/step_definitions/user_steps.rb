@@ -1,6 +1,7 @@
 Given("the following users exist:") do |table|
-  # table is a Cucumber::MultilineArgument::DataTable
-  pending # Write code here that turns the phrase above into concrete actions
+  table.hashes.each do |user|
+    User.create user
+  end
 end
 
 When("I fill in {string} with Emunah") do |string|
