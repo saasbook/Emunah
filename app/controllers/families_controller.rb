@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   def user_params
-    params.require(:user).permit(:family_name)
+    params.require(:family).permit(:family_name)
   end
 
   def show
