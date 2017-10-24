@@ -1,0 +1,18 @@
+-#  This file is app/views/users/index.html.haml
+%h1 Welcome!
+
+= form_tag users_path do
+
+  = label :user, :username, 'Username'
+  = text_field :user, 'username'
+  
+  = label :user, :password, 'Password'
+  = text_field :user, 'password'
+  
+  = label :user, :password, 'Full Name'
+  = text_field :user, 'full_name'
+  
+  = label :user, :status, 'Status'
+  = text_field :user, 'status'
+
+  = submit_tag 'Create User'
