@@ -1,2 +1,8 @@
 -#  This file is app/views/users/index.html.haml
 %h1 Welcome!
+%form
+  = label :user, :email, "Email"
+  = text_field :user, :email
+  = label :user, :password
+  = password_field :user, :password
+  %input{:type => "submit", :value => "Sign in"}
