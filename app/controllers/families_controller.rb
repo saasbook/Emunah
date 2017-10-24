@@ -9,7 +9,7 @@ class FamiliesController < ApplicationController
   end
 
   def index
-    # User dashboard.
+    @families = Family.all
   end
 
   def new

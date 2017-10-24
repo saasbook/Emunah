@@ -1,6 +1,15 @@
 .container
-	%h1 Families Page.
-	- flash.each do |type, msg|
-		%strong
-			= msg
-	= button_to 'Create Family', new_family_path, :method => :get
+  %h1 Families Page.
+  - flash.each do |type, msg|
+    %strong
+      = msg
+  = button_to 'Create Family', new_family_path, :method => :get
+
+  %table#families
+    %thead
+    %tr
+      %th Family Name
+    %tbody
+      - @families.each do |family|
+        %tr
+          %td= family.family_name
