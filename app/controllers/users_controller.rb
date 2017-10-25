@@ -41,15 +41,25 @@ class UsersController < ApplicationController
   end
   
   def login
-    puts params
+    
+    # Get email.
     user_email = params[:user][:email]
-    user = User.find_by(email: user_email)
-    if user == nil
-      flash[:notice] = "Could not find #{user_email}, try again."
-      redirect_to home_path
-    else
-      puts user
+    
+    # Hacky workaround for unimplemented login yet. Pretend to login.
+    if user_email == 'test'
       redirect_to users_path
+    else
+      
+      # Attempt to find the user. If not found, then return to home page.
+      user = User.find_by(email: user_email)
+      if user == nil
+        flash[:notice] = "Could not find #{user_email}, try again."
+        redirect_to home_path
+      else
+        
+        # TODO: Check that passwords match. Right now, it logs in regardless.
+        redirect_to users_path
+      end
     end
   end
 end
