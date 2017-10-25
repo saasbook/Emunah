@@ -103,9 +103,6 @@ GEM
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
     crass (1.0.2)
-    css_modules (1.0.1)
-      rails
-      sass (~> 3.2)
     cucumber (3.0.1)
       builder (>= 2.1.2)
       cucumber-core (~> 3.0.0)
@@ -389,7 +386,6 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
-  css_modules
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner

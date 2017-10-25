@@ -1,3 +1,5 @@
+# Users are people who have an account. This is different from People.
+# People belong to families and their data is collected by hand.
 class UsersController < ApplicationController
 
   def user_params
