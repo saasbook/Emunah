@@ -24,16 +24,3 @@ Scenario: attempt to login as a user that doesn't exist yet
   And I fill in "Password" with "whoami"
   And I press "Log In"
   Then I should see "Could not find peter.lee@berkeley.edu, try again."
-
-Scenario: login and create a basic user
-  When I fill in "Email" with "fake_seth@gmail.com"
-  And I fill in "Password" with "123456"
-  And I press "Log In"
-  Then I should see "Welcome Seth Martin!"
-  When I go to the "Create User" page
-  And I fill in "Email" with "wesley.wan@eberkeley.edu"
-  And I fill in "Password" with "helloworld"
-  And I fill in "Full Name" with "Wesley Wan"
-  And I select "No" from "Is Admin"
-  And I press "Create User"
-  Then I should see "Wesley Wan was successfully created."

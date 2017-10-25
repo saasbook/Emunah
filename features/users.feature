@@ -14,7 +14,7 @@ Background: Rabbi (Seth) has been added as a super user of the Emunah organizati
   And I am on the home page
   Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
 
-Scenario: login and create a basic user
+Scenario: login as admin and create a basic user
   When I fill in "Email" with "seth.martin@gmail.com"
   And I fill in "Password" with "abcdef"
   And I press "Log In"
