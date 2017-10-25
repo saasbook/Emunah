@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     else
       flash[:notice] = "#{@user.full_name} was successfully created."
     end
-    redirect_to users_path
+    redirect_to user_path(@user)
   end
 
   def edit
@@ -44,23 +44,23 @@ class UsersController < ApplicationController
   
   def login
     
-    # Get email.
+    # Get email and password.
     user_email = params[:user][:email]
+    user_pw = params[:user][:password]
     
-    # Hacky workaround for unimplemented login yet. Pretend to login to Seth.
-    if user_email == 'test'
-      redirect_to users_path
+    # Attempt to find the user. If not found, then return to home page.
+    @user = User.find_by(email: user_email)
+    if @user == nil
+      flash[:notice] = "Could not find #{user_email}, try again."
+      redirect_to home_path
     else
       
-      # Attempt to find the user. If not found, then return to home page.
-      @user = User.find_by(email: user_email)
-      if @user == nil
-        flash[:notice] = "Could not find #{user_email}, try again."
-        redirect_to home_path
-      else
-        
-        # TODO: Check that passwords match. Right now, it logs in regardless.
+      # TODO: Check that passwords match. Right now, it logs in regardless.
+      if user_pw == @user.password
         redirect_to user_path(@user)
+      else
+        flash[:notice] = "Wrong password for #{user_email}, try again."
+        redirect_to home_path
       end
     end
   end
