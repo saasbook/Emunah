@@ -8,7 +8,7 @@
 
 Pivotal Tracker: https://www.pivotaltracker.com/n/projects/2117630
 
-Heroku: https://glacial-wildwood-61295.herokuapp.com/
+Heroku: http://mighty-chamber-21683.herokuapp.com/home
 
 ## Customer Website
 https://www.bnaiemunahsf.org/
