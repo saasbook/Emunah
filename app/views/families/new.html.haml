@@ -1,0 +1,11 @@
+.container
+	%h1 Welcome!
+	.jumbotron
+		= form_tag families_path do
+			.row		
+				= label :family, :family_name, 'Family Name'
+				%br
+				= text_field :family, 'family_name'
+			%br
+			.row
+				= submit_tag 'Create Family'

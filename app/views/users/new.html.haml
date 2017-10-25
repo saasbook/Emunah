@@ -1,0 +1,23 @@
+.container
+	%h1 Welcome!
+	.jumbotron
+		= form_tag users_path do
+			.row		
+				= label :user, :username, 'Username'
+				%br
+				= text_field :user, 'username'
+			.row
+				= label :user, :password, 'Password'
+				%br
+				= text_field :user, 'password'
+			.row
+				= label :user, :password, 'Full Name'
+				%br
+				= text_field :user, 'full_name'
+			.row
+				= label :user, :status, 'Status'
+				%br
+				= text_field :user, 'status'
+			%br
+			.row
+				= submit_tag 'Create User'
