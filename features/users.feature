@@ -7,34 +7,34 @@ Feature: Basic users have a variety of actions they can take.
 Background: Rabbi (Seth) has been added as a super user of the Emunah organization
   
   Given the following users exist:
-  | username | password | full_name   | status |
-  | seth     | abcde    | Seth Emunah | True   |
-  | wayne    | 12345    | Wayne Li    | False  |
+  | email                 | password | full_name   | status |
+  | seth.martin@gmail.com | abcde    | Seth Martin | True   |
+  | wayne.li@berkeley.edu | 12345    | Wayne Li    | False  |
 
   And I am on the home page
-  Then I should see "Welcome Seth!"
+  Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
 
-# Happy Paths
+Scenario: login as basic user, and see last log-in
+  When I fill in "Email" with "wayne.li@berkeley.edu"
+  And I fill in "Password" with "12345"
+  And I press "Log In"
+  Then I should see "Welcome back to Emunah, Wayne."
 
-Scenario: create a basic user
+Scenario: attempt to login as a user that doesn't exist yet
+  When I fill in "Email" with "peter.lee@berkeley.com"
+  And I fill in "Password" with "whoami"
+  And I press "Log In"
+  Then I should see "User does not exist."
+
+Scenario: login and create a basic user
+  When I fill in "Email" with "seth.martin@gmail.com"
+  And I fill in "Password" with "abcde"
+  And I press "Log In"
+  Then I should see "Welcome back to Emunah, Seth."
   When I press "Create User"
-  And I fill in "Username" with "weswan"
+  And I fill in "Email" with "wesley.wan"
   And I fill in "Password" with "helloworld"
   And I fill in "Full Name" with "Wesley Wan"
   And I fill in "Status" with "False"
   And I press "Create User"
-  Then I should see "was successfully created."
-
-Scenario: login as basic user, and see last log-in
-  When I fill in "name" with "Wayne Li"
-  And I fill in "password" with "Emunah456"
-  And I press "log_in_submit"
-  Then I should see "Welcome back to Emunah, Wayne. You last visited on October 13, 2017 at 2:20 PM."
-
-# Sad Paths
-
-Scenario: attempt to login as a user that doesn't exist yet
-  When I fill in "name" with "Peter Lee"
-  And I fill in "password" with "whoami"
-  And I press "log_in_submit"
-  Then I should see "User does not exist."
+  Then I should see "Wesley Wan was successfully created."
