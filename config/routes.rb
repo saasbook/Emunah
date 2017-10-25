@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :families
   resources :people
   # map '/' to be a redirect to '/movies'
-  root :to => redirect('/users')
+  root :to => "users#index"
 end
