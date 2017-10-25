@@ -1,5 +1,5 @@
 .container
-  %h1 Welcome Seth! This page should not be used in the future.
+  %h1 Welcome #{@user.full_name}!
   - flash.each do |type, msg|
     %strong
       = msg
@@ -7,7 +7,7 @@
   .resource-container
     = react_component("CreateResource", {title:"User", url:new_user_path, color: '#74D3AE'}, {:style => "display:inline-block"})
     = react_component("CreateResource", {title:"Family", url:families_path, color: '#CBB3BF'}, {:style => "display:inline-block"})
-	
+
   %table#users
     %thead
       %tr

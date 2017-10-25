@@ -1,5 +1,5 @@
 .container
-	%h1 Welcome!
+	%h1 Create a User
 	.jumbotron
 		= form_tag users_path do
 			.row		
@@ -15,9 +15,9 @@
 				%br
 				= text_field :user, 'full_name'
 			.row
-				= label :user, :status, 'Status'
+				= label :user, :is_admin, 'Is Admin'
 				%br
-				= text_field :user, 'status'
+				= select :user, :is_admin, ['Yes', 'No']
 			%br
 			.row
 				= submit_tag 'Create User'
