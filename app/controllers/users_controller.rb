@@ -55,7 +55,7 @@ class UsersController < ApplicationController
       redirect_to home_path
     else
       
-      # TODO: Check that passwords match. Right now, it logs in regardless.
+      # Check that passwords match.
       if user_pw == @user.password
         redirect_to user_path(@user)
       else
