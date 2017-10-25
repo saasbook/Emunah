@@ -3,16 +3,17 @@
 class UsersController < ApplicationController
 
   def user_params
-    params.require(:user).permit(:email, :password, :full_name, :status, :salt, :encrypted_password, :password_digest)
+    params.require(:user).permit(:email, :password, :full_name, :status)
   end
 
   def show
+    # User dashboard.
     @user = User.find(params[:id])
+    @users = User.all
   end
 
   def index
-    @users = User.all
-    # User dashboard.
+    # Unused.
   end
 
   def new

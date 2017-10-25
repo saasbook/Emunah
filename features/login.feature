@@ -1,16 +1,14 @@
-Feature: Basic users have a variety of actions they can take.
+Feature: Users should be able to login and logout of their accounts
  
   As a member of Emunah's congregation
   So that I can get access to the features provided on the website
-  I want to be able to create a basic account
+  I want to be able to login to and logout of the website
 
-Background: Rabbi (Seth) has been added as a super user of the Emunah organization
+Background: I should be on the home page and logged out.
   
   Given the following users exist:
   | email                 | password | full_name   | status |
-  | seth.martin@gmail.com | abcde    | Seth Martin | True   |
-  | wayne.li@berkeley.edu | 12345    | Wayne Li    | False  |
-
+  | fake_seth@gmail.com   | 123456   | Seth Martin | True   |
   And I am on the home page
   Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
 
@@ -18,7 +16,7 @@ Scenario: login as basic user, and see last log-in
   When I fill in "Email" with "wayne.li@berkeley.edu"
   And I fill in "Password" with "12345"
   And I press "Log In"
-  Then I should see "Welcome, Wayne Li!"
+  Then I should see "Welcome back to Emunah, Wayne."
 
 Scenario: attempt to login as a user that doesn't exist yet
   When I fill in "Email" with "peter.lee@berkeley.com"
