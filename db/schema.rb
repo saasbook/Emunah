@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025072845) do
+ActiveRecord::Schema.define(version: 20171025073054) do
 
   create_table "families", force: :cascade do |t|
     t.string "family_name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20171025072845) do
     t.datetime "updated_at", null: false
     t.string "email"
     t.string "salt"
+    t.string "encrypted_password"
   end
 
 end
