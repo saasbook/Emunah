@@ -1,3 +1,6 @@
+# Made by CS169 - Group 18
+# Casey Takeda, Justin Zhong, Peter Lee, Tina Zheng, Wayne Li, Wesley Wan
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
