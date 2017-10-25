@@ -3,15 +3,15 @@
 	.jumbotron
 		= form_tag users_path do
 			.row		
-				= label :user, :username, 'Username'
+				= label :user, :email, 'Email'
 				%br
-				= text_field :user, 'username'
+				= text_field :user, 'email'
 			.row
 				= label :user, :password, 'Password'
 				%br
 				= text_field :user, 'password'
 			.row
-				= label :user, :password, 'Full Name'
+				= label :user, :full_name, 'Full Name'
 				%br
 				= text_field :user, 'full_name'
 			.row

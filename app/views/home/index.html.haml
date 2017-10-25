@@ -6,13 +6,13 @@
 	.jumbotron
 		= form_tag users_path do
 			.row		
-				= label :user, :username, 'Username'
+				= label :user, :email, 'Email'
 				%br
-				= text_field :user, 'username'
+				= text_field :user, 'email'
 			.row
 				= label :user, :password, 'Password'
 				%br
 				= text_field :user, 'password'
 			%br
 			.row
-				= submit_tag 'Login'
+				= submit_tag 'Log In'

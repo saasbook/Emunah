@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   
   def home_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:email, :password)
   end
 
   def show
@@ -17,7 +17,9 @@ class HomeController < ApplicationController
   end
 
   def create
-    # No need
+    # @user = User.where(home_params.)
+    # flash[:notice] = 
+    # redirect_to users_path
   end
 
   def edit

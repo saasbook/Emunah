@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   def user_params
-    params.require(:user).permit(:username, :password, :full_name, :status)
+    params.require(:user).permit(:email, :password, :full_name, :status)
   end
 
   def show
@@ -13,12 +13,18 @@ class UsersController < ApplicationController
   end
 
   def new
-    # Form to create. Admin only.
+    @user = User.new
   end
 
   def create
     @user = User.create!(user_params)
-    flash[:notice] = "#{@user.full_name} was successfully created."
+    if @user.save
+      flash[:notice] = "#{@user.full_name} was successfully created."
+      flash[:color] = "valid"
+    else
+      flash[:notice] = "Could not create #{@user.full_name}"
+      flash[:color] = "invalid"
+    end
     redirect_to users_path
   end
 

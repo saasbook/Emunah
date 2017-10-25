@@ -35,6 +35,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# For encyrption on passwords
+gem 'bcrypt-ruby', :require => 'bcrypt'
+
 gem 'haml'
 gem 'bootstrap-sass', '~> 3.3.6'
 
