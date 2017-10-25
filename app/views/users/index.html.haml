@@ -5,3 +5,4 @@
 			= msg
 	= button_to 'Create User', new_user_path, :method => :get
 	= button_to 'Families', families_path, :method => :get
+	= react_component("CreateResource", {title:"User", url:new_user_path})	
