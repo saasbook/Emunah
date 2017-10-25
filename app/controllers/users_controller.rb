@@ -39,4 +39,8 @@ class UsersController < ApplicationController
   def destroy
     # Delete from DB.
   end
+  
+  def login
+    redirect_to new_user_path
+  end
 end
