@@ -9,7 +9,7 @@
 			.row
 				= label :user, :password, 'Password'
 				%br
-				= text_field :user, 'password'
+				= password_field :user, 'password'
 			.row
 				= label :user, :full_name, 'Full Name'
 				%br
@@ -17,7 +17,7 @@
 			.row
 				= label :user, :is_admin, 'Is Admin'
 				%br
-				= select :user, :is_admin, ['Yes', 'No']
+				= select :user, :is_admin, ['Yes', 'No'], class:'dropdown-toggle'
 			%br
 			.row
-				= submit_tag 'Create User'
+				= submit_tag 'Create User', class: "btn btn-default"

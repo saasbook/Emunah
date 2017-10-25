@@ -12,7 +12,7 @@
 			.row
 				= label :user, :password, 'Password'
 				%br
-				= text_field :user, 'password'
+				= password_field :user, 'password'
 			%br
 			.row
-				= submit_tag 'Log In'
+				= button_tag 'Log In', class: "btn btn-default"

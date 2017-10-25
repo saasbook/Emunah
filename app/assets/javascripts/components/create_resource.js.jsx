@@ -7,6 +7,15 @@ class CreateResource extends React.Component {
   handleClick(e) {
     window.location = this.props.url
   }
+
+  capitalizeFirst(w) {
+    return w.charAt(0).toUpperCase() + w.substring(1)
+  } 
+
+  pluralize(w) {
+    return w + 's'
+  }
+
   render () {
     const img = "/images/" + this.props.title + ".svg"
     return (
@@ -16,12 +25,10 @@ class CreateResource extends React.Component {
         onClick={this.handleClick}
         >
         <div className="wrapper-header">
-          <h2> Create {this.props.title} </h2>
-          <p> Click here to create a {this.props.title} </p>
+          <h2> {this.capitalizeFirst(this.props.action)} {this.props.title} </h2>
+          <p> Click here to {this.props.action} a {this.props.title} </p>
         </div>
       </div>
     ); 
   }
 }
-
-
