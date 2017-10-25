@@ -41,6 +41,15 @@ class UsersController < ApplicationController
   end
   
   def login
-    redirect_to users_path
+    puts params
+    user_email = params[:user][:email]
+    user = User.find_by(email: user_email)
+    if user == nil
+      flash[:notice] = "Could not find #{user_email}, try again."
+      redirect_to home_path
+    else
+      puts user
+      redirect_to users_path
+    end
   end
 end
