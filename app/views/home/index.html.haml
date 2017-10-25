@@ -1,0 +1,18 @@
+.container
+	%h1 Welcome to Congregation B'nai Emunah's Internal Tool!
+	- flash.each do |type, msg|
+		%strong
+			= msg
+	.jumbotron
+		= form_tag users_path do
+			.row		
+				= label :user, :username, 'Username'
+				%br
+				= text_field :user, 'username'
+			.row
+				= label :user, :password, 'Password'
+				%br
+				= text_field :user, 'password'
+			%br
+			.row
+				= submit_tag 'Login'
