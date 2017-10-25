@@ -13,8 +13,8 @@ Background: I should be on the home page and logged out.
   Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
 
 Scenario: login as basic user, and see last log-in
-  When I fill in "Email" with "wayne.li@berkeley.edu"
-  And I fill in "Password" with "12345"
+  When I fill in "Email" with "fake_seth@gmail.com"
+  And I fill in "Password" with "123456"
   And I press "Log In"
   Then I should see "Welcome back to Emunah, Wayne."
 
