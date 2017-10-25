@@ -3,14 +3,15 @@
 class UsersController < ApplicationController
 
   def user_params
-    params.require(:user).permit(:email, :password, :full_name, :status)
+    params.require(:user).permit(:email, :password, :full_name, :status, :salt, :encrypted_password, :password_digest)
   end
 
   def show
-    # Unused.
+    @user = User.find(params[:id])
   end
 
   def index
+    @users = User.all
     # User dashboard.
   end
 
@@ -20,12 +21,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create!(user_params)
-    if @user.save
-      flash[:notice] = "#{@user.full_name} was successfully created."
-      flash[:color] = "valid"
-    else
+    if @user == nil
       flash[:notice] = "Could not create #{@user.full_name}"
-      flash[:color] = "invalid"
+    else
+      flash[:notice] = "#{@user.full_name} was successfully created."
     end
     redirect_to users_path
   end
@@ -47,20 +46,20 @@ class UsersController < ApplicationController
     # Get email.
     user_email = params[:user][:email]
     
-    # Hacky workaround for unimplemented login yet. Pretend to login.
+    # Hacky workaround for unimplemented login yet. Pretend to login to Seth.
     if user_email == 'test'
       redirect_to users_path
     else
       
       # Attempt to find the user. If not found, then return to home page.
-      user = User.find_by(email: user_email)
-      if user == nil
+      @user = User.find_by(email: user_email)
+      if @user == nil
         flash[:notice] = "Could not find #{user_email}, try again."
         redirect_to home_path
       else
         
         # TODO: Check that passwords match. Right now, it logs in regardless.
-        redirect_to users_path
+        redirect_to user_path(@user)
       end
     end
   end
