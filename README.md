@@ -8,7 +8,7 @@
 
 Pivotal Tracker: https://www.pivotaltracker.com/n/projects/2117630
 
-Heroku: http://mighty-chamber-21683.herokuapp.com/home
+Heroku: http://mighty-chamber-21683.herokuapp.com/
 
 ## Customer Website
 https://www.bnaiemunahsf.org/
