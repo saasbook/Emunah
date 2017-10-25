@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    # Generates form.
   end
 
   def create
