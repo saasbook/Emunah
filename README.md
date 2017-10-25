@@ -2,7 +2,7 @@
 
 <a href="https://codeclimate.com/github/Justinzh1/Emunah"><img src="https://codeclimate.com/github/Justinzh1/Emunah/badges/gpa.svg" /></a>
 
-<a href="https://codeclimate.com/github/Justinzh1/Emunah/coverage"><img src="https://codeclimate.com/github/Justinzh1/Emunah/badges/coverage.svg" /></a>
+[![Test Coverage](https://codeclimate.com/github/Justinzh1/Emunah/badges/coverage.svg)](https://codeclimate.com/github/Justinzh1/Emunah/coverage)
 
 [![Build Status](https://travis-ci.org/Justinzh1/Emunah.svg?branch=master)](https://travis-ci.org/Justinzh1/Emunah)
 
