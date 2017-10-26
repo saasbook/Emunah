@@ -27,5 +27,3 @@
 
 .DS_Store
 
-# Ignore the coverage file.
-coverage/
