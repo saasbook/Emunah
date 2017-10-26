@@ -4,8 +4,6 @@
 
 [![Test Coverage](https://codeclimate.com/github/Justinzh1/Emunah/badges/coverage.svg)](https://codeclimate.com/github/Justinzh1/Emunah/coverage)
 
-<a href="https://codeclimate.com/github/Justinzh1/Emunah/coverage"><img src="https://codeclimate.com/github/Justinzh1/Emunah/badges/coverage.svg" /></a>
-
 [![Build Status](https://travis-ci.org/Justinzh1/Emunah.svg?branch=master)](https://travis-ci.org/Justinzh1/Emunah)
 
 Pivotal Tracker: https://www.pivotaltracker.com/n/projects/2117630
