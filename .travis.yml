@@ -1,10 +1,28 @@
+# language: ruby
+# rvm:
+#       - 2.4.0
+# before_script:
+#   - bundle exec rake db:test:prepare
+
+# before_install:
+#   - pip install --user codecov
+# after_success:
+#   - codecov --file coverage/lcov.info --disable search
+
+
+env:
+  global:
+    - CC_TEST_REPORTER_ID=38209a9c28557eea60dc47e72514dcb1edb4c4eaaf4d89eee8419d05eae966ff
 language: ruby
 rvm:
-      - 2.4.0
+  - 2.4.0
 before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
   - bundle exec rake db:test:prepare
-
-before_install:
-  - pip install --user codecov
-after_success:
-  - codecov --file coverage/lcov.info --disable search
+script:
+  - bundle exec rspec
+  - bundle exec cucumber
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
