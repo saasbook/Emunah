@@ -1,8 +1,6 @@
 # README
 
-<a href="https://codeclimate.com/github/Justinzh1/Emunah"><img src="https://codeclimate.com/github/Justinzh1/Emunah/badges/gpa.svg" /></a>
-
-<a href="https://codeclimate.com/github/Justinzh1/Emunah"><img src="https://codeclimate.com/github/Justinzh1/Emunah/badges/coverage.svg" /></a>
+[![Code Climate](https://codeclimate.com/github/Justinzh1/Emunah/badges/gpa.svg)](https://codeclimate.com/github/Justinzh1/Emunah)
 
 [![Test Coverage](https://codeclimate.com/github/Justinzh1/Emunah/badges/coverage.svg)](https://codeclimate.com/github/Justinzh1/Emunah/coverage)
 
