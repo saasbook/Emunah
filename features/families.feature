@@ -45,7 +45,7 @@ Scenario: update a family name
 
 Scenario: add people to a family 
   When I go to the "Edit Family" page
-  And I press in "Add User to Family"
+  And I press "Add User to Family"
   And I fill in "full_name" with "full3"
   And I fill in "hebrew_name" with "hebrew3"
   And I fill in "family" with "fam1"
@@ -64,7 +64,7 @@ Scenario: add people to a family
 
 Scenario: one person should only be in one family
   When I go to the "Edit Family" page
-  And I press in "Add User to Family"
+  And I press "Add User to Family"
   And I fill in "full_name" with "full1"
   And I fill in "hebrew_name" with "hebrew3"
   And I fill in "family" with "fam1"
@@ -83,7 +83,7 @@ Scenario: one person should only be in one family
 
 Scenario: unable to add a person to an non-existing family
   When I go to the "Edit Family" page
-  And I press in "Add User to Family"
+  And I press "Add User to Family"
   And I fill in "full_name" with "full1"
   And I fill in "hebrew_name" with "hebrew3"
   And I fill in "family" with "non_exist"
