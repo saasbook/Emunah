@@ -1,10 +1,10 @@
-Feature: Basic users have a variety of actions they can take.
+Feature: Admin can create, update, and delete users.
  
-  As a member of Emunah's congregation
-  So that I can get access to the features provided on the website
-  I want to be able to create a basic account
+  As an admin member of Emunah's congregation
+  So that I can grow the membership of my organization
+  I want to be able to create, update, and delete new users
 
-Background: Rabbi (Seth) has been added as a super user of the Emunah organization
+Background: Seth, an admin, has logged in
   
   Given the following users exist:
   | email                 | password | full_name   | is_admin |
@@ -58,8 +58,3 @@ Scenario: try to delete a user that doesn't exist
   And I fill in "Email" with "random@berkeley.edu"
   And I press "Delete"
   Then I should see "This user doesn't exist!"
-  
-  
-  
-  
-
