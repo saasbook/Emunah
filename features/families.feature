@@ -100,6 +100,14 @@ Scenario: unable to add a person to an non-existing family
   And I press "Add"
   Then I should see "non_exist family doesn't exist!"
 
+Scenario: delete a family
+  When I go to the "Delete Family" page
+  And I fill in "Family" with "fam1"
+  And I press "Delete"
+  Then I should see "fam1 was deleted."
 
-
-
+Scenario: delete a family that doesn't exist
+  When I go to the "Delete Family" page
+  And I fill in "Family" with "fam4"
+  And I press "Delete"
+  Then I should see "fam4 does not exist."
