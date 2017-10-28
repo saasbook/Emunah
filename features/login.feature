@@ -9,6 +9,7 @@ Background: I should be on the home page and logged out.
   Given the following users exist:
   | email                 | password | full_name   | is_admin |
   | fake_seth@gmail.com   | 123456   | Seth Martin | Yes      |
+  | wli2@berkeley.edu     | 123456   | Wayne Li    | No       |
 
   And I am on the home page
   Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
@@ -24,3 +25,13 @@ Scenario: attempt to login as a user that doesn't exist yet
   And I fill in "Password" with "whoami"
   And I press "Log In"
   Then I should see "Could not find peter.lee@berkeley.edu, try again."
+
+Scenario: logout and return to home page
+  When I fill in "Email" with "fake_seth@gmail.com"
+  And I fill in "Password" with "123456"
+  And I press "Log In"
+  Then I should see "Welcome Seth Martin!"
+  When I press "Log Out"
+  Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
+
+  
