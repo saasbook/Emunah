@@ -1,6 +1,6 @@
 .container
   %h1 
-    = "Welcome " + @user.full_name
+    = "Welcome " + @user.full_name + "!"
   - flash.each do |type, msg|
     %strong
       = msg
