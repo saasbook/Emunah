@@ -11,7 +11,14 @@
 
   <body>
   	<nav id="navbar" class="navbar navbar-light bg-faded">
-		<a class="navbar-brand" href="/">Congregation B'nai Emunah</a>
+    <%= link_to "Congregation B'nai Emunah", user_home_path, class: "navbar-brand"%>
+    <div class="collapse navbar-collapse navbar-right center-navbar">
+      <% if !@user.nil? %>
+        <%= link_to "Logout", logout_user_path %>      
+      <% else %>
+        <%= link_to "Login", home_path %>
+      <% end %>
+    </div>
 	</nav>
     <%= yield %>
   </body>
