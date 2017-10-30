@@ -2,7 +2,7 @@
 # People belong to families and their data is collected by hand.
 class UsersController < ApplicationController
 
-  before_action :authorize, :except => [:new, :create, :login]
+  before_action :authorize, :except => [:new, :create, :login, :home]
 
   def user_params
     params.require(:user).permit(:email, :password, :full_name, :is_admin)
@@ -19,8 +19,8 @@ class UsersController < ApplicationController
   end
 
   def home
-     @user ||= User.find(session[:user_id]) if session[:user_id]
-     if @user.nil?
+     user ||= User.find(session[:user_id]) if session[:user_id]
+     if user.nil?
         redirect_to home_path
      else
         redirect_to dash_path
