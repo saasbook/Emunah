@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20171025092647) do
     t.string "email"
     t.string "password"
     t.string "full_name"
+    t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "salt"
