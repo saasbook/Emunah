@@ -9,9 +9,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    # User dashboard.
-    @user = User.find(params[:id])
-    @users = User.all
+    # User dashboard. Old implementation
+    # @user = User.find(params[:id])
+    # @users = User.all
   end
 
   def home

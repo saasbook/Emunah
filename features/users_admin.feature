@@ -11,30 +11,6 @@ Background: Seth, an admin, has logged in
   | seth.martin@gmail.com | abcdef   | Seth Martin | Yes      |
   | wli2@berkeley.edu     | 123456   | Wayne Li    | No       |
 
-Scenario: login as a privileged user
-  And I am on the home page
-  Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
-  And I fill in "Email" with "seth.martin@gmail.com"
-  And I fill in "Password" with "abcdef"
-  And I press "Log In"
-  Then I should see "Welcome Seth Martin"
-
-Scenario: attempt to login as an existing user with the wrong password
-  And I am on the home page
-  Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
-  And I fill in "Email" with "seth.martin@gmail.com"
-  And I fill in "Password" with "iamwrong"
-  And I press "Log In"
-  Then I should see "Wrong password for seth.martin@gmail.com, try again."
-
-Scenario: login as a basic user
-  And I am on the home page
-  Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
-  And I fill in "Email" with "wli2@berkeley.edu"
-  And I fill in "Password" with "123456"
-  And I press "Log In"
-  Then I should see "Welcome Wayne Li"
-
 Scenario: create a basic user
   When I go to the "Create User" page
   And I fill in "Email" with "wesley.wan@berkeley.edu"
