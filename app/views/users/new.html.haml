@@ -1,5 +1,8 @@
 .container
 	%h1 Create a User
+	- flash.each do |type, msg|
+		%strong
+			= msg
 	.jumbotron
 		= form_tag users_path do
 			.row		
