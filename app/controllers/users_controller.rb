@@ -35,11 +35,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create!(user_params)
-    if @user == nil
-      flash[:notice] = "Could not create #{@user.full_name}"
-    else
-      flash[:notice] = "#{@user.full_name} was successfully created."
+    begin
+      @user = User.create!(user_params)
+      if @user == nil
+        flash[:notice] = "Could not create #{@user.full_name}"
+      else
+        flash[:notice] = "#{@user.full_name} was successfully created."
+      end
+    rescue ActiveRecord::RecordInvalid
+      flash[:notice] = "#{user_params[:email]} has already been taken."
+    rescue Exception
+      flash[:notice] = "Unexpected error in User Create."
+      raise
     end
     redirect_to users_path
   end

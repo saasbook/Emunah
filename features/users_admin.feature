@@ -34,7 +34,7 @@ Scenario: try to create a basic user that already exists
   And I fill in "Full Name" with "Fake Wayne Li"
   And I select "No" from "Is Admin"
   And I press "Create User"
-  Then I should see "Wayne Li already exists."
+  Then I should see "wli2@berkeley.edu has already been taken."
 
 Scenario: update a user
   When I go to the "Edit User" page
