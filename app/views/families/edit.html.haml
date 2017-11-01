@@ -1,0 +1,10 @@
+%h1 Edit Family
+
+= form_tag family_path(@family), :method => :put do
+
+  = label :family, :family_name, 'Family Name'
+  = text_field :family, 'family_name'
+
+  = submit_tag 'Update Family'
+
+= button_to 'Add Person', families_path, :method => :get

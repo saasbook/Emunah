@@ -14,10 +14,13 @@ module NavigationHelpers
     case page_name
 
     when /^the home\s?page$/ then '/home'
-
-    when /^the "Create User" page$/ then '/users/new'
+    when /^the dashboard page$/ then '/dashboard'
       
+    when /^the "Create User" page$/ then '/users/new'
     when /^the "Create Family" page$/ then '/families/new'
+      
+    when /^the family page for "(.*)"/ then
+      family_path(Family.find_by_family_name($1))
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

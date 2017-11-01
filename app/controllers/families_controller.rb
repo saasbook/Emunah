@@ -5,7 +5,7 @@ class FamiliesController < ApplicationController
   end
 
   def show
-    # Unused.
+    @family = Family.find(params[:id])
   end
 
   def index
@@ -16,7 +16,7 @@ class FamiliesController < ApplicationController
   end
 
   def new
-    # Form to create. Admin only.
+    # Create form.
   end
 
   # If family already exists, error out. Else, create the family.
@@ -33,14 +33,19 @@ class FamiliesController < ApplicationController
   end
 
   def edit
-    # Admin only.
+    @family = Family.find(params[:id])
   end
 
   def update
-    # Do we even use this?
+    @family = Family.find(params[:id])
+    @family.update_attributes!(family_params)
+    flash[:notice] = "#{@family.family_name}'s family name was successfully updated."
+    redirect_to families_path
   end
 
   def destroy
-    # Delete from DB.
+    Family.destroy(params[:id])
+    flash[:notice] = "Family deleted."
+    redirect_to families_path
   end
 end

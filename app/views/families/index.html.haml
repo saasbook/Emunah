@@ -11,9 +11,11 @@
     .container
       %table#families
         %thead
-        %tr
-          %th Family Name
+          %tr
+            %th Family Name
+            %th Family Information
         %tbody
           - @families.each do |family|
             %tr
               %td= family.family_name
+              %td= link_to "See Family Info", family_path(family)
