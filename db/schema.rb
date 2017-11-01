@@ -32,14 +32,14 @@ ActiveRecord::Schema.define(version: 20171101045656) do
     t.boolean "is_child"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "family_id"
-    t.index ["family_id"], name: "index_people_on_family_id"
     t.string "discovery"
     t.string "hobbies"
     t.string "skills"
     t.string "activities"
     t.string "committees"
     t.string "allow_contact"
+    t.integer "family_id"
+    t.index ["family_id"], name: "index_people_on_family_id"
   end
 
   create_table "users", force: :cascade do |t|
