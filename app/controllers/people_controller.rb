@@ -19,9 +19,7 @@ class PeopleController < ApplicationController
   end
 
   def create
-    @user = User.create!(user_params)
-    flash[:notice] = "#{@user.full_name} was successfully created."
-    redirect_to users_path
+    
   end
 
   def edit

@@ -11,13 +11,6 @@ Background: Seth, an admin, has logged in
   | seth.martin@gmail.com | abcdef   | Seth Martin | Yes      |
   | wli2@berkeley.edu     | 123456   | Wayne Li    | No       |
 
-  And I am on the home page
-  Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
-  And I fill in "Email" with "seth.martin@gmail.com"
-  And I fill in "Password" with "abcdef"
-  And I press "Log In"
-  Then I should see "Welcome Seth Martin"
-
 Scenario: create a basic user
   When I go to the "Create User" page
   And I fill in "Email" with "wesley.wan@berkeley.edu"
@@ -34,7 +27,12 @@ Scenario: try to create a basic user that already exists
   And I fill in "Full Name" with "Fake Wayne Li"
   And I select "No" from "Is Admin"
   And I press "Create User"
-  Then I should see "Wayne Li already exists."
+  Then I should see "Could not create user. Email has already been taken."
+
+Scenario: try create a user with no fields filled out
+  When I go to the "Create User" page
+  And I press "Create User"
+  Then I should see "Could not create user. Full name can't be blank, Full name is too short (minimum is 3 characters), Email can't be blank, Email is invalid, Password is too short (minimum is 6 characters)."
 
 Scenario: update a user
   When I go to the "Edit User" page

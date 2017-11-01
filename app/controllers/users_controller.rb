@@ -33,15 +33,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    user_email = params[:user][:email]
-    user = User.find_by(email: user_email)
-    if user != nil
-      flash[:notice] = "#{user.full_name} already exists."
-    else
+    begin
       @user = User.create!(user_params)
-      flash[:notice] = "#{@user.full_name} was successfully created."
+      if @user != nil
+        flash[:notice] = "#{@user.full_name} was successfully created."
+      end
+    rescue ActiveRecord::RecordInvalid => e
+      flash[:notice] = "Could not create user. #{e.message[19..-1]}."
     end
-    redirect_to users_path
+    redirect_to new_user_path
   end
 
   def edit
