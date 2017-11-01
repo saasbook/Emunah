@@ -6,12 +6,17 @@ Feature: Admins should be able to create, update, and delete families
 
 Background: I should be on the home page and logged in.
   
-  Given the following families exist:
+  Given the following users exist:
+  | email                 | password | full_name   | is_admin |
+  | seth.martin@gmail.com | abcdef   | Seth Martin | Yes      |
+  | wli2@berkeley.edu     | 123456   | Wayne Li    | No       |
+  
+  And the following families exist:
   | family_name |
   | fam1        |
   | fam2        |
 
-  Given the following people exist:
+  And the following people exist:
   | full_name | hebrew_name | birthday | home_address | telephone | telephone_type | email_address | employer | occupation | anniversary | is_child | discovery | hobbies | skills | activities | committees | allow_contact |
   | full1     | hebrew1     | birth1   | home1        | tele1     | tele_num_type1 | email1        | emplo1   | job1       | non1        | False    | outreach  | none    | none   | none       | com1       | yes           |
   | full2     | hebrew2     | birth2   | home2        | tele2     | tele_num_type2 | email2        | emplo2   | job2       | non2        | True     | born_into | none    | none   | none       | com2       | no            |

@@ -18,7 +18,7 @@ Scenario: login as basic user, and see last log-in
   When I fill in "Email" with "fake_seth@gmail.com"
   And I fill in "Password" with "123456"
   And I press "Log In"
-  Then I should see "Welcome Seth Martin!"
+  Then I should see "Welcome Seth Martin"
 
 Scenario: attempt to login as a user that doesn't exist yet
   When I fill in "Email" with "peter.lee@berkeley.edu"
