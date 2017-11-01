@@ -41,15 +41,16 @@ Scenario: only one unique family persists in database
   Then I should see "fam1 already exists."
 
 Scenario: update a family name
-  When I go to the "Edit Family" page
-  And I fill in "Family" with "fam1"
-  Then I should see "Information for fam1"
-  When I fill in "Family" with "ultra_fam"
-  And I press "Finish Editing"
-  Then I should see "ultra_fam's information has been updated."
+  When I am on the family page for "fam1"
+  When I follow "Edit Family"
+  When I fill in "Family Name" with "ultra_fam"
+  And I press "Update Family"
+  Then I should see "ultra_fam's family name was successfully updated."
 
 Scenario: add people to a family 
-  When I go to the "Edit Family" page
+  When I am on the family page for "fam1"
+  When I follow "Edit Family"
+  
   And I press "Add User to Family"
   And I fill in "full_name" with "full3"
   And I fill in "hebrew_name" with "hebrew3"
@@ -68,7 +69,9 @@ Scenario: add people to a family
   Then I should see "full3 was successfully added to fam1"
 
 Scenario: one person should only be in one family
-  When I go to the "Edit Family" page
+  When I am on the family page for "fam1"
+  When I follow "Edit Family"
+  
   And I press "Add User to Family"
   And I fill in "full_name" with "full1"
   And I fill in "hebrew_name" with "hebrew3"
@@ -87,7 +90,9 @@ Scenario: one person should only be in one family
   Then I should see "full1 already exists in fam1"
 
 Scenario: unable to add a person to an non-existing family
-  When I go to the "Edit Family" page
+  When I am on the family page for "fam1"
+  When I follow "Edit Family"
+  
   And I press "Add User to Family"
   And I fill in "full_name" with "full1"
   And I fill in "hebrew_name" with "hebrew3"
@@ -106,13 +111,6 @@ Scenario: unable to add a person to an non-existing family
   Then I should see "non_exist family doesn't exist!"
 
 Scenario: delete a family
-  When I go to the "Delete Family" page
-  And I fill in "Family" with "fam1"
-  And I press "Delete"
-  Then I should see "fam1 was deleted."
-
-Scenario: delete a family that doesn't exist
-  When I go to the "Delete Family" page
-  And I fill in "Family" with "fam4"
-  And I press "Delete"
-  Then I should see "fam4 does not exist."
+  When I am on the family page for "fam1"
+  When I follow "Delete Family"
+  Then I should see "Family deleted."
