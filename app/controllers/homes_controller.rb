@@ -2,7 +2,7 @@
 class HomesController < ApplicationController
   
   def home_params
-    # Unused.
+    params.require(:user).permit(:email, :password)
   end
 
   def index
