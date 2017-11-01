@@ -6,7 +6,12 @@
       = msg
 
   %h2 Account Settings
-  %p Click to edit profile settings
+  %p 
+    ="Click to"
+    =link_to("edit", edit_user_path(@user.id))
+    ="profile"
+
   
-  = button_to 'Users', users_path, :method => :get
-  = button_to 'Families', families_path, :method => :get
+  = button_to 'Users', users_path, :method => :get, class: "btn btn-default"
+  %br
+  = button_to 'Families', families_path, :method => :get, class: "btn btn-default"
