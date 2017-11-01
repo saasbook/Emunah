@@ -9,9 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # User dashboard.
-    @user = User.find(params[:id])
-    @users = User.all
+    @family = Family.find(params[:id])
   end
 
   def home
@@ -35,28 +33,32 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create!(user_params)
-    if @user == nil
-      flash[:notice] = "Could not create #{@user.full_name}"
+    user_email = params[:user][:email]
+    user = User.find_by(email: user_email)
+    if user != nil
+      flash[:notice] = "#{user.full_name} already exists."
     else
+      @user = User.create!(user_params)
       flash[:notice] = "#{@user.full_name} was successfully created."
     end
     redirect_to users_path
   end
 
   def edit
-    # Admin only.
     @user = User.find(params[:id])
   end
 
   def update
-    # Do we even use this?
+    @user = User.find(params[:id])
+    @user.update_attributes!(user_params)
+    flash[:notice] = "#{@user.full_name} was successfully updated."
+    redirect_to users_path
   end
 
   def destroy
-    # Delete from DB.
-    @user = User.find(params[:id]).destroy
-    redirect_to dash_path
+    User.destroy(params[:id])
+    flash[:notice] = "User deleted."
+    redirect_to users_path
   end
   
 end
