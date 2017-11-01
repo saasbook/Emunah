@@ -43,7 +43,7 @@ Scenario: logout and return to home page
   And I fill in "Password" with "123456"
   And I press "Log In"
   Then I should see "Welcome Seth Martin"
-  When I follow "LOGOUT"
+  When I follow "Logout"
   Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
 
   
