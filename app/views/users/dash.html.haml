@@ -4,7 +4,7 @@
   - flash.each do |type, msg|
     %strong
       = msg
-<<<<<<< HEAD
+
   %h2 Account Settings
   %p Click to edit profile settings
   - if @user.is_admin
@@ -14,12 +14,3 @@
     .user-container
       %h2 Users
       = react_component("UserList", {users: @users})
-    
-=======
-
-  .resource-container
-    = react_component("CreateResource", {title:"User", url:new_user_path, color: '#74D3AE'}, {:style => "display:inline-block"})
-    = react_component("CreateResource", {title:"Family", url:new_family_path, color: '#CBB3BF'}, {:style => "display:inline-block"})
-
-  
->>>>>>> Fix create family
