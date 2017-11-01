@@ -59,38 +59,8 @@ class UsersController < ApplicationController
 
   def destroy
     # Delete from DB.
-    byebug
     @user = User.find(params[:id]).destroy
     redirect_to dash_path
   end
-
-  def logout
-    session.delete(:user_id)
-    redirect_to home_path
-  end
   
-  def login
-    
-    # Get email and password.
-    user_email = params[:user][:email]
-    user_pw = params[:user][:password]
-    
-    # Attempt to find the user. If not found, then return to home page.
-    @user = User.find_by(email: user_email)
-
-    if @user == nil
-      flash[:notice] = "Could not find #{user_email}, try again."
-      redirect_to home_path
-    else
-      
-      # Check that passwords match.
-      if user_pw == @user.password
-        session[:user_id] = @user.id
-        redirect_to dash_path
-      else
-        flash[:notice] = "Wrong password for #{user_email}, try again."
-        redirect_to home_path
-      end
-    end
-  end
 end
