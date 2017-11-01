@@ -16,7 +16,7 @@ Background: Wayne Li, a basic user, has logged in
   And I fill in "Email" with "wli2@berkeley.edu"
   And I fill in "Password" with "123456"
   And I press "Log In"
-  Then I should see "Welcome Wayne Li!"
+  Then I should see "Welcome Wayne Li"
 
 Scenario: cannot create a user
   Then I should not see "Create User"

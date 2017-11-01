@@ -16,7 +16,7 @@ Background: Seth, an admin, has logged in
   And I fill in "Email" with "seth.martin@gmail.com"
   And I fill in "Password" with "abcdef"
   And I press "Log In"
-  Then I should see "Welcome Seth Martin!"
+  Then I should see "Welcome Seth Martin"
 
 Scenario: create a basic user
   When I go to the "Create User" page

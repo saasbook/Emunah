@@ -16,7 +16,7 @@ Background: Wayne Li, a basic user, has logged in
   And I fill in "Email" with "wli2@berkeley.edu"
   And I fill in "Password" with "123456"
   And I press "Log In"
-  Then I should see "Welcome Wayne Li!"
+  Then I should see "Welcome Wayne Li"
 
 Scenario: should not be able to get a table of users with all their information
   Then I should not see "Get All Users"
