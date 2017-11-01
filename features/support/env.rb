@@ -5,7 +5,7 @@ Coveralls.wear!
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   CodeClimate::TestReporter::Formatter,
   Coveralls::SimpleCov::Formatter
-
+]
 require 'simplecov'
 SimpleCov.start 'rails'
 
