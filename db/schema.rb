@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101045210) do
+ActiveRecord::Schema.define(version: 20171101045656) do
 
   create_table "families", force: :cascade do |t|
     t.string "family_name"
@@ -34,14 +34,20 @@ ActiveRecord::Schema.define(version: 20171101045210) do
     t.datetime "updated_at", null: false
     t.integer "family_id"
     t.index ["family_id"], name: "index_people_on_family_id"
+    t.string "discovery"
+    t.string "hobbies"
+    t.string "skills"
+    t.string "activities"
+    t.string "committees"
+    t.string "allow_contact"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
     t.string "password"
     t.string "full_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
     t.string "salt"
     t.string "encrypted_password"
     t.string "password_digest"
