@@ -36,9 +36,9 @@ Scenario: create a family
 
 Scenario: only one unique family persists in database
   When I go to the "Create Family" page
-  And I fill in "Family" with "fam3"
+  And I fill in "Family" with "fam1"
   And I press "Create Family"
-  Then I should see "fam3 already exists."
+  Then I should see "fam1 already exists."
 
 Scenario: update a family name
   When I go to the "Edit Family" page

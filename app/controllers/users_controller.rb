@@ -40,7 +40,6 @@ class UsersController < ApplicationController
     if @user == nil
       flash[:notice] = "Could not create #{@user.full_name}"
     else
-      session[:user_id] = @user.id
       flash[:notice] = "#{@user.full_name} was successfully created."
     end
     redirect_to dash_path
