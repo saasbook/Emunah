@@ -9,7 +9,10 @@ class FamiliesController < ApplicationController
   end
 
   def index
-    @families = Family.all
+    @user ||= User.find(session[:user_id]) if session[:user_id]
+    if @user.is_admin
+      @families = Family.all
+    end
   end
 
   def new
@@ -26,7 +29,7 @@ class FamiliesController < ApplicationController
       @family = Family.create!(family_params)
       flash[:notice] = "#{@family.family_name} was successfully created."
     end
-    redirect_to dash_path
+    redirect_to families_path
   end
 
   def edit

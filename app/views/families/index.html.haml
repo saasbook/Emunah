@@ -1,15 +1,19 @@
 .container
-  %h1 Families Page
+  %h1.header-container 
+    = "Families"
   - flash.each do |type, msg|
     %strong
       = msg
-  = button_to 'Create Family', new_family_path, :method => :get, class: "btn btn-default"
-
-  %table#families
-    %thead
-    %tr
-      %th Family Name
-    %tbody
-      - @families.each do |family|
+  
+  - if @user.is_admin
+    .resource-container
+      = react_component("CreateResource", {title:"Family", url:new_family_path, color: '#CBB3BF'}, {:style => "display:inline-block"})
+    .container
+      %table#families
+        %thead
         %tr
-          %td= family.family_name
+          %th Family Name
+        %tbody
+          - @families.each do |family|
+            %tr
+              %td= family.family_name

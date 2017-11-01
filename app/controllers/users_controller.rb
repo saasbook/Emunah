@@ -14,13 +14,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def dash
-    @user ||= User.find(session[:user_id]) if session[:user_id]
-    if @user.is_admin
-      @users = User.all
-    end
-  end
-
   def home
      user ||= User.find(session[:user_id]) if session[:user_id]
      if user.nil?
@@ -31,7 +24,10 @@ class UsersController < ApplicationController
   end
 
   def index
-    # Unused.
+    @user ||= User.find(session[:user_id]) if session[:user_id]
+    if @user.is_admin
+      @users = User.all
+    end
   end
 
   def new
@@ -45,7 +41,7 @@ class UsersController < ApplicationController
     else
       flash[:notice] = "#{@user.full_name} was successfully created."
     end
-    redirect_to dash_path
+    redirect_to users_path
   end
 
   def edit

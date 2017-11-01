@@ -7,10 +7,6 @@
 
   %h2 Account Settings
   %p Click to edit profile settings
-  - if @user.is_admin
-    .resource-container
-      = react_component("CreateResource", {title:"User", url:new_user_path, color: '#74D3AE'}, {:style => "display:inline-block"})
-      = react_component("CreateResource", {title:"Family", url:families_path, color: '#CBB3BF'}, {:style => "display:inline-block"})
-    .user-container
-      %h2 Users
-      = react_component("UserList", {users: @users})
+  
+  = button_to 'Users', users_path, :method => :get
+  = button_to 'Families', families_path, :method => :get
