@@ -1,4 +1,4 @@
-# This object serves as a static home page before login.
+# This object serves as a static home page, and handles login and logout.
 class HomeController < ApplicationController
   
   def home_params
@@ -38,6 +38,9 @@ class HomeController < ApplicationController
   
   def dash
     @user ||= User.find(session[:user_id]) if session[:user_id]
+    if @user == nil
+      redirect_to home_path
+    end
   end
   
   def logout

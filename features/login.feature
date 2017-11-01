@@ -26,12 +26,24 @@ Scenario: attempt to login as a user that doesn't exist yet
   And I press "Log In"
   Then I should see "Could not find peter.lee@berkeley.edu, try again."
 
+Scenario: maintain my login
+  When I fill in "Email" with "fake_seth@gmail.com"
+  And I fill in "Password" with "123456"
+  And I press "Log In"
+  Then I should see "Welcome Seth Martin"
+  When I am on the home page
+  Then I should see "Welcome Seth Martin"
+
+Scenario: block dashboard if logged out
+  When I am on the dashboard page
+  Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
+
 Scenario: logout and return to home page
   When I fill in "Email" with "fake_seth@gmail.com"
   And I fill in "Password" with "123456"
   And I press "Log In"
   Then I should see "Welcome Seth Martin"
-  When I press "Log Out"
+  When I follow "LOGOUT"
   Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
 
   

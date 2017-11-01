@@ -14,6 +14,8 @@ module NavigationHelpers
     case page_name
 
     when /^the home\s?page$/ then '/home'
+      
+    when /^the dashboard page$/ then '/dashboard'
 
     when /^the "Create User" page$/ then '/users/new'
       
