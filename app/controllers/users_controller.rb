@@ -16,6 +16,9 @@ class UsersController < ApplicationController
 
   def dash
     @user ||= User.find(session[:user_id]) if session[:user_id]
+    if @user.is_admin
+      @users = User.all
+    end
   end
 
   def home
