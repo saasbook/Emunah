@@ -26,7 +26,7 @@ Background: I should be on the home page and logged in.
   And I fill in "Email" with "seth.martin@gmail.com"
   And I fill in "Password" with "abcdef"
   And I press "Log In"
-  Then I should see "Welcome Seth Martin!"
+  Then I should see "Welcome Seth Martin"
 
 Scenario: create a family
   When I go to the "Create Family" page
