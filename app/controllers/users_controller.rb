@@ -51,6 +51,7 @@ class UsersController < ApplicationController
 
   def edit
     # Admin only.
+    @user = User.find(params[:id])
   end
 
   def update
@@ -59,6 +60,9 @@ class UsersController < ApplicationController
 
   def destroy
     # Delete from DB.
+    byebug
+    @user = User.find(params[:id]).destroy
+    redirect_to dash_path
   end
 
   def logout
