@@ -3,7 +3,7 @@
   - flash.each do |type, msg|
     %strong
       = msg
-  = button_to 'Create Family', new_family_path, :method => :get
+  = button_to 'Create Family', new_family_path, :method => :get, class: "btn btn-default"
 
   %table#families
     %thead

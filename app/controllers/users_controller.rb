@@ -16,6 +16,9 @@ class UsersController < ApplicationController
 
   def dash
     @user ||= User.find(session[:user_id]) if session[:user_id]
+    if @user.is_admin
+      @users = User.all
+    end
   end
 
   def home
@@ -48,6 +51,7 @@ class UsersController < ApplicationController
 
   def edit
     # Admin only.
+    @user = User.find(params[:id])
   end
 
   def update
@@ -56,6 +60,9 @@ class UsersController < ApplicationController
 
   def destroy
     # Delete from DB.
+    byebug
+    @user = User.find(params[:id]).destroy
+    redirect_to dash_path
   end
 
   def logout
