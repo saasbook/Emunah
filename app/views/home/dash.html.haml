@@ -1,0 +1,12 @@
+.container
+  %h1.header-container 
+    = "Welcome " + @user.full_name
+  - flash.each do |type, msg|
+    %strong
+      = msg
+
+  %h2 Account Settings
+  %p Click to edit profile settings
+  
+  = button_to 'Users', users_path, :method => :get
+  = button_to 'Families', families_path, :method => :get

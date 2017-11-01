@@ -1,36 +1,47 @@
+# This object serves as a static home page before login.
 class HomeController < ApplicationController
   
   def home_params
     params.require(:user).permit(:email, :password)
   end
 
-  def show
-    # Unused.
-  end
-
   def index
-    # User dashboard.
+    if session[:user_id] != nil
+      redirect_to dash_path
+    end
   end
+  
+  def login
+    
+    # Get email and password.
+    user_email = params[:user][:email]
+    user_pw = params[:user][:password]
+    
+    # Attempt to find the user. If not found, then return to home page.
+    @user = User.find_by(email: user_email)
 
-  def new
-    # Form to create. Admin only.
+    if @user == nil
+      flash[:notice] = "Could not find #{user_email}, try again."
+      redirect_to home_path
+    else
+      
+      # Check that passwords match.
+      if user_pw == @user.password
+        session[:user_id] = @user.id
+        redirect_to dash_path
+      else
+        flash[:notice] = "Wrong password for #{user_email}, try again."
+        redirect_to home_path
+      end
+    end
   end
-
-  def create
-    # @user = User.where(home_params.)
-    # flash[:notice] = 
-    # redirect_to users_path
+  
+  def dash
+    @user ||= User.find(session[:user_id]) if session[:user_id]
   end
-
-  def edit
-    # Admin only.
-  end
-
-  def update
-    # Do we even use this?
-  end
-
-  def destroy
-    # Delete from DB.
+  
+  def logout
+    session.delete(:user_id)
+    redirect_to home_path
   end
 end

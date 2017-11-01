@@ -14,13 +14,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def dash
-    @user ||= User.find(session[:user_id]) if session[:user_id]
-    if @user.is_admin
-      @users = User.all
-    end
-  end
-
   def home
      user ||= User.find(session[:user_id]) if session[:user_id]
      if user.nil?
@@ -31,7 +24,10 @@ class UsersController < ApplicationController
   end
 
   def index
-    # Unused.
+    @user ||= User.find(session[:user_id]) if session[:user_id]
+    if @user.is_admin
+      @users = User.all
+    end
   end
 
   def new
@@ -43,10 +39,9 @@ class UsersController < ApplicationController
     if @user == nil
       flash[:notice] = "Could not create #{@user.full_name}"
     else
-      session[:user_id] = @user.id
       flash[:notice] = "#{@user.full_name} was successfully created."
     end
-    redirect_to dash_path
+    redirect_to users_path
   end
 
   def edit
@@ -60,38 +55,8 @@ class UsersController < ApplicationController
 
   def destroy
     # Delete from DB.
-    byebug
     @user = User.find(params[:id]).destroy
     redirect_to dash_path
   end
-
-  def logout
-    session.delete(:user_id)
-    redirect_to home_path
-  end
   
-  def login
-    
-    # Get email and password.
-    user_email = params[:user][:email]
-    user_pw = params[:user][:password]
-    
-    # Attempt to find the user. If not found, then return to home page.
-    @user = User.find_by(email: user_email)
-
-    if @user == nil
-      flash[:notice] = "Could not find #{user_email}, try again."
-      redirect_to home_path
-    else
-      
-      # Check that passwords match.
-      if user_pw == @user.password
-        session[:user_id] = @user.id
-        redirect_to dash_path
-      else
-        flash[:notice] = "Wrong password for #{user_email}, try again."
-        redirect_to home_path
-      end
-    end
-  end
 end
