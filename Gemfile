@@ -50,6 +50,8 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'jasmine-rails'
   gem 'rspec-rails'
+  gem 'codeclimate-test-reporter'
+  gem 'coveralls'
   gem 'simplecov', :require => false
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'

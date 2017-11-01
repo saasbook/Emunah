@@ -24,5 +24,6 @@ before_script:
 script:
   - bundle exec rspec
   - bundle exec cucumber
+  - CODECLIMATE_REPO_TOKEN=91ccac87c493c0752e9c84e37a3631ab61ced9384ae3a042f7067816df19c846 bundle exec codeclimate-test-reporter
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
