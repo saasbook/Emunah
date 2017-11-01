@@ -16,10 +16,17 @@ class FamiliesController < ApplicationController
     # Form to create. Admin only.
   end
 
+  # If family already exists, error out. Else, create the family.
   def create
-    @family = Family.create!(family_params)
-    flash[:notice] = "#{@family.family_name} was successfully created."
-    redirect_to families_path
+    family_name = params[:family][:family_name]
+    family = Family.find_by(family_name: family_name)
+    if family != nil
+      flash[:notice] = "#{family_name} already exists."
+    else
+      @family = Family.create!(family_params)
+      flash[:notice] = "#{@family.family_name} was successfully created."
+    end
+    redirect_to dash_path
   end
 
   def edit
