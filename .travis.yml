@@ -4,10 +4,10 @@
 # before_script:
 #   - bundle exec rake db:test:prepare
 
-before_install:
-  - pip install --user codecov
-after_success:
-  - codecov --file coverage/lcov.info --disable search
+# before_install:
+#   - pip install --user codecov
+# after_success:
+#   - codecov --file coverage/lcov.info --disable search
 
 
 env:

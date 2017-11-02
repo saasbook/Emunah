@@ -21,14 +21,7 @@ Background: Wayne Li, a basic user, has logged in
 Scenario: cannot create a user
   Then I should not see "Create User"
 
-Scenario: update my own information
-  When I go to the "Edit User" page
-  Then I should see "Information for Wayne Li"
-  When I fill in "Email" with "wayne.li@gmail.com"
-  And I press "Finish Editing"
-  Then I should see "Your information has been updated."
-  When I go to the "Edit User" page
-  Then I should see "wayne.li@gmail.com"
+
 
 Scenario: cannot delete a user 
   Then I should not see "Delete User"
