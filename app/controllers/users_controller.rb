@@ -60,7 +60,6 @@ class UsersController < ApplicationController
   def destroy
     # Delete from DB.
     @user = User.find(params[:id]).destroy
-    redirect_to dash_path
   end
   
 end
