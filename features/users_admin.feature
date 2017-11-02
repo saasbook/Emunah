@@ -34,4 +34,25 @@ Scenario: try create a user with no fields filled out
   And I press "Create User"
   Then I should see "Could not create user. Full name can't be blank, Full name is too short (minimum is 3 characters), Email can't be blank, Email is invalid, Password is too short (minimum is 6 characters)."
 
+Scenario: update a user
+  When I go to the "Edit User" page
+  And I fill in "Email" with "wli2@berkeley.edu"
+  Then I should see "Information for Wayne Li"
+  When I fill in "Email" with "wayne.li@gmail.com"
+  And I press "Finish Editing"
+  Then I should see "Wayne Li's information has been updated."
+  When I go to the "Edit User" page
+  And I fill in "Email" with "wayne.li@gmail.com"
+  Then I should see "Information for Wayne Li"
 
+Scenario: delete a user 
+  When I go to the "Delete User" page
+  And I fill in "Email" with "wli2@berkeley.edu"
+  And I press "Delete"
+  Then I should see "Wayne Li has been removed."
+  
+Scenario: try to delete a user that doesn't exist
+  When I go to the "Delete User" page
+  And I fill in "Email" with "random@berkeley.edu"
+  And I press "Delete"
+  Then I should see "This user doesn't exist!"
