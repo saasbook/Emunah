@@ -4,15 +4,15 @@
 # before_script:
 #   - bundle exec rake db:test:prepare
 
-# before_install:
-#   - pip install --user codecov
-# after_success:
-#   - codecov --file coverage/lcov.info --disable search
+before_install:
+  - pip install --user codecov
+after_success:
+  - codecov --file coverage/lcov.info --disable search
 
 
 env:
   global:
-    - CC_TEST_REPORTER_ID=38209a9c28557eea60dc47e72514dcb1edb4c4eaaf4d89eee8419d05eae966ff
+    - CC_TEST_REPORTER_ID=91ccac87c493c0752e9c84e37a3631ab61ced9384ae3a042f7067816df19c846
 language: ruby
 rvm:
   - 2.4.0

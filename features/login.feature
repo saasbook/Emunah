@@ -14,9 +14,15 @@ Background: I should be on the home page and logged out.
   And I am on the home page
   Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
 
-Scenario: login as basic user, and see last log-in
+Scenario: login as basic user
   When I fill in "Email" with "fake_seth@gmail.com"
   And I fill in "Password" with "123456"
+  And I press "Log In"
+  Then I should see "Welcome Seth Martin"
+
+Scenario: login as a privileged user
+  And I fill in "Email" with "seth.martin@gmail.com"
+  And I fill in "Password" with "abcdef"
   And I press "Log In"
   Then I should see "Welcome Seth Martin"
 
@@ -25,6 +31,12 @@ Scenario: attempt to login as a user that doesn't exist yet
   And I fill in "Password" with "whoami"
   And I press "Log In"
   Then I should see "Could not find peter.lee@berkeley.edu, try again."
+
+Scenario: attempt to login as an existing user with the wrong password
+  And I fill in "Email" with "seth.martin@gmail.com"
+  And I fill in "Password" with "iamwrong"
+  And I press "Log In"
+  Then I should see "Wrong password for seth.martin@gmail.com, try again."
 
 Scenario: maintain my login
   When I fill in "Email" with "fake_seth@gmail.com"
