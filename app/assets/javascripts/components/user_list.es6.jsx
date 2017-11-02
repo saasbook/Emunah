@@ -8,7 +8,7 @@ class UserList extends React.Component {
   	for (var i=0; i < this.props.users.length; i++) {
   		var user = this.props.users[i]
   		users.push(
-  			<ListRow key={user.id} user={user} />
+  			<ListRow key={user.id} user={user} current={this.props.user.id} />
   		);
   	}
     return (
@@ -53,6 +53,12 @@ class ListRow extends React.Component {
 		var role = this.props.user.is_admin == "Yes" ? "admin" : "user";
     var edit = "users/" + this.props.user.id + "/edit";
     var del = "users/" + this.props.user.id;
+    var btnClass = "btn btn-danger";
+    console.log(this.props.user.id + "\n")
+    console.log(this.props.current)
+    if (this.props.user.id == this.props.current) {
+      btnClass = "btn btn-danger disabled"
+    }
 		return (
 			<tr>
 				<th scope="row">{this.props.user.full_name}</th>
@@ -60,7 +66,7 @@ class ListRow extends React.Component {
 				<td>{role}</td>
 				<td>
           <a href={this.state.edit} className="btn btn-default">Edit</a>
-          <button className="btn btn-danger" onClick={() => this.handleDelete()}>Delete</button>
+          <button className={btnClass} onClick={() => this.handleDelete()}>Delete</button>
         </td>
 			</tr>
 		)

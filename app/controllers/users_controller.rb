@@ -52,7 +52,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    # Do we even use this?
+    @user = User.find(params[:id])
+    User.update(@user.id, user_params)
+    redirect_to dash_path
   end
 
   def destroy
