@@ -17,9 +17,9 @@ Background: I should be on the home page and logged in.
   | fam2        |
 
   And the following people exist:
-  | full_name | hebrew_name | birthday | home_address | telephone | telephone_type | email_address | employer | occupation | anniversary | is_child | discovery | hobbies | skills | activities | committees | allow_contact |
-  | full1     | hebrew1     | birth1   | home1        | tele1     | tele_num_type1 | email1        | emplo1   | job1       | non1        | False    | outreach  | none    | none   | none       | com1       | yes           |
-  | full2     | hebrew2     | birth2   | home2        | tele2     | tele_num_type2 | email2        | emplo2   | job2       | non2        | True     | born_into | none    | none   | none       | com2       | no            |
+  | full_name | hebrew_name | birthday | home_address | telephone | telephone_type | email_address | employer | occupation | anniversary | is_child | discovery | hobbies | skills | activities | committees | allow_contact | family_id |
+  | full1     | hebrew1     | birth1   | home1        | tele1     | tele_num_type1 | email1        | emplo1   | job1       | non1        | False    | outreach  | none    | none   | none       | com1       | yes           | 1         |
+  | full2     | hebrew2     | birth2   | home2        | tele2     | tele_num_type2 | email2        | emplo2   | job2       | non2        | True     | born_into | none    | none   | none       | com2       | no            | 2         |
 
   And I am on the home page
   Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
@@ -47,68 +47,35 @@ Scenario: update a family name
   And I press "Update Family"
   Then I should see "ultra_fam's family name was successfully updated."
 
-Scenario: add people to a family 
+Scenario: check person information is in family edit
+  When I am on the family page for "fam1"
+  When I follow "Edit Family"
+  Then I should see "full1"
+
+Scenario: check person information 
+  When I am on the family page for "fam1"
+  When I follow "Edit Family"
+  When I follow "See Person Info"
+  Then I should see "Information for the full1 Person"
+
+Scenario: add person to a family 
   When I am on the family page for "fam1"
   When I follow "Edit Family"
   
-  And I press "Add User to Family"
+  And I press "Add Person"
   And I fill in "full_name" with "full3"
   And I fill in "hebrew_name" with "hebrew3"
-  And I fill in "family" with "fam1"
-  And I fill in "birthdate" with "birth3"
+  And I fill in "birthday" with "birth3"
   And I fill in "home_address" with "home3"
-  And I fill in "telephone_number" with "tele3"
-  And I fill in "telephone_number_type" with "tele_num_type3"
+  And I fill in "telephone" with "tele3"
+  And I fill in "telephone_type" with "tele_num_type3"
   And I fill in "email_address" with "email3"
   And I fill in "employer" with "emplo3"
   And I fill in "occupation" with "job3" 
   And I fill in "anniversary" with "non3"
   And I fill in "is_child" with "False"
-  And I fill in "parent_name" with "None"
   And I press "Add"
   Then I should see "full3 was successfully added to fam1"
-
-Scenario: one person should only be in one family
-  When I am on the family page for "fam1"
-  When I follow "Edit Family"
-  
-  And I press "Add User to Family"
-  And I fill in "full_name" with "full1"
-  And I fill in "hebrew_name" with "hebrew3"
-  And I fill in "family" with "fam1"
-  And I fill in "birthdate" with "birth3"
-  And I fill in "home_address" with "home3"
-  And I fill in "telephone_number" with "tele3"
-  And I fill in "telephone_number_type" with "tele_num_type3"
-  And I fill in "email_address" with "email3"
-  And I fill in "employer" with "emplo3"
-  And I fill in "occupation" with "job3" 
-  And I fill in "anniversary" with "non3"
-  And I fill in "is_child" with "False"
-  And I fill in "parent_name" with "None"
-  And I press "Add"
-  Then I should see "full1 already exists in fam1"
-
-Scenario: unable to add a person to an non-existing family
-  When I am on the family page for "fam1"
-  When I follow "Edit Family"
-  
-  And I press "Add User to Family"
-  And I fill in "full_name" with "full1"
-  And I fill in "hebrew_name" with "hebrew3"
-  And I fill in "family" with "non_exist"
-  And I fill in "birthdate" with "birth3"
-  And I fill in "home_address" with "home3"
-  And I fill in "telephone_number" with "tele3"
-  And I fill in "telephone_number_type" with "tele_num_type3"
-  And I fill in "email_address" with "email3"
-  And I fill in "employer" with "emplo3"
-  And I fill in "occupation" with "job3" 
-  And I fill in "anniversary" with "non3"
-  And I fill in "is_child" with "False"
-  And I fill in "parent_name" with "None"
-  And I press "Add"
-  Then I should see "non_exist family doesn't exist!"
 
 Scenario: delete a family
   When I am on the family page for "fam1"
