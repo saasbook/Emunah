@@ -67,6 +67,7 @@ class FamiliesController < ApplicationController
 
   def edit
     @family = Family.find(params[:id])
+    @people = @family.people
   end
 
   def update

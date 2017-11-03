@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :families
   get '/families/:id/new_person' => 'families#new_person', :as => 'new_person'
   post '/families/:id/add_person' => 'families#add_person', :as => 'add_person'
-  get '/families/:id/show_person' => 'families#show_person', :as => 'show_person'
+  get '/person/:id/' => 'people#show', :as => 'show_person'
+  # get '/families/:id/'
   
   # Entry point, login and logout.
   get '/home' => 'home#index', :as => 'home'

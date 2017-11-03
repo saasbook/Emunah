@@ -12,15 +12,8 @@
     %strong
       = msg
 
-%table#families
-  %thead
-    %tr
-      %th Person Name
-      %th Person Information
-  %tbody
-    - @family.people.each do |person|
-      %tr
-        %td= person.full_name
-        %td= link_to "See Person Info", show_person_path(person: person)
+.people-container
+  %h2 People in your Family
+  = react_component("PeopleList", {people: @people})
 
 = button_to 'Add Person', new_person_path, :method => :get

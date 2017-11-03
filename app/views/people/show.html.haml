@@ -1,10 +1,5 @@
 .container
-  %h1 Information for the #{@person.full_name} Person
-  - flash.each do |type, msg|
-    %strong
-      = msg
-
-.container
+  %h1 Showing information for #{@person.full_name}
   %table
     %thead
       %tr
