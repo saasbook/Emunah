@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   get '/user/home' => 'users#home', :as => 'user_home'
   
   resources :families
-  resources :people
+  get '/families/:id/new_person' => 'families#new_person', :as => 'new_person'
+  post '/families/:id/add_person' => 'families#add_person', :as => 'add_person'
+  get '/person/:id/' => 'people#show', :as => 'show_person'
+  # get '/families/:id/'
   
   # Entry point, login and logout.
   get '/home' => 'home#index', :as => 'home'

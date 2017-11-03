@@ -7,15 +7,16 @@ class PeopleController < ApplicationController
   end
 
   def show
-    # Unused.
+    @person = Person.find(params[:id])
   end
 
   def index
-    # User dashboard.
+    # Unused. 
   end
 
   def new
     # Form to create. Admin only.
+    
   end
 
   def create
