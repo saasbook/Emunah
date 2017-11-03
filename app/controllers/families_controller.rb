@@ -38,7 +38,7 @@ class FamiliesController < ApplicationController
       redirect_to new_person_path
     else
       person.save!
-      flash[:notice] = "#{person.full_name} added to #{@family.family_name}!"
+      flash[:notice] = "#{person.full_name} was successfully added to #{@family.family_name}!"
       redirect_to edit_family_path
     end
   end

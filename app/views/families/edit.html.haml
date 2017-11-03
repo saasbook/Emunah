@@ -7,6 +7,11 @@
 
   = submit_tag 'Update Family'
 
+.container
+  - flash.each do |type, msg|
+    %strong
+      = msg
+
 %table#families
   %thead
     %tr
