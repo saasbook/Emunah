@@ -16,6 +16,7 @@ class PeopleController < ApplicationController
 
   def new
     # Form to create. Admin only.
+    
   end
 
   def create

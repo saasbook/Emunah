@@ -1,0 +1,86 @@
+.container
+	%h1 Create a Person
+	.jumbotron
+		= form_tag add_person_path do
+			.row		
+				= label :person, :full_name, 'Full Name'
+				%br
+				= text_field :person, 'full_name'
+			%br
+			.row		
+				= label :person, :hebrew_name, 'Hebrew Name'
+				%br
+				= text_field :person, 'hebrew_name'
+			%br
+			.row		
+				= label :person, :birthday, 'Birthday'
+				%br
+				= text_field :person, 'birthday'
+			%br
+			.row		
+				= label :person, :home_address, 'Home Address'
+				%br
+				= text_field :person, 'home_address'
+			%br
+			.row		
+				= label :person, :telephone, 'Telephone #'
+				%br
+				= text_field :person, 'telephone'
+			%br
+			.row		
+				= label :person, :telephone_type, 'Telephone Type'
+				%br
+				= text_field :person, 'telephone_type'
+			%br
+			.row		
+				= label :person, :email_address, 'Email Address'
+				%br
+				= text_field :person, 'email_address'
+			%br
+			.row		
+				= label :person, :employer, 'Employer'
+				%br
+				= text_field :person, 'employer'
+			%br
+			.row		
+				= label :person, :occupation, 'Occupation'
+				%br
+				= text_field :person, 'occupation'
+			%br
+			.row		
+				= label :person, :anniversary, 'Anniversary'
+				%br
+				= text_field :person, 'anniversary'
+			%br
+			.row		
+				= label :person, :is_child, 'Is a child?'
+				%br
+				= text_field :person, 'is_child'
+			%br
+			.row		
+				= label :person, :discovery, 'How did you meet?'
+				%br
+				= text_field :person, 'discovery'
+			%br
+			.row		
+				= label :person, :hobbies, 'Hobbies?'
+				%br
+				= text_field :person, 'hobbies'
+			%br
+			.row		
+				= label :person, :skills, 'Skills?'
+				%br
+				= text_field :person, 'skills'
+			%br
+			.row		
+				= label :person, :activities, 'Activities?'
+				%br
+				= text_field :person, 'activities'
+			%br
+			.row		
+				= label :person, :committees, 'Committees?'
+				%br
+				= text_field :person, 'committees'
+			%br
+			.row
+				= submit_tag 'Create Person'
