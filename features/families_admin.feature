@@ -51,8 +51,7 @@ Scenario: check person information is in family edit
   Then I should see "full1"
 
 Scenario: check person information 
-  When I am on the edit family page for "fam1"
-  When I press "Show"
+  When I am on the show person page for "full1"
   Then I should see "Showing information for full1"
 
 Scenario: add person to a family 
