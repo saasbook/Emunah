@@ -4,13 +4,6 @@ class FamiliesController < ApplicationController
     params.require(:family).permit(:family_name)
   end
 
-  def person_params
-    params.require(:person).permit(:full_name, :hebrew_name, :birthday,
-      :home_address, :telephone, :telephone_type, :email_address, :employer,
-      :occupation, :anniversary, :is_child, :discovery, :hobbies, :skills,
-       :activities, :committees, :allow_contact)
-  end
-
   def show
 
   end
