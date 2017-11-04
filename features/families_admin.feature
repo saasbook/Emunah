@@ -66,6 +66,12 @@ Scenario: add person to a family
   And I press "Add"
   Then I should see "full3 was successfully added to fam1"
 
+Scenario: update a person name
+  When I am on the edit person page for "full1"
+  When I fill in "full_name" with "full1_changed"
+  And I press "Update Person"
+  Then I should see "full1_changed was successfully updated."
+
 Scenario: delete a family
   When I delete family "wayne.li@gmail.com"
   Then I should see "Family deleted."

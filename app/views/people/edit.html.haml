@@ -8,71 +8,71 @@
       .row      
         = label :person, :full_name, 'Full Name'
         %br
-        = text_field :person, 'full_name'
+        = text_field :person, 'full_name', :id => 'full_name'
       .row
         = label :person, :hebrew_name, 'Hebrew Name'
         %br
-        = text_field :person, 'hebrew_name'
+        = text_field :person, 'hebrew_name', :id => 'hebrew_name'
       .row
         = label :person, :birthday, 'Birthday'
         %br
-        = text_field :person, 'birthday'
+        = text_field :person, 'birthday', :id => 'birthday'
       .row
         = label :person, :home_address, 'Home Address'
         %br
-        = text_field :person, 'home_address'
+        = text_field :person, 'home_address', :id => 'home_address'
       .row
         = label :person, :telephone, 'Telephone'
         %br
-        = text_field :person, 'telephone'
+        = text_field :person, 'telephone', :id => 'telephone'
       .row
         = label :person, :telephone_type, 'Telephone Type'
         %br
-        = text_field :person, 'telephone_type'
+        = text_field :person, 'telephone_type', :id => 'telephone_type'
       .row
         = label :person, :email_address, 'Email Address'
         %br
-        = text_field :person, 'email_address'
+        = text_field :person, 'email_address', :id => 'email_address'
       .row
         = label :person, :employer, 'Employer'
         %br
-        = text_field :person, 'employer'
+        = text_field :person, 'employer', :id => 'employer'
       .row
         = label :person, :occupation, 'Occupation'
         %br
-        = text_field :person, 'occupation'
+        = text_field :person, 'occupation', :id => 'occupation'
       .row
         = label :person, :anniversary, 'Anniversary'
         %br
-        = text_field :person, 'anniversary'
+        = text_field :person, 'anniversary', :id => 'annivery'
       .row
         = label :person, :is_child, 'Is Child?'
         %br
-        = select :person, :is_child, ['Yes', 'No']
+        = select :person, :is_child, ['Yes', 'No'], :id => 'is_child'
       .row
         = label :person, :discovery, 'How did you meet this person?'
         %br
-        = text_field :person, 'discovery'
+        = text_field :person, 'discovery', :id => 'discovery'
       .row
         = label :person, :hobbies, 'Any hobbies?'
         %br
-        = text_field :person, 'hobbies'
+        = text_field :person, 'hobbies', :id => 'hobbies'
       .row
         = label :person, :skills, 'Any Skills?'
         %br
-        = text_field :person, 'skills'
+        = text_field :person, 'skills', :id => 'skills'
       .row
         = label :person, :activities, 'Any activities?'
         %br
-        = text_field :person, 'activities'
+        = text_field :person, 'activities', :id => 'activities'
       .row
         = label :person, :committees, 'Any committees?'
         %br
-        = text_field :person, 'committees'
+        = text_field :person, 'committees', :id => 'committees'
       .row
         = label :person, :allow_contact, 'Allow contact?'
         %br
-        = select :person, :allow_contact, ['Yes', 'No']
+        = select :person, :allow_contact, ['Yes', 'No'], :id => 'allow_contact'
       %br
       .row
         = submit_tag 'Update Person', class: "btn btn-default"

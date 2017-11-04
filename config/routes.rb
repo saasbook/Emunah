@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/families/:id/new_person' => 'families#new_person', :as => 'new_person'
   post '/families/:id/add_person' => 'families#add_person', :as => 'add_person'
   get '/person/:id/' => 'people#show', :as => 'show_person'
-  get '/person/:id/edit' => 'people#edit'
+  get '/person/:id/edit' => 'people#edit', :as => 'edit_person'
   patch '/person/:id/edit' => 'people#update'
   
   # Entry point, login and logout.
