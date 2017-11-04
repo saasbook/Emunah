@@ -1,14 +1,30 @@
 class UserList extends React.Component {
   constructor(props) {
     super(props)
+    this.state = { ... props }
+  }
+
+  handleDelete(id) {
+    console.log("Delete " + id);
+    var users = this.state.users.filter((user) => {
+      return !(user.id === id);
+    })
+    this.setState({
+      users: users
+    })
   }
 
   render () {
   	users = []
-  	for (var i=0; i < this.props.users.length; i++) {
-  		var user = this.props.users[i]
+  	for (var i=0; i < this.state.users.length; i++) {
+  		var user = this.state.users[i]
   		users.push(
-  			<ListRow key={user.id} user={user} />
+  			<ListRow 
+          key={user.id} 
+          user={user} 
+          current={this.state.user.id} 
+          handleDelete={(id) => this.handleDelete(id)}
+          />
   		);
   	}
     return (
@@ -33,26 +49,36 @@ class ListRow extends React.Component {
 
   constructor(props) {
     super(props)
-    var edit = "/users/" + this.props.user.id + "/edit"
-    var del = "/users/" + this.props.user.id
+    var edit = "users/" + this.props.user.id + "/edit"
+    var del = "users/" + this.props.user.id
     this.state = {
       edit: edit,
       delete: del
     }
-    console.log(this.state)
   }
 
   handleDelete() {
-    console.log("Deleting " + this.state.delete)
-    fetch(this.state.delete, {
-      method: 'DELETE'
-    })
+    var token = document.getElementsByName("csrf-token")[0].content;
+    if (this.state.delete != null) {
+      fetch(this.state.delete, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-TOKEN': token
+        },
+        credentials: 'same-origin'
+      })
+    }
+    this.props.handleDelete(this.props.user.id)
   }
 
 	render () {
 		var role = this.props.user.is_admin == "Yes" ? "admin" : "user";
     var edit = "users/" + this.props.user.id + "/edit";
     var del = "users/" + this.props.user.id;
+    var btnClass = "btn btn-danger";
+    if (this.props.user.id == this.props.current) {
+      btnClass = "btn btn-danger disabled"
+    }
 		return (
 			<tr>
 				<th scope="row">{this.props.user.full_name}</th>
@@ -60,10 +86,9 @@ class ListRow extends React.Component {
 				<td>{role}</td>
 				<td>
           <a href={this.state.edit} className="btn btn-default">Edit</a>
-          <button className="btn btn-danger" onClick={() => this.handleDelete()}>Delete</button>
+          <button className={btnClass} onClick={() => this.handleDelete()}>Delete</button>
         </td>
 			</tr>
 		)
 	}
 }
-

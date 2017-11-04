@@ -7,11 +7,12 @@ class FamiliesController < ApplicationController
   def person_params
     params.require(:person).permit(:full_name, :hebrew_name, :birthday,
       :home_address, :telephone, :telephone_type, :email_address, :employer,
-      :occupation, :anniversary, :is_child)
+      :occupation, :anniversary, :is_child, :discovery, :hobbies, :skills,
+       :activities, :committees, :allow_contact)
   end
 
   def show
-    @family = Family.find(params[:id])
+
   end
 
   def index
@@ -35,16 +36,21 @@ class FamiliesController < ApplicationController
     person = @family.people.build(person_params)
     if person == nil
       flash[:notice] = "#{person.full_name} cannot be added."
-      redirect to new_person_path
+      redirect_to new_person_path
     else
       person.save!
-      flash[:notice] = "#{person.full_name} added to #{@family.family_name}!"
+      flash[:notice] = "#{person.full_name} was successfully added to #{@family.family_name}!"
       redirect_to edit_family_path
     end
   end
 
   def show_person
-    @person = params[:person]
+    @person = Person.find(params[:person])
+    @family = Family.find(params[:id])
+    if @person == nil
+      flash[:notice] = "No information for person?"
+      redirect_to edit_family_path(@family)
+    end
   end 
 
   # If family already exists, error out. Else, create the family.
@@ -62,6 +68,7 @@ class FamiliesController < ApplicationController
 
   def edit
     @family = Family.find(params[:id])
+    @people = @family.people
   end
 
   def update

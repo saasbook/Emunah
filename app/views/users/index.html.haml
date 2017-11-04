@@ -10,4 +10,4 @@
       = react_component("CreateResource", {title:"User", url:new_user_path, color: '#74D3AE'}, {:style => "display:inline-block"})
     .user-container
       %h2 Users
-      = react_component("UserList", {users: @users})
+      = react_component("UserList", {users: @users, user: @user})
