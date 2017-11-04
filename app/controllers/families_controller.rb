@@ -12,7 +12,7 @@ class FamiliesController < ApplicationController
   end
 
   def show
-    @family = Family.find(params[:id])
+
   end
 
   def index
