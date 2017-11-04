@@ -1,18 +1,4 @@
 class FamilyList extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { ... props }
-  }
-
-  handleDelete(id) {
-    console.log("Delete " + id)
-    var families = this.state.families.filter((family) => {
-      return !(family.id === id);
-    })
-    this.setState({
-      families: families
-    })
-  }
 
   render () {
   	families = []

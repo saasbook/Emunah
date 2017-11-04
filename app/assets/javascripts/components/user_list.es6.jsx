@@ -1,18 +1,4 @@
 class UserList extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { ... props }
-  }
-
-  handleDelete(id) {
-    console.log("Delete " + id);
-    var users = this.state.users.filter((user) => {
-      return !(user.id === id);
-    })
-    this.setState({
-      users: users
-    })
-  }
 
   render () {
   	users = []
