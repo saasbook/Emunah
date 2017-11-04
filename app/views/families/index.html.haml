@@ -8,14 +8,6 @@
   - if @user.is_admin
     .resource-container
       = react_component("CreateResource", {title:"Family", url:new_family_path, color: '#CBB3BF'}, {:style => "display:inline-block"})
-    .container
-      %table#families
-        %thead
-          %tr
-            %th Family Name
-            %th Family Information
-        %tbody
-          - @families.each do |family|
-            %tr
-              %td= family.family_name
-              %td= link_to "See Family Info", family_path(family)
+    .family-container
+      %h2 Families
+      = react_component("FamilyList", {families: @families})

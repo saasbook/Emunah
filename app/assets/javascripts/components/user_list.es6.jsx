@@ -75,9 +75,9 @@ class ListRow extends React.Component {
 		var role = this.props.user.is_admin == "Yes" ? "admin" : "user";
     var edit = "users/" + this.props.user.id + "/edit";
     var del = "users/" + this.props.user.id;
-    var btnClass = "btn btn-danger";
+    var button = (<button className="btn btn-danger" onClick={() => this.handleDelete()}>Delete</button>);
     if (this.props.user.id == this.props.current) {
-      btnClass = "btn btn-danger disabled"
+      button = (<button className="btn btn-danger disabled">Delete</button>);
     }
 		return (
 			<tr>
@@ -86,7 +86,7 @@ class ListRow extends React.Component {
 				<td>{role}</td>
 				<td>
           <a href={this.state.edit} className="btn btn-default">Edit</a>
-          <button className={btnClass} onClick={() => this.handleDelete()}>Delete</button>
+          {button}
         </td>
 			</tr>
 		)
