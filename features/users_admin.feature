@@ -50,4 +50,4 @@ Scenario: update a user
 
 Scenario: delete a user 
   When I delete user "wayne.li@gmail.com"
-  Then I should see "Wayne Li has been removed."
+  Then I should see "User deleted."

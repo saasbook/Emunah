@@ -12,5 +12,5 @@ When("I delete user {string}") do |string|
   # visit "/user", :delete, :id => user.id
 
   # I've also tried this.
-  # user_path User.find_by_email(string), method => :delete
+  # delete_user_path(User.find_by_email(string))
 end

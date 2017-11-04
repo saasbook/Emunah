@@ -46,10 +46,6 @@ Scenario: update a family name
   And I press "Update Family"
   Then I should see "ultra_fam's family name was successfully updated."
 
-Scenario: check person information is in family edit
-  When I am on the edit family page for "fam1"
-  Then I should see "full1"
-
 Scenario: check person information 
   When I am on the show person page for "full1"
   Then I should see "Showing information for full1"
