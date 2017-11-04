@@ -1,21 +1,16 @@
 class PeopleController < ApplicationController
-  
-  def person_params
-    params.require(:person).permit(:full_name, :hebrew_name, :birthday,
-      :home_address, :telephone, :telephone_type, :email_address, :employer,
-      :occupation, :anniversary, :is_child)
-  end
 
   def show
-    # Unused.
+    @person = Person.find(params[:id])
   end
 
   def index
-    # User dashboard.
+    # Unused. 
   end
 
   def new
     # Form to create. Admin only.
+    
   end
 
   def create
@@ -24,13 +19,22 @@ class PeopleController < ApplicationController
 
   def edit
     # Admin only.
+    @person = Person.find(params[:id])
+
   end
 
   def update
-    # Do we even use this?
+    # Admin only
+    @person = Person.find(params[:id])
+    @person.update_attributes!(person_params)
+    @family = @person.family
+    flash[:notice] = "#{@person.full_name} was successfully updated."
+    redirect_to edit_family_path(@family)
   end
 
   def destroy
-    # Delete from DB.
+    Person.destroy(params[:id])
+    flash[:notice] = "Person deleted."
+    redirect_to families_path
   end
 end
