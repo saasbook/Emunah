@@ -12,15 +12,6 @@ class UsersController < ApplicationController
 
   end
 
-  def home
-     user ||= User.find(session[:user_id]) if session[:user_id]
-     if user.nil?
-        redirect_to home_path
-     else
-        redirect_to dash_path
-     end
-  end
-
   def index
     @user ||= User.find(session[:user_id]) if session[:user_id]
     if @user.is_admin
