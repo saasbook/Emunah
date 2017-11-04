@@ -47,7 +47,3 @@ Scenario: update a user
   When I fill in "Email" with "new_wayne.li@gmail.com"
   And I press "Update User"
   Then I should see "Wayne Li was successfully updated."
-
-Scenario: delete a user 
-  When I delete user "wayne.li@gmail.com"
-  Then I should see "User deleted."

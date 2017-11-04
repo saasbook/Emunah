@@ -71,9 +71,4 @@ class FamiliesController < ApplicationController
     redirect_to families_path
   end
 
-  def destroy
-    Family.destroy(params[:id])
-    flash[:notice] = "Family deleted."
-    redirect_to families_path
-  end
 end

@@ -32,9 +32,4 @@ class PeopleController < ApplicationController
     redirect_to edit_family_path(@family)
   end
 
-  def destroy
-    Person.destroy(params[:id])
-    flash[:notice] = "Person deleted."
-    redirect_to families_path
-  end
 end
