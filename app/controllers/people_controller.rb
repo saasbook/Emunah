@@ -40,6 +40,8 @@ class PeopleController < ApplicationController
   end
 
   def destroy
-    # Delete from DB.
+    Person.destroy(params[:id])
+    flash[:notice] = "Person deleted."
+    redirect_to families_path
   end
 end
