@@ -1,4 +1,11 @@
 class FamilyList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { ... props }
+  }
+
+  handleDelete(id) {
+  }
 
   render () {
   	families = []
@@ -41,17 +48,6 @@ class FamilyListRow extends React.Component {
   }
 
   handleDelete() {
-    var token = document.getElementsByName("csrf-token")[0].content;
-    if (this.state.delete != null) {
-      fetch(this.state.delete, {
-        method: 'DELETE',
-        headers: {
-          'X-CSRF-TOKEN': token
-        },
-        credentials: 'same-origin'
-      })
-    }
-    this.props.handleDelete(this.props.family.id)
   }
 
 	render () {

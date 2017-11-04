@@ -1,9 +1,5 @@
 # This object serves as a static home page, and handles login and logout.
 class HomeController < ApplicationController
-  
-  def home_params
-    params.require(:user).permit(:email, :password)
-  end
 
   def index
     if session[:user_id] != nil

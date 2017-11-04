@@ -27,24 +27,10 @@ class FamiliesController < ApplicationController
     # If person already exists in family, error out. Else, add person to family.
     @family = Family.find(params[:id])
     person = @family.people.build(person_params)
-    if person == nil
-      flash[:notice] = "#{person.full_name} cannot be added."
-      redirect_to new_person_path
-    else
-      person.save!
-      flash[:notice] = "#{person.full_name} was successfully added to #{@family.family_name}!"
-      redirect_to edit_family_path
-    end
+    person.save!
+    flash[:notice] = "#{person.full_name} was successfully added to #{@family.family_name}!"
+    redirect_to edit_family_path
   end
-
-  def show_person
-    @person = Person.find(params[:person])
-    @family = Family.find(params[:id])
-    if @person == nil
-      flash[:notice] = "No information for person?"
-      redirect_to edit_family_path(@family)
-    end
-  end 
 
   # If family already exists, error out. Else, create the family.
   def create
