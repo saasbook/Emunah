@@ -1,6 +1,8 @@
 # This object serves as a static home page, and handles login and logout.
 class HomeController < ApplicationController
 
+  before_action :authorize, :except => [:login, :index]
+
   def index
     if session[:user_id] != nil
       redirect_to dash_path

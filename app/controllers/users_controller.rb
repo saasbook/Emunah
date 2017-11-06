@@ -2,10 +2,10 @@
 # People belong to families and their data is collected by hand.
 class UsersController < ApplicationController
 
-  before_action :authorize, :except => [:new, :create, :login, :home]
+  before_action :authorize, :except => [:new]
 
   def user_params
-    params.require(:user).permit(:email, :password, :full_name, :is_admin)
+    params.require(:user).permit(:email, :password, :full_name, :is_admin, :id)
   end
 
   def show
@@ -14,9 +14,12 @@ class UsersController < ApplicationController
 
   def index
     @user ||= User.find(session[:user_id]) if session[:user_id]
-    if @user.is_admin
+    if @user.nil? || @user.is_admin === "No" # TODO wrap in ensure_admin
+      redirect_to home_path
+    elsif @user.is_admin
       @users = User.all
     end
+
   end
 
   def new
