@@ -5,7 +5,7 @@ class FamiliesController < ApplicationController
   end
 
   def show
-    @family = Family.find(params[:id])
+
   end
 
   def index
@@ -17,6 +17,19 @@ class FamiliesController < ApplicationController
 
   def new
     # Create form.
+  end
+
+  def new_person
+    # Create form to add new person to family.
+  end
+
+  def add_person
+    # If person already exists in family, error out. Else, add person to family.
+    @family = Family.find(params[:id])
+    person = @family.people.build(person_params)
+    person.save!
+    flash[:notice] = "#{person.full_name} was successfully added to #{@family.family_name}!"
+    redirect_to edit_family_path
   end
 
   # If family already exists, error out. Else, create the family.
@@ -34,6 +47,7 @@ class FamiliesController < ApplicationController
 
   def edit
     @family = Family.find(params[:id])
+    @people = @family.people
   end
 
   def update
@@ -43,9 +57,4 @@ class FamiliesController < ApplicationController
     redirect_to families_path
   end
 
-  def destroy
-    Family.destroy(params[:id])
-    flash[:notice] = "Family deleted."
-    redirect_to families_path
-  end
 end

@@ -11,7 +11,7 @@
 
   <body>
   	<nav id="navbar" class="navbar navbar-light bg-faded">
-    <%= link_to image_tag("emunah.png", height: '40px'), user_home_path, class: "navbar-brand"%>
+    <%= link_to image_tag("emunah.png", height: '40px'), home_path, class: "navbar-brand"%>
     <div class="navbar-right center-navbar">
       <% if !@user.nil? %>
         <%= link_to "Logout", logout_path %>

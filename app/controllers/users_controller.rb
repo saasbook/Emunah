@@ -2,30 +2,24 @@
 # People belong to families and their data is collected by hand.
 class UsersController < ApplicationController
 
-  before_action :authorize, :except => [:new, :create, :login, :home]
+  before_action :authorize, :except => [:new]
 
   def user_params
-    params.require(:user).permit(:email, :password, :full_name, :is_admin)
+    params.require(:user).permit(:email, :password, :full_name, :is_admin, :id)
   end
 
   def show
-    @family = Family.find(params[:id])
-  end
 
-  def home
-     user ||= User.find(session[:user_id]) if session[:user_id]
-     if user.nil?
-        redirect_to home_path
-     else
-        redirect_to dash_path
-     end
   end
 
   def index
     @user ||= User.find(session[:user_id]) if session[:user_id]
-    if @user.is_admin
+    if @user.nil? || @user.is_admin === "No" # TODO wrap in ensure_admin
+      redirect_to home_path
+    elsif @user.is_admin
       @users = User.all
     end
+
   end
 
   def new
@@ -52,12 +46,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update_attributes!(user_params)
     flash[:notice] = "#{@user.full_name} was successfully updated."
-    redirect_to users_path
-  end
-
-  def destroy
-    User.destroy(params[:id])
-    flash[:notice] = "User deleted."
     redirect_to users_path
   end
   
