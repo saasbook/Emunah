@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :users
 
   resources :families
+  resources :submittals
+  
   get '/families/:id/new_person' => 'families#new_person', :as => 'new_person'
   post '/families/:id/add_person' => 'families#add_person', :as => 'add_person'
   get '/person/:id/' => 'people#show', :as => 'show_person'
