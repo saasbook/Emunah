@@ -57,4 +57,8 @@ class FamiliesController < ApplicationController
     redirect_to families_path
   end
 
+  def destroy
+    Family.find(params[:id]).destroy
+  end
+
 end
