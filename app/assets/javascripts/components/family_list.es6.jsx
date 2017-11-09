@@ -5,6 +5,13 @@ class FamilyList extends React.Component {
   }
 
   handleDelete(id) {
+    console.log("Delete " + id)
+    var families = this.state.families.filter((family) => {
+      return !(family.id === id);
+    })
+    this.setState({
+      families: families
+    })
   }
 
   render () {
@@ -39,8 +46,8 @@ class FamilyListRow extends React.Component {
 
   constructor(props) {
     super(props)
-    var edit = "families/" + this.props.family.id + "/edit"
-    var del = "families/" + this.props.family.id
+    var edit = "/families/" + this.props.family.id + "/edit"
+    var del = "/families/" + this.props.family.id
     this.state = {
       edit: edit,
       delete: del
@@ -48,11 +55,22 @@ class FamilyListRow extends React.Component {
   }
 
   handleDelete() {
+    var token = document.getElementsByName("csrf-token")[0].content;
+    if (this.state.delete != null) {
+      fetch(this.state.delete, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-TOKEN': token
+        },
+        credentials: 'same-origin'
+      })
+    }
+    this.props.handleDelete(this.props.family.id)
   }
 
 	render () {
-    var edit = "families/" + this.props.family.id + "/families";
-    var del = "families/" + this.props.family.id;
+    var edit = "/families/" + this.props.family.id + "/families";
+    var del = "/families/" + this.props.family.id;
 		return (
 			<tr>
 				<th scope="row">{this.props.family.family_name}</th>
