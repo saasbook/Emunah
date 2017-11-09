@@ -57,7 +57,6 @@ group :development, :test do
   gem 'autotest-rails'
   gem 'factory_girl_rails'
   gem 'metric_fu'
-  gem 'rails-controller-testing'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 end

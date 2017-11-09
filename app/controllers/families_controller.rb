@@ -5,7 +5,9 @@ class FamiliesController < ApplicationController
   end
 
   def show
-
+    @family = Family.find(params[:id])
+    @people = @family.people
+    # TODO distinction between confidential user and regular user
   end
 
   def index
@@ -55,6 +57,10 @@ class FamiliesController < ApplicationController
     @family.update_attributes!(family_params)
     flash[:notice] = "#{@family.family_name}'s family name was successfully updated."
     redirect_to families_path
+  end
+
+  def destroy
+    Family.find(params[:id]).destroy
   end
 
 end

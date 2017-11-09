@@ -1,0 +1,22 @@
+.container
+	%h1 Create a submittal
+	- flash.each do |type, msg|
+		%strong
+			= msg
+	.jumbotron
+		= form_tag submittals_path do
+			.row		
+				= label :submittal, :family, 'Family'
+				%br
+				= text_field(:submittal, :family)
+			.row
+				= label :submittal, :title, 'Title'
+				%br
+				= text_field(:submittal, :title)
+			.row 
+				= label :submittal, :notes, 'Notes'
+				%br
+				= text_field(:submittal, :notes)
+			%br
+			.row
+				= submit_tag 'Create submittal'
