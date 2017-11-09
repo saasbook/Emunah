@@ -41,9 +41,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes!(user_params)
-    flash[:notice] = "#{@user.full_name} was successfully updated."
-    redirect_to users_path
+    begin
+      @user.update_attributes!(user_params)
+      flash[:notice] = "#{@user.full_name} was successfully updated."
+      redirect_to users_path
+    rescue ActiveRecord ::RecordInvalid => e
+      flash[:notice] = "Could not update user. #{e.message[19..-1]}."
+      redirect_to edit_user_path
+    end
   end
   
 end
