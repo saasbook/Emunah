@@ -5,7 +5,9 @@ class FamiliesController < ApplicationController
   end
 
   def show
-
+    @family = Family.find(params[:id])
+    @people = @family.people
+    # TODO distinction between confidential user and regular user
   end
 
   def index
