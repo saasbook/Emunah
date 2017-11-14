@@ -8,7 +8,7 @@ Background: I should be on the home page and logged out.
   
   Given the following users exist:
   | email                 | password | full_name   | is_admin |
-  | fake_seth@gmail.com   | 123456   | Seth Martin | Yes      |
+  | fake_seth@gmail.com   | abcdef   | Seth Martin | Yes      |
   | wli2@berkeley.edu     | 123456   | Wayne Li    | No       |
 
   And I am on the home page
@@ -16,12 +16,12 @@ Background: I should be on the home page and logged out.
 
 Scenario: login as basic user
   When I fill in "Email" with "fake_seth@gmail.com"
-  And I fill in "Password" with "123456"
+  And I fill in "Password" with "abcdef"
   And I press "Log In"
   Then I should see "Welcome Seth Martin"
 
 Scenario: login as a privileged user
-  And I fill in "Email" with "seth.martin@gmail.com"
+  And I fill in "Email" with "fake_seth@gmail.com"
   And I fill in "Password" with "abcdef"
   And I press "Log In"
   Then I should see "Welcome Seth Martin"
@@ -33,14 +33,14 @@ Scenario: attempt to login as a user that doesn't exist yet
   Then I should see "Could not find peter.lee@berkeley.edu, try again."
 
 Scenario: attempt to login as an existing user with the wrong password
-  And I fill in "Email" with "seth.martin@gmail.com"
+  And I fill in "Email" with "fake_seth@gmail.com"
   And I fill in "Password" with "iamwrong"
   And I press "Log In"
-  Then I should see "Wrong password for seth.martin@gmail.com, try again."
+  Then I should see "Wrong password for fake_seth@gmail.com, try again."
 
 Scenario: maintain my login
   When I fill in "Email" with "fake_seth@gmail.com"
-  And I fill in "Password" with "123456"
+  And I fill in "Password" with "abcdef"
   And I press "Log In"
   Then I should see "Welcome Seth Martin"
   When I am on the home page
@@ -52,7 +52,7 @@ Scenario: block dashboard if logged out
 
 Scenario: logout and return to home page
   When I fill in "Email" with "fake_seth@gmail.com"
-  And I fill in "Password" with "123456"
+  And I fill in "Password" with "abcdef"
   And I press "Log In"
   Then I should see "Welcome Seth Martin"
   When I follow "Logout"
