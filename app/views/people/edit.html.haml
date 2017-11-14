@@ -16,7 +16,7 @@
       .row
         = label :person, :birthday, 'Birthday'
         %br
-        = text_field :person, 'birthday', :id => 'birthday'
+        = date_select(:person, 'birthday', :id => 'birthday')
       .row
         = label :person, :home_address, 'Home Address'
         %br

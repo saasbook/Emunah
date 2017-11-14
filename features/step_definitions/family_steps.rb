@@ -14,3 +14,11 @@ When("I delete family {string}") do |string|
   # I've also tried this.
   # user_path User.find_by_email(string), method => :delete
 end
+
+When(/^I select the time (\d+)\-(.*)\-(\d+) from "(.*?)"$/) do |year, month, day, label_text|
+  label = page.find('label', text: label_text)
+  id = label['for']
+  select year,   from: "#{id}_1i"
+  select month,  from: "#{id}_2i"
+  select day,    from: "#{id}_3i"
+end

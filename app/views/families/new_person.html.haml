@@ -15,7 +15,7 @@
 			.row		
 				= label :person, :birthday, 'Birthday'
 				%br
-				= text_field :person, 'birthday', :id => 'birthday'
+				= date_select(:person, 'birthday', :id => 'birthday', :start_year => 1900)
 			%br
 			.row		
 				= label :person, :home_address, 'Home Address'
@@ -88,4 +88,4 @@
 				= select :person, :allow_contact, ['Yes', 'No'], :id => 'allow_contact'
 			%br
 			.row
-				= submit_tag 'Add'
+				= submit_tag 'Add', class: 'btn btn-default'
