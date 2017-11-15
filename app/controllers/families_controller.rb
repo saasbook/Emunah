@@ -36,7 +36,7 @@ class FamiliesController < ApplicationController
 
   # If family already exists, error out. Else, create the family.
   def create
-    # Modify change to family_name.
+    # Modify change to family_name
     family_name = params[:family][:family_name]
     family = Family.find_by(family_name: family_name)
     if family != nil
@@ -44,7 +44,7 @@ class FamiliesController < ApplicationController
     else
       @family = Family.create!(family_params)
       @family.people.create!([person_params, person2_params])
-      # Modify flash[:notice] for family's family_name to person1's last_name
+      # Modify flash[:notice] for family's family_name to person1's last_name?
       flash[:notice] = "#{@family.family_name} was successfully created"
     end
     redirect_to families_path

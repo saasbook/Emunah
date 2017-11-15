@@ -45,9 +45,14 @@
 		%h1 Create Person 1
 		.jumbotron
 			.row		
-				= label :person, :full_name, 'Full Name'
+				= label :person, :first_name, 'First Name'
 				%br
-				= text_field :person, 'full_name', :id => 'full_name'
+				= text_field :person, 'first_name', :id => 'first_name'
+			%br
+			.row		
+				= label :person, :last_name, 'Last Name'
+				%br
+				= text_field :person, 'last_name', :id => 'last_name'
 			%br
 			.row		
 				= label :person, :hebrew_name, 'Hebrew Name'
@@ -109,64 +114,68 @@
 		%h1 Create Person 2
 		.jumbotron
 			.row		
-				= label :person2, :full_name, 'Full Name'
+				= label :person2, :first_name, 'First Name'
 				%br
-				= text_field :person2, 'full_name', :id => 'full_name'
+				= text_field :person2, 'first_name', :id => 'first_name2'
 			%br
+			.row		
+				= label :person2, :last_name, 'Last Name'
+				%br
+				= text_field :person2, 'last_name', :id => 'last_name2'
 			.row		
 				= label :person2, :hebrew_name, 'Hebrew Name'
 				%br
-				= text_field :person2, 'hebrew_name', :id => 'hebrew_name'
+				= text_field :person2, 'hebrew_name', :id => 'hebrew_name2'
 			%br
 			.row		
 				= label :person2, :birthday, 'Birthday'
 				%br
-				= date_select(:person2, 'birthday', :id => 'birthday', :start_year => 1900)
+				= date_select(:person2, 'birthday', :id => 'birthday2', :start_year => 1900)
 			%br
 			.row		
 				= label :person2, :home_address, 'Home Address'
 				%br
-				= text_field :person2, 'home_address', :id => 'home_address'
+				= text_field :person2, 'home_address', :id => 'home_address2'
 			%br
 			.row		
 				= label :person2, :telephone, 'Telephone #'
 				%br
-				= text_field :person2, 'telephone', :id => 'telephone'
+				= text_field :person2, 'telephone', :id => 'telephone2'
 			%br
 			.row		
 				= label :person2, :telephone_type, 'Telephone Type'
 				%br
-				= text_field :person2, 'telephone_type', :id => 'telephone_type'
+				= text_field :person2, 'telephone_type', :id => 'telephone_type2'
 			%br
 			.row		
 				= label :person2, :email_address, 'Email Address'
 				%br
-				= text_field :person2, 'email_address', :id => 'email_address'
+				= text_field :person2, 'email_address', :id => 'email_address2'
 			%br
 			.row		
 				= label :person2, :employer, 'Employer'
 				%br
-				= text_field :person2, 'employer', :id => 'employer'
+				= text_field :person2, 'employer', :id => 'employer2'
 			%br
 			.row		
 				= label :person2, :occupation, 'Occupation'
 				%br
-				= text_field :person2, 'occupation', :id => 'occupation'
+				= text_field :person2, 'occupation', :id => 'occupation2'
 			%br
 			.row		
 				= label :person2, :anniversary, 'Anniversary'
 				%br
-				= text_field :person2, 'anniversary', :id => 'anniversary'
+				= text_field :person2, 'anniversary', :id => 'anniversary2'
 			%br
 			.row		
 				= label :person2, :is_child, 'Is a child?'
 				%br
-				= select :person2, :is_child, ['Yes', 'No'], :id => 'is_child'
+				= select :person2, :is_child, ['Yes', 'No'], :id => 'is_child2'
 			%br
 			.row		
 				= label :person2, :allow_contact, 'Available for contact?'
 				%br
-				= select :person2, :allow_contact, ['Yes', 'No'], :id => 'allow_contact'
+				= select :person2, :allow_contact, ['Yes', 'No'], :id => 'allow_contact2'
 			%br
 
 	.container
