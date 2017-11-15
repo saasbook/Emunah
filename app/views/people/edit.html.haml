@@ -1,14 +1,18 @@
 .container
   %h1.header-container 
-    = "Edit Person: " + @person.full_name
+    = "Edit Person: " + @person.first_name
   %br
 
   .jumbotron
     = form_for("people", html: {method: "patch"}) do
-      .row      
-        = label :person, :full_name, 'Full Name'
+      .row
+        = label :person, :first_name, 'First Name'
         %br
-        = text_field :person, 'full_name', :id => 'full_name'
+        = text_field :person, 'first_name', :id => 'first_name'
+      .row      
+        = label :person, :last_name, 'Last Name'
+        %br
+        = text_field :person, 'last_name', :id => 'last_name'
       .row
         = label :person, :hebrew_name, 'Hebrew Name'
         %br
@@ -49,26 +53,6 @@
         = label :person, :is_child, 'Is Child?'
         %br
         = select :person, :is_child, ['Yes', 'No'], :id => 'is_child'
-      .row
-        = label :person, :discovery, 'How did you meet this person?'
-        %br
-        = text_field :person, 'discovery', :id => 'discovery'
-      .row
-        = label :person, :hobbies, 'Any hobbies?'
-        %br
-        = text_field :person, 'hobbies', :id => 'hobbies'
-      .row
-        = label :person, :skills, 'Any Skills?'
-        %br
-        = text_field :person, 'skills', :id => 'skills'
-      .row
-        = label :person, :activities, 'Any activities?'
-        %br
-        = text_field :person, 'activities', :id => 'activities'
-      .row
-        = label :person, :committees, 'Any committees?'
-        %br
-        = text_field :person, 'committees', :id => 'committees'
       .row
         = label :person, :allow_contact, 'Allow contact?'
         %br

@@ -73,7 +73,7 @@ class PeopleListRow extends React.Component {
     var edit = "/person/" + this.props.person.id + "/edit";
 		return (
 			<tr>
-				<th scope="row">{this.props.person.full_name}</th>
+				<th scope="row">{this.props.person.first_name + ' ' + this.props.person.last_name}</th>
 				<td>
           <a href={show} className="btn btn-default">Show</a>
           <a href={edit} className="btn btn-default">Edit</a>
