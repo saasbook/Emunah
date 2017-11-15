@@ -1,7 +1,7 @@
-.container
-	%h1 Create a Family
-	.jumbotron
-		= form_tag families_path do
+= form_tag families_path do
+	.container
+		%h1 Create a Family
+		.jumbotron
 			.row		
 				= label :family, :family_name, 'Family Name'
 				%br
@@ -40,5 +40,137 @@
 												'Past Member', 'Friend of BE',
 												'Deceased'], :id => 'is_child'
 			%br
-			.row
-				= submit_tag 'Create Family', class: "btn btn-default"
+
+	.container
+		%h1 Create Person 1
+		.jumbotron
+			.row		
+				= label :person, :full_name, 'Full Name'
+				%br
+				= text_field :person, 'full_name', :id => 'full_name'
+			%br
+			.row		
+				= label :person, :hebrew_name, 'Hebrew Name'
+				%br
+				= text_field :person, 'hebrew_name', :id => 'hebrew_name'
+			%br
+			.row		
+				= label :person, :birthday, 'Birthday'
+				%br
+				= date_select(:person, 'birthday', :id => 'birthday', :start_year => 1900)
+			%br
+			.row		
+				= label :person, :home_address, 'Home Address'
+				%br
+				= text_field :person, 'home_address', :id => 'home_address'
+			%br
+			.row		
+				= label :person, :telephone, 'Telephone #'
+				%br
+				= text_field :person, 'telephone', :id => 'telephone'
+			%br
+			.row		
+				= label :person, :telephone_type, 'Telephone Type'
+				%br
+				= text_field :person, 'telephone_type', :id => 'telephone_type'
+			%br
+			.row		
+				= label :person, :email_address, 'Email Address'
+				%br
+				= text_field :person, 'email_address', :id => 'email_address'
+			%br
+			.row		
+				= label :person, :employer, 'Employer'
+				%br
+				= text_field :person, 'employer', :id => 'employer'
+			%br
+			.row		
+				= label :person, :occupation, 'Occupation'
+				%br
+				= text_field :person, 'occupation', :id => 'occupation'
+			%br
+			.row		
+				= label :person, :anniversary, 'Anniversary'
+				%br
+				= text_field :person, 'anniversary', :id => 'anniversary'
+			%br
+			.row		
+				= label :person, :is_child, 'Is a child?'
+				%br
+				= select :person, :is_child, ['Yes', 'No'], :id => 'is_child'
+			%br
+			.row		
+				= label :person, :allow_contact, 'Available for contact?'
+				%br
+				= select :person, :allow_contact, ['Yes', 'No'], :id => 'allow_contact'
+			%br
+
+	.container
+		%h1 Create Person 2
+		.jumbotron
+			.row		
+				= label :person2, :full_name, 'Full Name'
+				%br
+				= text_field :person2, 'full_name', :id => 'full_name'
+			%br
+			.row		
+				= label :person2, :hebrew_name, 'Hebrew Name'
+				%br
+				= text_field :person2, 'hebrew_name', :id => 'hebrew_name'
+			%br
+			.row		
+				= label :person2, :birthday, 'Birthday'
+				%br
+				= date_select(:person2, 'birthday', :id => 'birthday', :start_year => 1900)
+			%br
+			.row		
+				= label :person2, :home_address, 'Home Address'
+				%br
+				= text_field :person2, 'home_address', :id => 'home_address'
+			%br
+			.row		
+				= label :person2, :telephone, 'Telephone #'
+				%br
+				= text_field :person2, 'telephone', :id => 'telephone'
+			%br
+			.row		
+				= label :person2, :telephone_type, 'Telephone Type'
+				%br
+				= text_field :person2, 'telephone_type', :id => 'telephone_type'
+			%br
+			.row		
+				= label :person2, :email_address, 'Email Address'
+				%br
+				= text_field :person2, 'email_address', :id => 'email_address'
+			%br
+			.row		
+				= label :person2, :employer, 'Employer'
+				%br
+				= text_field :person2, 'employer', :id => 'employer'
+			%br
+			.row		
+				= label :person2, :occupation, 'Occupation'
+				%br
+				= text_field :person2, 'occupation', :id => 'occupation'
+			%br
+			.row		
+				= label :person2, :anniversary, 'Anniversary'
+				%br
+				= text_field :person2, 'anniversary', :id => 'anniversary'
+			%br
+			.row		
+				= label :person2, :is_child, 'Is a child?'
+				%br
+				= select :person2, :is_child, ['Yes', 'No'], :id => 'is_child'
+			%br
+			.row		
+				= label :person2, :allow_contact, 'Available for contact?'
+				%br
+				= select :person2, :allow_contact, ['Yes', 'No'], :id => 'allow_contact'
+			%br
+
+	.container
+		= submit_tag 'Create Family', class: 'btn btn-default'
+	%br
+	%br
+	%br

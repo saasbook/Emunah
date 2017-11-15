@@ -19,4 +19,11 @@ class ApplicationController < ActionController::Base
        :activities, :committees, :allow_contact)
   end
 
+  def person2_params
+    params.require(:person2).permit(:full_name, :hebrew_name, :birthday,
+      :home_address, :telephone, :telephone_type, :email_address, :employer,
+      :occupation, :anniversary, :is_child, :discovery, :hobbies, :skills,
+       :activities, :committees, :allow_contact)
+  end
+
 end

@@ -1,7 +1,7 @@
 class FamiliesController < ApplicationController
   
   def family_params
-    params.require(:family).permit(:family_name)
+    params.require(:family).permit(:family_name, :hobbies, :skills, :activites, :committees, :membership)
   end
 
   def show
@@ -36,13 +36,16 @@ class FamiliesController < ApplicationController
 
   # If family already exists, error out. Else, create the family.
   def create
+    # Modify change to family_name.
     family_name = params[:family][:family_name]
     family = Family.find_by(family_name: family_name)
     if family != nil
       flash[:notice] = "#{family_name} already exists."
     else
       @family = Family.create!(family_params)
-      flash[:notice] = "#{@family.family_name} was successfully created."
+      @family.people.create!([person_params, person2_params])
+      # Modify flash[:notice] for family's family_name to person1's last_name
+      flash[:notice] = "#{@family.family_name} was successfully created"
     end
     redirect_to families_path
   end
