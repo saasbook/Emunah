@@ -54,7 +54,7 @@ class ListRow extends React.Component {
   }
 
 	render () {
-		var role = this.props.user.is_admin == "Yes" ? "admin" : "user";
+		var role = this.props.user.role;
     var edit = "users/" + this.props.user.id + "/edit";
     var del = "users/" + this.props.user.id;
     var button = (<button className="btn btn-danger" onClick={() => this.handleDelete()}>Delete</button>);

@@ -7,9 +7,9 @@ Feature: Users should be able to login and logout of their accounts
 Background: I should be on the home page and logged out.
   
   Given the following users exist:
-  | email                 | password | full_name   | is_admin |
-  | seth.martin@gmail.com | 123456   | Seth Martin | Yes      |
-  | wli2@berkeley.edu     | 123456   | Wayne Li    | No       |
+  | email                 | password | full_name   | role |
+  | seth.martin@gmail.com | 123456   | Seth Martin | admin      |
+  | wli2@berkeley.edu     | 123456   | Wayne Li    | user       |
 
   And I am on the home page
   Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"

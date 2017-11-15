@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :authorize, :except => [:new, :create, :login, :home]
 
   def user_params
-    params.require(:user).permit(:email, :password, :full_name, :is_admin)
+    params.require(:user).permit(:email, :password, :full_name, :role)
   end
 
   def show
@@ -14,8 +14,10 @@ class UsersController < ApplicationController
 
   def index
     @user ||= User.find(session[:user_id]) if session[:user_id]
-    if @user.is_admin
-      @users = User.all
+    if @user.role === "admin"
+      @users = User.all.select(User.attribute_names - ['password', 'password_digest'])
+    else
+      redirect_to home_path
     end
   end
 

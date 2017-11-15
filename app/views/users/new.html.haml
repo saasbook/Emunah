@@ -22,9 +22,9 @@
 				%br
 				= text_field :user, 'full_name'
 			.row
-				= label :user, :is_admin, 'Is Admin'
+				= label :user, :role, 'role'
 				%br
-				= select :user, :is_admin, ['Yes', 'No']
+				= select :user, :role, ['admin', 'user', 'confidential user']
 			%br
 			.row
 				= submit_tag 'Create User'

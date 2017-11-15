@@ -12,7 +12,7 @@ class FamiliesController < ApplicationController
 
   def index
     @user ||= User.find(session[:user_id]) if session[:user_id]
-    if @user.is_admin
+    if @user.role === "admin"
       @families = Family.all
     end
   end

@@ -7,9 +7,9 @@ Feature: Admin can create, update, and delete users.
 Background: Seth, an admin, has logged in
   
   Given the following users exist:
-  | email                 | password | full_name   | is_admin |
-  | seth.martin@gmail.com | abcdef   | Seth Martin | Yes      |
-  | wayne.li@gmail.com    | abcdef   | Wayne Li    | No       |
+  | email                 | password | full_name   | role |
+  | seth.martin@gmail.com | abcdef   | Seth Martin | admin      |
+  | wayne.li@gmail.com    | abcdef   | Wayne Li    | user       |
 
   And I am on the home page
   Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
