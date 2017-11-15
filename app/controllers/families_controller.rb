@@ -13,7 +13,7 @@ class FamiliesController < ApplicationController
   def index
     @user ||= User.find(session[:user_id]) if session[:user_id]
     if @user.is_admin
-      @families = Family.all
+      @families = Family.all.sort_by { |f| f.family_name }
     end
   end
 
@@ -24,12 +24,16 @@ class FamiliesController < ApplicationController
   # If family already exists, error out. Else, create the family.
   def create
     # Modify change to family_name
-    family_name = params[:family][:family_name]
-    family = Family.find_by(family_name: family_name)
+    last_name = params[:person][:last_name]
+    family = Family.find_by(family_name: last_name)
     if family != nil
-      flash[:notice] = "#{family_name} already exists."
+      flash[:warning] = "#{family_name} already exists."
+    elsif last_name == ""
+      flash[:warning] = "Person1 needs a last name."
     else
-      @family = Family.create!(family_params)
+      @family = Family.create(family_params)
+      @family.family_name = last_name
+      @family.save!
       if person2_params[:last_name] == ""
         @family.people.create!(person_params)
       else
