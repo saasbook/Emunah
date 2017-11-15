@@ -2,8 +2,11 @@
   %h1.header-container 
     = "Edit User: " + @user.full_name
   %br
+  - flash.each do |type, msg|
+  %strong
+    = msg
 
-  .container
+  .jumbotron
     = form_for(@user, html: {method: "patch"}) do
       .row      
         = label :user, :email, 'Email'

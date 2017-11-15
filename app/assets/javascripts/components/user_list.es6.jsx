@@ -5,13 +5,6 @@ class UserList extends React.Component {
   }
 
   handleDelete(id) {
-    console.log("Delete " + id);
-    var users = this.state.users.filter((user) => {
-      return !(user.id === id);
-    })
-    this.setState({
-      users: users
-    })
   }
 
   render () {
@@ -58,26 +51,15 @@ class ListRow extends React.Component {
   }
 
   handleDelete() {
-    var token = document.getElementsByName("csrf-token")[0].content;
-    if (this.state.delete != null) {
-      fetch(this.state.delete, {
-        method: 'DELETE',
-        headers: {
-          'X-CSRF-TOKEN': token
-        },
-        credentials: 'same-origin'
-      })
-    }
-    this.props.handleDelete(this.props.user.id)
   }
 
 	render () {
 		var role = this.props.user.is_admin == "Yes" ? "admin" : "user";
     var edit = "users/" + this.props.user.id + "/edit";
     var del = "users/" + this.props.user.id;
-    var btnClass = "btn btn-danger";
+    var button = (<button className="btn btn-danger" onClick={() => this.handleDelete()}>Delete</button>);
     if (this.props.user.id == this.props.current) {
-      btnClass = "btn btn-danger disabled"
+      button = (<button className="btn btn-danger disabled">Delete</button>);
     }
 		return (
 			<tr>
@@ -86,7 +68,7 @@ class ListRow extends React.Component {
 				<td>{role}</td>
 				<td>
           <a href={this.state.edit} className="btn btn-default">Edit</a>
-          <button className={btnClass} onClick={() => this.handleDelete()}>Delete</button>
+          {button}
         </td>
 			</tr>
 		)
