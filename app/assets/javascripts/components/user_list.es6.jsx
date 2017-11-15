@@ -5,6 +5,12 @@ class UserList extends React.Component {
   }
 
   handleDelete(id) {
+    var users = this.state.users.filter((user) => {
+      return !(user.id === id);
+    })
+    this.setState({
+      users: users
+    })
   }
 
   render () {
@@ -12,7 +18,7 @@ class UserList extends React.Component {
   	for (var i=0; i < this.state.users.length; i++) {
   		var user = this.state.users[i]
   		users.push(
-  			<ListRow 
+  			<UserListRow 
           key={user.id} 
           user={user} 
           current={this.state.user.id} 
@@ -24,7 +30,7 @@ class UserList extends React.Component {
     <table className="table">
     	<thead>
     		<tr>
-    			<th> Name </th>
+    			<th onClick={() => this.sortByName() }> Name </th>
     			<th> Email </th>
     			<th> Role </th>
     			<th> Actions </th>
@@ -38,7 +44,7 @@ class UserList extends React.Component {
   }
 }
 
-class ListRow extends React.Component {
+class UserListRow extends React.Component {
 
   constructor(props) {
     super(props)
@@ -51,6 +57,17 @@ class ListRow extends React.Component {
   }
 
   handleDelete() {
+    var token = document.getElementsByName("csrf-token")[0].content;
+    if (this.state.delete != null) {
+      fetch(this.state.delete, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-TOKEN': token
+        },
+        credentials: 'same-origin'
+      })
+    }
+    this.props.handleDelete(this.props.user.id)
   }
 
 	render () {

@@ -5,22 +5,6 @@
 
   .jumbotron
     = form_for(@user, html: {method: "patch"}) do
-      .row      
-        = label :user, :email, 'Email'
-        %br
-        = text_field :user, 'email'
-      .row
-        = label :user, :password, 'Password'
-        %br
-        = password_field :user, 'password'
-      .row
-        = label :user, :full_name, 'Full Name'
-        %br
-        = text_field :user, 'full_name'
-      .row
-        = label :user, :role, 'role'
-        %br
-        = select :user, :role, ['admin', 'user', 'confidential user']
-      %br
+      = render :partial => "form" 
       .row
         = submit_tag 'Update User', class: "btn btn-default"

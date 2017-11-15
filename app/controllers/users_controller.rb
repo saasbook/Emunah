@@ -47,5 +47,9 @@ class UsersController < ApplicationController
     flash[:notice] = "#{@user.full_name} was successfully updated."
     redirect_to users_path
   end
+
+  def destroy
+    User.find(params[:id]).destroy
+  end
   
 end
