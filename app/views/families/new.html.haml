@@ -7,5 +7,38 @@
 				%br
 				= text_field :family, 'family_name'
 			%br
+			.row		
+				= label :family, :discovery, 'How did you hear about Emunah?'
+				%br
+				= text_field :family, 'discovery', :id => 'discovery'
+			%br
+			.row		
+				= label :family, :hobbies, 'Hobbies?'
+				%br
+				= text_field :family, 'hobbies', :id => 'hobbies'
+			%br
+			.row		
+				= label :family, :skills, 'Skills?'
+				%br
+				= text_field :family, 'skills', :id => 'skills'
+			%br
+			.row		
+				= label :family, :activities, 'Activities?'
+				%br
+				= text_field :family, 'activities', :id => 'activities'
+			%br
+			.row		
+				= label :family, :committees, 'Committees?'
+				%br
+				= text_field :family, 'committees', :id => 'committees'
+			%br
+			.row		
+				= label :family, :membership, 'Membership status?'
+				%br
+				= select :family, :membership, ['Member', 'Non-Member',
+												'Prospective Member',
+												'Past Member', 'Friend of BE',
+												'Deceased'], :id => 'is_child'
+			%br
 			.row
 				= submit_tag 'Create Family', class: "btn btn-default"
