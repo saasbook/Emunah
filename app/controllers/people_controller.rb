@@ -10,17 +10,20 @@ class PeopleController < ApplicationController
 
   def new
     # Form to create. Admin only.
-    
   end
 
   def create
-    
+    # If person already exists in family, error out. Else, add person to family.
+    @family = Family.find(params[:family_id])
+    person = @family.people.build(person_params)
+    person.save!
+    flash[:notice] = "#{person.first_name} was successfully added to #{@family.family_name}!"
+    redirect_to edit_family_path(@family)
   end
-
+  
   def edit
-    # Admin only.
+    @family = Family.find(params[:family_id])
     @person = Person.find(params[:id])
-
   end
 
   def update

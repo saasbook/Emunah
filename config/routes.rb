@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   resources :users
   resources :families do
     resources :people
+    resources :submittals
   end
-  
-  resources :submittals
   
   # Entry point, login and logout.
   get '/home' => 'home#index', :as => 'home'

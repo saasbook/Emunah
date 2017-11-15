@@ -1,10 +1,10 @@
 .container
   %h1.header-container 
-    = "Edit Person: " + @person.first_name
+    = "Edit Person: " + @person.first_name + " for family: " + @family.family_name
   %br
 
   .jumbotron
-    = form_for("people", html: {method: "patch"}) do
+    = form_for([@family, @person], html: {method: "patch"}) do
       .row
         = label :person, :first_name, 'First Name'
         %br

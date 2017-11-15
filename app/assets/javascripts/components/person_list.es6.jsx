@@ -69,8 +69,8 @@ class PeopleListRow extends React.Component {
   }
 
 	render () {
-    var show = "/person/" + this.props.person.id
-    var edit = "/person/" + this.props.person.id + "/edit";
+    var show = "people/" + this.props.person.id
+    var edit = "people/" + this.props.person.id + "/edit";
 		return (
 			<tr>
 				<th scope="row">{this.props.person.first_name + ' ' + this.props.person.last_name}</th>

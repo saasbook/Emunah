@@ -51,6 +51,9 @@
       %br
       .row
         = submit_tag 'Update Family', class: "btn btn-default"
+  
+  %br
+  = button_to 'Create submittal', new_family_submittal_path(@family), :method => :get, class: "btn btn-default"
 
   .people-container
     %h2 People in your Family

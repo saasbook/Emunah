@@ -21,19 +21,6 @@ class FamiliesController < ApplicationController
     # Create form.
   end
 
-  def new_person
-    # Create form to add new person to family.
-  end
-
-  def add_person
-    # If person already exists in family, error out. Else, add person to family.
-    @family = Family.find(params[:id])
-    person = @family.people.build(person_params)
-    person.save!
-    flash[:notice] = "#{person.first_name} was successfully added to #{@family.family_name}!"
-    redirect_to edit_family_path
-  end
-
   # If family already exists, error out. Else, create the family.
   def create
     # Modify change to family_name

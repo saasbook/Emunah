@@ -5,7 +5,7 @@
 
   .jumbotron
     = form_for(@user, html: {method: "patch"}) do
-      .row      
+      .row
         = label :user, :email, 'Email'
         %br
         = text_field :user, 'email'
