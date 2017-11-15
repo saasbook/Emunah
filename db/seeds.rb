@@ -29,8 +29,9 @@ family = Family.create({
 	})
 
 peopleOne = family.people.build({
-	full_name: "Armando Fox",
-	hebrew_name: "Armaindai Faix",
+	first_name: "Armando",
+	last_name: "Fox",
+	hebrew_name: "Hebrew Armando Fox",
 	birthday: Date.today,
 	home_address: "1234 Telegraph Ave",
 	telephone: '1112221234',

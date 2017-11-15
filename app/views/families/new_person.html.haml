@@ -3,9 +3,14 @@
 	.jumbotron
 		= form_tag add_person_path do
 			.row		
-				= label :person, :full_name, 'Full Name'
+				= label :person, :first_name, 'First Name'
 				%br
-				= text_field :person, 'full_name', :id => 'full_name'
+				= text_field :person, 'first_name', :id => 'first_name'
+			%br
+			.row		
+				= label :person, :last_name, 'Last Name'
+				%br
+				= text_field :person, 'last_name', :id => 'last_name'
 			%br
 			.row		
 				= label :person, :hebrew_name, 'Hebrew Name'

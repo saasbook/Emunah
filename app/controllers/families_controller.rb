@@ -30,7 +30,7 @@ class FamiliesController < ApplicationController
     @family = Family.find(params[:id])
     person = @family.people.build(person_params)
     person.save!
-    flash[:notice] = "#{person.full_name} was successfully added to #{@family.family_name}!"
+    flash[:notice] = "#{person.first_name} was successfully added to #{@family.family_name}!"
     redirect_to edit_family_path
   end
 

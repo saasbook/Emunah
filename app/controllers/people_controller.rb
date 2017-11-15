@@ -28,7 +28,7 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
     @person.update_attributes!(person_params)
     @family = @person.family
-    flash[:notice] = "#{@person.full_name} was successfully updated."
+    flash[:notice] = "#{@person.first_name} was successfully updated."
     redirect_to edit_family_path(@family)
   end
 
