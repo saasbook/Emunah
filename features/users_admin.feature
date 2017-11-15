@@ -23,7 +23,7 @@ Scenario: create a basic user
   And I fill in "Email" with "wesley.wan@berkeley.edu"
   And I fill in "Password" with "helloworld"
   And I fill in "Full Name" with "Wesley Wan"
-  And I select "No" from "Is Admin"
+  And I select "user" from "role"
   And I press "Create User"
   Then I should see "Wesley Wan was successfully created."
 
@@ -32,7 +32,7 @@ Scenario: try to create a basic user that already exists
   And I fill in "Email" with "seth.martin@gmail.com"
   And I fill in "Password" with "qwerty"
   And I fill in "Full Name" with "Fake Seth Martin"
-  And I select "Yes" from "Is Admin"
+  And I select "admin" from "role"
   And I press "Create User"
   Then I should see "Could not create user. Email has already been taken."
 

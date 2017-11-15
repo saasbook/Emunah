@@ -21,6 +21,7 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
   - bundle exec rake db:test:prepare
+  - bundle exec rake db:seed
 script:
   - bundle exec rspec
   - bundle exec cucumber
