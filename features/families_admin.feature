@@ -55,7 +55,7 @@ Scenario: add person to a family
   And I press "Add Person"
   And I fill in "full_name" with "full3"
   And I fill in "hebrew_name" with "hebrew3"
-  And I fill in "birthday" with "birth3"
+  And I select the time 1990-January-1 from "Birthday"
   And I fill in "home_address" with "home3"
   And I fill in "telephone" with "tele3"
   And I fill in "telephone_type" with "tele_num_type3"

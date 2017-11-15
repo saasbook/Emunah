@@ -1,7 +1,7 @@
 .container
 
   %h1.header-container
-    = "Edit Family: " + @family.family_name
+    = @family.family_name
   %br
 
   .container
@@ -10,14 +10,11 @@
         = msg
 
   .jumbotron
-    = form_for(@family, html: {method: "patch"}) do
-      .row
-        = label :family, :family_name, 'Family Name'
-        %br
-        = text_field :family, 'family_name'
+    .row
+      = label :family, :family_name, 'Family Name'
       %br
-      .row
-        = submit_tag 'Update Family', class: "btn btn-default"
+      = text_field :family, 'family_name'
+    %br
 
   .people-container
     %h2 People in your Family
