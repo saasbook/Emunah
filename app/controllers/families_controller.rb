@@ -43,7 +43,11 @@ class FamiliesController < ApplicationController
       flash[:notice] = "#{family_name} already exists."
     else
       @family = Family.create!(family_params)
-      @family.people.create!([person_params, person2_params])
+      if person2_params[:last_name] == ""
+        @family.people.create!(person_params)
+      else
+        @family.people.create!([person_params, person2_params])
+      end
       # Modify flash[:notice] for family's family_name to person1's last_name?
       flash[:notice] = "#{@family.family_name} was successfully created"
     end

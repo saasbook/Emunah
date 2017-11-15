@@ -31,5 +31,9 @@ class PeopleController < ApplicationController
     flash[:notice] = "#{@person.first_name} was successfully updated."
     redirect_to edit_family_path(@family)
   end
+  
+  def destroy
+    Person.find(params[:id]).destroy
+  end
 
 end
