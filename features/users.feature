@@ -15,20 +15,20 @@ Background: Rabbi (Seth) has been added as a super user of the Emunah organizati
 
 # Happy Paths
 
-Scenario: create a basic user
+Scenario: create a basic user #152061142
   When I follow "Create User"
   And I fill in "name" with "Wesley Wan"
   And I fill in "password" with "Emunah789"
   And I press "sign_up_submit"
   Then I should see "Welcome to Emunah, Wesley."
 
-Scenario: login as basic user, and see last log-in
+Scenario: login as basic user, and see last log-in #152061070
   When I fill in "name" with "Wayne Li"
   And I fill in "password" with "Emunah456"
   And I press "log_in_submit"
   Then I should see "Welcome back to Emunah, Wayne. You last visited on October 13, 2017 at 2:20 PM."
 
-Scenario: attempt to login as a user that doesn't exist yet
+Scenario: attempt to login as a user that doesn't exist yet #152061029
   When I fill in "name" with "Peter Lee"
   And I fill in "password" with "whoami"
   And I press "log_in_submit"
