@@ -26,7 +26,7 @@ Background: Seth, an admin, has logged in
   And I press "Log In"
   Then I should see "Welcome Wayne Li"
 
-Scenario: create a submittal
+Scenario: create a submittal #152061029
   When I go to the "Create Submittal" page
   And I fill in "title" with "Some random Title"
   And I fill in "notes" with "We need delegation to come to rescue"
@@ -34,12 +34,12 @@ Scenario: create a submittal
   And I press "Create Submittal"
   Then I should see "Submittal was successfully created at [date time]."
 
-Scenario: try create a submittal with no fields filled out
+Scenario: try create a submittal with no fields filled out #152941625
   When I go to the "Create Submittal" page
   And I press "Create Submittal"
   Then I should see "Could not create submittal. Tile can't be blank, Notes can't be blank, Access Level can't be blank."
 
-Scenario: update a submittal
+Scenario: update a submittal #152941582
   When I go to the edit submittal page for "Random_Title"
   Then I should see "Edit Submittal: Random_Title"
   When I fill in "Title" with "Changed_Title"
