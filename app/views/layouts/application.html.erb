@@ -5,10 +5,21 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'https://fonts.googleapis.com/css?family=Bree+Serif|Merriweather:400,700|Roboto:400,500' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  	<nav id="navbar" class="navbar navbar-light bg-faded">
+    <%= link_to image_tag("emunah.png", height: '40px'), home_path, class: "navbar-brand"%>
+    <div class="navbar-right center-navbar">
+      <% if !@user.nil? %>
+        <%= link_to "Logout", logout_path %>
+      <% else %>
+        <%= link_to "Login", home_path %>
+      <% end %>
+    </div>
+	</nav>
     <%= yield %>
   </body>
 </html>

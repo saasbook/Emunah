@@ -1,0 +1,30 @@
+.container
+	%h1 Create a User
+	- flash.each do |type, msg|
+		%strong
+			= msg
+	.jumbotron
+		= form_tag users_path do
+			.row		
+				= label :user, :email, 'Email'
+				%br
+				= text_field :user, 'email'
+			.row
+				= label :user, :password, 'Password'
+				%br
+				= password_field :user, 'password'
+			.row 
+				= label :user, :password_confirmation, 'Verify password'
+				%br
+				= password_field :user, 'password_confirmation'
+			.row
+				= label :user, :full_name, 'Full Name'
+				%br
+				= text_field :user, 'full_name'
+			.row
+				= label :user, :is_admin, 'Is Admin'
+				%br
+				= select :user, :is_admin, ['Yes', 'No']
+			%br
+			.row
+				= submit_tag 'Create User'

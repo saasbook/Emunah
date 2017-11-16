@@ -4,6 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# Ignore coverage.
+coverage/
+
 # Ignore bundler config.
 /.bundle
 
@@ -21,3 +24,9 @@
 /yarn-error.log
 
 .byebug_history
+/public/packs
+/public/packs-test
+/node_modules
+
+.DS_Store
+

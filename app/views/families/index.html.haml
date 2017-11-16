@@ -1,0 +1,13 @@
+.container
+  %h1.header-container 
+    = "Families"
+  - flash.each do |type, msg|
+    %strong
+      = msg
+  
+  - if @user.is_admin
+    .resource-container
+      = react_component("CreateResource", {title:"Family", url:new_family_path, color: '#CBB3BF'}, {:style => "display:inline-block"})
+    .family-container
+      %h2 Families
+      = react_component("FamilyList", {families: @families})

@@ -1,3 +1,6 @@
+# Made by CS169 - Group 18
+# Casey Takeda, Justin Zhong, Peter Lee, Tina Zheng, Wayne Li, Wesley Wan
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -5,7 +8,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.4.0'
+ruby '~> 2.4.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -31,6 +34,13 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# For encyrption on passwords
+gem 'bcrypt', :require => 'bcrypt'
+
+gem 'haml'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'react-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
