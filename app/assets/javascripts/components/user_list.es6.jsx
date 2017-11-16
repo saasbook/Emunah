@@ -1,11 +1,10 @@
 class UserList extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { ... props }
+    this.state = { ... props, total: this.props.users }
   }
 
   handleDelete(id) {
-    console.log("Delete " + id);
     var users = this.state.users.filter((user) => {
       return !(user.id === id);
     })
@@ -14,12 +13,46 @@ class UserList extends React.Component {
     })
   }
 
+  filterUsers(key) {
+    return (a,b) => {
+      aLower = a[key].toLowerCase();
+      bLower = b[key].toLowerCase();
+      if (a[key] > b[key]) return 1;
+      if (a[key] < b[key]) return -1;
+      return 0
+    }
+  }
+
+  sort(key) {
+    console.log("Sorting by " + key);
+    var users = this.state.users.sort(this.filterUsers(key));
+    this.setState({
+      users: users
+    })
+  }
+
+  handleKeyPress(event) {
+    str = event.target.value;
+    if (str == '') {
+      this.setState({
+        users: this.state.total
+      })
+    } else {
+      var users = this.state.users.filter((user) => {
+        return (user['full_name'].includes(str) || user['email'].includes(str) || user['role'].includes(str))
+      });
+      this.setState({
+        users: users
+      });
+    }
+  }
+
   render () {
   	users = []
   	for (var i=0; i < this.state.users.length; i++) {
   		var user = this.state.users[i]
   		users.push(
-  			<ListRow 
+  			<UserListRow 
           key={user.id} 
           user={user} 
           current={this.state.user.id} 
@@ -28,24 +61,35 @@ class UserList extends React.Component {
   		);
   	}
     return (
-    <table className="table">
-    	<thead>
-    		<tr>
-    			<th> Name </th>
-    			<th> Email </th>
-    			<th> Role </th>
-    			<th> Actions </th>
-    		</tr>
-    	</thead>
-    	<tbody>
-    		{users}
-    	</tbody>
-    </table>
+    <div>
+      <div className="input-group">
+        <input 
+          type="text" 
+          className="form-control" 
+          aria-describedby="basic-addon1" 
+          onChange={(e) => this.handleKeyPress(e)}
+          />
+        <br/>
+      </div>
+      <table className="table">
+      	<thead>
+      		<tr>
+      			<th onClick={() => this.sort("full_name") }> Name </th>
+      			<th onClick={() => this.sort("email") }> Email </th>
+      			<th onClick={() => this.sort("role") }> Role </th>
+      			<th> Actions </th>
+      		</tr>
+      	</thead>
+      	<tbody>
+      		{users}
+      	</tbody>
+      </table>
+    </div>
     ); 
   }
 }
 
-class ListRow extends React.Component {
+class UserListRow extends React.Component {
 
   constructor(props) {
     super(props)
@@ -72,12 +116,12 @@ class ListRow extends React.Component {
   }
 
 	render () {
-		var role = this.props.user.is_admin == "Yes" ? "admin" : "user";
+		var role = this.props.user.role;
     var edit = "users/" + this.props.user.id + "/edit";
     var del = "users/" + this.props.user.id;
-    var btnClass = "btn btn-danger";
+    var button = (<button className="btn btn-danger" onClick={() => this.handleDelete()}>Delete</button>);
     if (this.props.user.id == this.props.current) {
-      btnClass = "btn btn-danger disabled"
+      button = (<button className="btn btn-danger disabled">Delete</button>);
     }
 		return (
 			<tr>
@@ -86,7 +130,7 @@ class ListRow extends React.Component {
 				<td>{role}</td>
 				<td>
           <a href={this.state.edit} className="btn btn-default">Edit</a>
-          <button className={btnClass} onClick={() => this.handleDelete()}>Delete</button>
+          {button}
         </td>
 			</tr>
 		)

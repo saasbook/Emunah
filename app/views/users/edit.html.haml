@@ -3,24 +3,9 @@
     = "Edit User: " + @user.full_name
   %br
 
-  .container
+  .jumbotron
     = form_for(@user, html: {method: "patch"}) do
-      .row      
-        = label :user, :email, 'Email'
-        %br
-        = text_field :user, 'email'
-      .row
-        = label :user, :password, 'Password'
-        %br
-        = password_field :user, 'password'
-      .row
-        = label :user, :full_name, 'Full Name'
-        %br
-        = text_field :user, 'full_name'
-      .row
-        = label :user, :is_admin, 'Is Admin'
-        %br
-        = select :user, :is_admin, ['Yes', 'No']
-      %br
+      = render :partial => "form" 
       .row
         = submit_tag 'Update User', class: "btn btn-default"
+        

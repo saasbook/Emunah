@@ -1,0 +1,21 @@
+.row		
+	= label :user, :email, 'Email'
+	%br
+	= text_field :user, 'email'
+.row
+	= label :user, :password, 'Password'
+	%br
+	= password_field :user, 'password'
+.row 
+	= label :user, :password_confirmation, 'Verify password'
+	%br
+	= password_field :user, 'password_confirmation'
+.row
+	= label :user, :full_name, 'Full Name'
+	%br
+	= text_field :user, 'full_name'
+.row
+	= label :user, :role, 'role'
+	%br
+	= select :user, :role, ['admin', 'user', 'confidential user']
+%br
