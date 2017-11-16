@@ -1,7 +1,7 @@
 class UserList extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { ... props }
+    this.state = { ... props, total: this.props.users }
   }
 
   handleDelete(id) {
@@ -11,6 +11,40 @@ class UserList extends React.Component {
     this.setState({
       users: users
     })
+  }
+
+  filterUsers(key) {
+    return (a,b) => {
+      aLower = a[key].toLowerCase();
+      bLower = b[key].toLowerCase();
+      if (a[key] > b[key]) return 1;
+      if (a[key] < b[key]) return -1;
+      return 0
+    }
+  }
+
+  sort(key) {
+    console.log("Sorting by " + key);
+    var users = this.state.users.sort(this.filterUsers(key));
+    this.setState({
+      users: users
+    })
+  }
+
+  handleKeyPress(event) {
+    str = event.target.value;
+    if (str == '') {
+      this.setState({
+        users: this.state.total
+      })
+    } else {
+      var users = this.state.users.filter((user) => {
+        return (user['full_name'].includes(str) || user['email'].includes(str) || user['role'].includes(str))
+      });
+      this.setState({
+        users: users
+      });
+    }
   }
 
   render () {
@@ -27,19 +61,30 @@ class UserList extends React.Component {
   		);
   	}
     return (
-    <table className="table">
-    	<thead>
-    		<tr>
-    			<th onClick={() => this.sortByName() }> Name </th>
-    			<th> Email </th>
-    			<th> Role </th>
-    			<th> Actions </th>
-    		</tr>
-    	</thead>
-    	<tbody>
-    		{users}
-    	</tbody>
-    </table>
+    <div>
+      <div className="input-group">
+        <input 
+          type="text" 
+          className="form-control" 
+          aria-describedby="basic-addon1" 
+          onChange={(e) => this.handleKeyPress(e)}
+          />
+        <br/>
+      </div>
+      <table className="table">
+      	<thead>
+      		<tr>
+      			<th onClick={() => this.sort("full_name") }> Name </th>
+      			<th onClick={() => this.sort("email") }> Email </th>
+      			<th onClick={() => this.sort("role") }> Role </th>
+      			<th> Actions </th>
+      		</tr>
+      	</thead>
+      	<tbody>
+      		{users}
+      	</tbody>
+      </table>
+    </div>
     ); 
   }
 }
