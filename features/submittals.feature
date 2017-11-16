@@ -7,8 +7,8 @@ Feature: Users (Basic or Admin) can create, update, and delete submittals.
 Background: Seth, an admin, has logged in
   
   Given the following users exist:
-  | email                 | password | full_name   | is_admin |
-  | wayne.li@gmail.com    | abcdef   | Wayne Li    | No       |
+  | email                 | password | full_name   | role |
+  | wayne.li@gmail.com    | abcdef   | Wayne Li    | user     |
 
   Given the following families exist:
   | family_name    |
