@@ -39,7 +39,8 @@ class UserList extends React.Component {
       })
     } else {
       var users = this.state.users.filter((user) => {
-        return (user['full_name'].includes(str) || user['email'].includes(str) || user['role'].includes(str))
+        str = str.toLowerCase()
+        return (user['full_name'].toLowerCase().includes(str) || user['email'].toLowerCase().includes(str) || user['role'].toLowerCase().includes(str))
       });
       this.setState({
         users: users
