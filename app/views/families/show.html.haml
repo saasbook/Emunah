@@ -10,18 +10,14 @@
         = msg
 
   .jumbotron
-    .row
-      = label :family, :family_name, 'Family Name'
+    .people-container
+      %h2 People in your Family
       %br
-      = text_field :family, 'family_name'
+      = react_component("PeopleList", {people: @people, role: @user.role})
+  
+    - if !@user.nil? and @user.role == "admin"
+      = button_to 'Add Person', new_person_path, :method => :get, class: 'btn btn-default'
+
+  .jumbotron 
+    %h2 Submittals
     %br
-
-  .people-container
-    %h2 People in your Family
-    = react_component("PeopleList", {people: @people})
-
-  = button_to 'Add Person', new_person_path, :method => :get, class: 'btn btn-default'
-
-%br
-%br
-%br

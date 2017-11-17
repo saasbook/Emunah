@@ -22,16 +22,18 @@ class PeopleList extends React.Component {
   			<PeopleListRow 
           key={person.id} 
           person={person} 
+          role={this.props.role}
           handleDelete={(id) => this.handleDelete(id)}
           />
   		);
   	}
+    var actions = (this.props.role == "admin") ? (<th> Actions </th>) : null;
     return (
     <table className="table">
     	<thead>
     		<tr>
     			<th> Person Name </th>
-    			<th> Actions </th>
+    			{actions}
     		</tr>
     	</thead>
     	<tbody>
@@ -71,14 +73,19 @@ class PeopleListRow extends React.Component {
 	render () {
     var show = "/person/" + this.props.person.id
     var edit = "/person/" + this.props.person.id + "/edit";
+
+    var actions = (this.props.role == "admin") ? 
+      (<td>
+        <a href={show} className="btn btn-default">Show</a>
+        <a href={edit} className="btn btn-default">Edit</a>
+        <button className="btn btn-danger" onClick={() => this.handleDelete()}>Delete</button>
+       </td>
+      ) : null;
+
 		return (
 			<tr>
 				<th scope="row">{this.props.person.full_name}</th>
-				<td>
-          <a href={show} className="btn btn-default">Show</a>
-          <a href={edit} className="btn btn-default">Edit</a>
-          <button className="btn btn-danger" onClick={() => this.handleDelete()}>Delete</button>
-        </td>
+        {actions}
 			</tr>
 		)
 	}

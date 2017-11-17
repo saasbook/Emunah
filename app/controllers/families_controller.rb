@@ -7,14 +7,13 @@ class FamiliesController < ApplicationController
   def show
     @family = Family.find(params[:id])
     @people = @family.people
+    @user ||= User.find(session[:user_id]) if session[:user_id]
     # TODO distinction between confidential user and regular user
   end
 
   def index
     @user ||= User.find(session[:user_id]) if session[:user_id]
-    if @user.role === "admin"
-      @families = Family.all
-    end
+    @families = Family.all
   end
 
   def new

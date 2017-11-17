@@ -22,3 +22,28 @@
 .desc {
 	display: inline-block;
 }
+
+.no-left-padding {
+	padding-left: 0;
+}
+
+.bot-padding {
+	padding-bottom: 10px;
+}
+
+.jumbotron {
+	background-color: white;
+	border: 1px solid #6F9CF7;
+}
+
+.link {
+	color: black;
+}
+
+.link:hover {
+	text-decoration: none;
+}
+
+.link:visited {
+	color: #6F9CF7;
+}
