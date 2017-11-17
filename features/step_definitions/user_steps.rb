@@ -20,7 +20,7 @@ When(/^I select "(.*)" from role/) do |role|
   select(role, :from => "user[role]")
 end
 
-When(/^I should see today's date/) do
-	today = Date.currentto_formatted_s(:long_ordinal)
+When(/^I should see todays date/) do
+	today = Date.current.to_formatted_s(:long_ordinal)
 	page.should have_content(today)
 end
