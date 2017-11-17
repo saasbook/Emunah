@@ -12,7 +12,7 @@
   = label :person, :birthday, 'Birthday'
   %br
   .col-xs-4.no-left-padding.bot-padding
-    = date_select(:person, 'birthday', :id => 'birthday')
+    = date_select(:person, 'birthday', :id => 'birthday', :start_year => 1990)
 .row
   = label :person, :home_address, 'Home Address'
   %br
@@ -52,7 +52,7 @@
   = label :person, :is_child, 'Is Child?'
   %br
   .col-xs-4.no-left-padding.bot-padding
-    = select :person, :is_child, ['Yes', 'No'], :id => 'is_child', class: "form-control"
+    = select :person, :is_child, ['Yes', 'No'], :id => 'is_child'
 .row
   = label :person, :discovery, 'How did you meet this person?'
   %br
@@ -82,5 +82,5 @@
   = label :person, :allow_contact, 'Allow contact?'
   %br
   .col-xs-4.no-left-padding.bot-padding
-    = select :person, :allow_contact, ['Yes', 'No'], :id => 'allow_contact', class: "form-control"
+    = select :person, :allow_contact, ['Yes', 'No'], :id => 'allow_contact'
 %br
