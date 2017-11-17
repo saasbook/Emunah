@@ -15,6 +15,7 @@ module NavigationHelpers
 
     when /^the home\s?page$/ then '/home'
     when /^the dashboard page$/ then '/dashboard'
+    when /^the Emunah login page$/ then '/home'
     
     when /^the "Create User" page$/ then '/users/new'
     when /^the "Create Family" page$/ then '/families/new'

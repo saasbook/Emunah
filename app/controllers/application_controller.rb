@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    redirect_to '/users/login' unless current_user
+    redirect_to '/home' unless current_user
   end
   
   # This is the incorrect place to put person_params, but Code Climate is a piece of shit.

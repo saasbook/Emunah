@@ -22,16 +22,18 @@ class PeopleList extends React.Component {
   			<PeopleListRow 
           key={person.id} 
           person={person} 
+          role={this.props.role}
           handleDelete={(id) => this.handleDelete(id)}
           />
   		);
   	}
+    var actions = (this.props.role == "admin") ? (<th> Actions </th>) : null;
     return (
     <table className="table">
     	<thead>
     		<tr>
     			<th> Person Name </th>
-    			<th> Actions </th>
+    			{actions}
     		</tr>
     	</thead>
     	<tbody>
@@ -69,16 +71,22 @@ class PeopleListRow extends React.Component {
   }
 
 	render () {
-    var show = "people/" + this.props.person.id
-    var edit = "people/" + this.props.person.id + "/edit";
+    var show = "/person/" + this.props.person.id
+    var edit = "/person/" + this.props.person.id + "/edit";
+    var name = this.props.person.first_name + " " + this.props.person.last_name;
+
+    var actions = (this.props.role == "admin") ? 
+      (<td>
+        <a href={show} className="btn btn-default">Show</a>
+        <a href={edit} className="btn btn-default">Edit</a>
+        <button className="btn btn-danger" onClick={() => this.handleDelete()}>Delete</button>
+       </td>
+      ) : null;
+
 		return (
 			<tr>
-				<th scope="row">{this.props.person.first_name + ' ' + this.props.person.last_name}</th>
-				<td>
-          <a href={show} className="btn btn-default">Show</a>
-          <a href={edit} className="btn btn-default">Edit</a>
-          <button className="btn btn-danger" onClick={() => this.handleDelete()}>Delete</button>
-        </td>
+				<th scope="row">{name}</th>
+        {actions}
 			</tr>
 		)
 	}

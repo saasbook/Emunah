@@ -14,40 +14,46 @@
       .row
         = label :family, :family_name, 'Family Name'
         %br
-        = text_field :family, 'family_name'
+        .col-xs-4.no-left-padding
+          = text_field :family, 'family_name', class: 'form-control'
       %br
       .row
         = label :family, :discovery, 'How did you hear about Emunah?'
         %br
-        = text_field :family, 'discovery', :id => 'discovery'
+        .col-xs-4.no-left-padding
+          = text_field :family, 'discovery', :id => 'discovery', class: 'form-control'
       %br
       .row		
         = label :family, :hobbies, 'Hobbies?'
         %br
-        = text_field :family, 'hobbies', :id => 'hobbies'
+        .col-xs-4.no-left-padding
+          = text_field :family, 'hobbies', :id => 'hobbies', class: 'form-control'
       %br
       .row		
         = label :family, :skills, 'Skills?'
         %br
-        = text_field :family, 'skills', :id => 'skills'
+        .col-xs-4.no-left-padding
+          = text_field :family, 'skills', :id => 'skills', class: 'form-control'
       %br
       .row		
         = label :family, :activities, 'Activities?'
         %br
-        = text_field :family, 'activities', :id => 'activities'
+        .col-xs-4.no-left-padding
+          = text_field :family, 'activities', :id => 'activities', class: 'form-control'
       %br
       .row		
         = label :family, :committees, 'Committees?'
         %br
-        = text_field :family, 'committees', :id => 'committees'
+        .col-xs-4.no-left-padding
+          = text_field :family, 'committees', :id => 'committees', class: 'form-control'
       %br
-      .row		
+      .row
         = label :family, :membership, 'Membership status?'
         %br
         = select :family, :membership, ['Member', 'Non-Member',
         'Prospective Member',
         'Past Member', 'Friend of BE',
-        'Deceased'], :id => 'is_child'
+        'Deceased'], :id => 'is_child', class: 'form-control'
       %br
       .row
         = submit_tag 'Update Family', class: "btn btn-default"
@@ -61,6 +67,4 @@
 
   = button_to 'Add Person', new_family_person_path(@family), :method => :get, class: 'btn btn-default'
 
-%br
-%br
 %br

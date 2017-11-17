@@ -4,59 +4,7 @@
   %br
 
   .jumbotron
-    = form_for([@family, @person], html: {method: "patch"}) do
-      .row
-        = label :person, :first_name, 'First Name'
-        %br
-        = text_field :person, 'first_name', :id => 'first_name'
-      .row      
-        = label :person, :last_name, 'Last Name'
-        %br
-        = text_field :person, 'last_name', :id => 'last_name'
-      .row
-        = label :person, :hebrew_name, 'Hebrew Name'
-        %br
-        = text_field :person, 'hebrew_name', :id => 'hebrew_name'
-      .row
-        = label :person, :birthday, 'Birthday'
-        %br
-        = date_select(:person, 'birthday', :id => 'birthday')
-      .row
-        = label :person, :home_address, 'Home Address'
-        %br
-        = text_field :person, 'home_address', :id => 'home_address'
-      .row
-        = label :person, :telephone, 'Telephone'
-        %br
-        = text_field :person, 'telephone', :id => 'telephone'
-      .row
-        = label :person, :telephone_type, 'Telephone Type'
-        %br
-        = text_field :person, 'telephone_type', :id => 'telephone_type'
-      .row
-        = label :person, :email_address, 'Email Address'
-        %br
-        = text_field :person, 'email_address', :id => 'email_address'
-      .row
-        = label :person, :employer, 'Employer'
-        %br
-        = text_field :person, 'employer', :id => 'employer'
-      .row
-        = label :person, :occupation, 'Occupation'
-        %br
-        = text_field :person, 'occupation', :id => 'occupation'
-      .row
-        = label :person, :anniversary, 'Anniversary'
-        %br
-        = text_field :person, 'anniversary', :id => 'annivery'
-      .row
-        = label :person, :is_child, 'Is Child?'
-        %br
-        = select :person, :is_child, ['Yes', 'No'], :id => 'is_child'
-      .row
-        = label :person, :allow_contact, 'Allow contact?'
-        %br
-        = select :person, :allow_contact, ['Yes', 'No'], :id => 'allow_contact'
-      %br
+    = form_for("people", html: {method: "patch"}) do
+      = render :partial => "person_form"  
       .row
         = submit_tag 'Update Person', class: "btn btn-default"

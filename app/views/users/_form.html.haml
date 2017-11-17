@@ -1,0 +1,25 @@
+.row		
+	= label :user, :email, 'Email'
+	%br
+	.col-xs-4.no-left-padding
+		= text_field :user, 'email', class: "form-control"
+.row
+	= label :user, :password, 'Password'
+	%br
+	.col-xs-4.no-left-padding
+		= password_field :user, 'password', class: "form-control"
+.row 
+	= label :user, :password_confirmation, 'Verify password'
+	%br
+	.col-xs-4.no-left-padding
+		= password_field :user, 'password_confirmation', class: "form-control"
+.row
+	= label :user, :full_name, 'Full Name'
+	%br
+	.col-xs-4.no-left-padding
+		= text_field :user, 'full_name', class: "form-control"
+.row
+	= label :user, :role, 'role'
+	%br
+	= select :user, :role, ['admin', 'user', 'confidential user']
+%br

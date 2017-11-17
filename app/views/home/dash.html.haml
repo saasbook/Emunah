@@ -1,6 +1,10 @@
 .container
   %h1.header-container 
     = "Welcome " + @user.full_name
+  %p 
+    = "Last login on "
+    %span.date
+      = @last_login
   - flash.each do |type, msg|
     %strong
       = msg
@@ -10,7 +14,7 @@
     ="Click to"
     =link_to("edit", edit_user_path(@user.id))
     ="profile"
-
-  = button_to 'Users', users_path, :method => :get, class: "btn btn-default"
+  - if @user.role === "admin"
+    = button_to 'Users', users_path, :method => :get, class: "btn btn-default"
   %br
   = button_to 'Families', families_path, :method => :get, class: "btn btn-default"

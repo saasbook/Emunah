@@ -1,71 +1,8 @@
 .container
-	%h1 Create a Person
-	.jumbotron
-		= form_tag family_people_path do
-			.row
-				= label :person, :first_name, 'First Name'
-				%br
-				= text_field :person, 'first_name', :id => 'first_name'
-			%br
-			.row		
-				= label :person, :last_name, 'Last Name'
-				%br
-				= text_field :person, 'last_name', :id => 'last_name'
-			%br
-			.row		
-				= label :person, :hebrew_name, 'Hebrew Name'
-				%br
-				= text_field :person, 'hebrew_name', :id => 'hebrew_name'
-			%br
-			.row		
-				= label :person, :birthday, 'Birthday'
-				%br
-				= date_select(:person, 'birthday', :id => 'birthday', :start_year => 1900)
-			%br
-			.row		
-				= label :person, :home_address, 'Home Address'
-				%br
-				= text_field :person, 'home_address', :id => 'home_address'
-			%br
-			.row		
-				= label :person, :telephone, 'Telephone #'
-				%br
-				= text_field :person, 'telephone', :id => 'telephone'
-			%br
-			.row		
-				= label :person, :telephone_type, 'Telephone Type'
-				%br
-				= text_field :person, 'telephone_type', :id => 'telephone_type'
-			%br
-			.row		
-				= label :person, :email_address, 'Email Address'
-				%br
-				= text_field :person, 'email_address', :id => 'email_address'
-			%br
-			.row		
-				= label :person, :employer, 'Employer'
-				%br
-				= text_field :person, 'employer', :id => 'employer'
-			%br
-			.row		
-				= label :person, :occupation, 'Occupation'
-				%br
-				= text_field :person, 'occupation', :id => 'occupation'
-			%br
-			.row		
-				= label :person, :anniversary, 'Anniversary'
-				%br
-				= text_field :person, 'anniversary', :id => 'anniversary'
-			%br
-			.row		
-				= label :person, :is_child, 'Is a child?'
-				%br
-				= select :person, :is_child, ['Yes', 'No'], :id => 'is_child'
-			%br
-			.row		
-				= label :person, :allow_contact, 'Available for contact?'
-				%br
-				= select :person, :allow_contact, ['Yes', 'No'], :id => 'allow_contact'
-			%br
-			.row
-				= submit_tag 'Add', class: 'btn btn-default'
+  %h1 Create a Person
+  %br
+  .jumbotron
+    = form_tag family_people_path do
+      = render :partial => "people/person_form", locals: {name: "person"}
+      .row
+        = submit_tag 'Add', class: 'btn btn-default'

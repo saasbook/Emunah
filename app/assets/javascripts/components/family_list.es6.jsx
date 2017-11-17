@@ -22,16 +22,19 @@ class FamilyList extends React.Component {
   			<FamilyListRow 
           key={family.id} 
           family={family} 
+          role={this.props.role}
           handleDelete={(id) => this.handleDelete(id)}
           />
   		);
   	}
+    console.log(this.props.role == "admin");
+    var actions = (this.props.role == "admin") ? (<th> Actions </th>) : null;
     return (
     <table className="table">
     	<thead>
     		<tr>
     			<th> Family Name </th>
-    			<th> Actions </th>
+   			  {actions}
     		</tr>
     	</thead>
     	<tbody>
@@ -71,12 +74,21 @@ class FamilyListRow extends React.Component {
 	render () {
     var edit = "/families/" + this.props.family.id + "/families";
     var del = "/families/" + this.props.family.id;
+    var show = "/families/" + this.props.family.id;
+
+    var actions = (this.props.role == "admin") ? (
+      <div>
+        <a href={this.state.edit} className="btn btn-default">Edit</a>
+        <button className="btn btn-danger" onClick={() => this.handleDelete()}>Delete</button>
+      </div>
+      ) : null;
 		return (
 			<tr>
-				<th scope="row">{this.props.family.family_name}</th>
+				<th scope="row">
+          <a href={show} className="link">{this.props.family.family_name}</a>
+        </th>
 				<td>
-          <a href={this.state.edit} className="btn btn-default">Edit</a>
-          <button className="btn btn-danger" onClick={() => this.handleDelete()}>Delete</button>
+          {actions} 
         </td>
 			</tr>
 		)

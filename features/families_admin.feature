@@ -7,9 +7,9 @@ Feature: Admins should be able to create, update, and delete families
 Background: I should be on the home page and logged in.
   
   Given the following users exist:
-  | email                 | password | full_name   | is_admin |
-  | seth.martin@gmail.com | abcdef   | Seth Martin | Yes      |
-  | wli2@berkeley.edu     | 123456   | Wayne Li    | No       |
+  | email                 | password | full_name   | role |
+  | seth.martin@gmail.com | abcdef   | Seth Martin | admin      |
+  | wli2@berkeley.edu     | 123456   | Wayne Li    | user       |
   
   And the following families exist:
   | family_name |
@@ -28,29 +28,29 @@ Background: I should be on the home page and logged in.
   And I press "Log In"
   Then I should see "Welcome Seth Martin"
 
-Scenario: create a family
+Scenario: create a family #152940813
   When I go to the "Create Family" page
   And I fill in "Family" with "fam3"
   And I press "Create Family"
   Then I should see "fam3 was successfully created."
-
-Scenario: only one unique family persists in database
+ 
+Scenario: only one unique family persists in database #152940921
   When I go to the "Create Family" page
   And I fill in "Family" with "fam1"
   And I press "Create Family"
   Then I should see "fam1 already exists."
 
-Scenario: update a family name
+Scenario: update a family name #152940884
   When I am on the edit family page for "fam1"
   When I fill in "Family Name" with "ultra_fam"
   And I press "Update Family"
   Then I should see "ultra_fam's family name was successfully updated."
 
-Scenario: check person information 
+Scenario: check person information #152941019
   When I am on the show person page for "full1"
   Then I should see "Showing information for full1"
 
-Scenario: add person to a family 
+Scenario: add person to a family #152940978
   When I am on the edit family page for "fam1"
   And I press "Add Person"
   And I fill in "full_name" with "full3"
@@ -66,7 +66,7 @@ Scenario: add person to a family
   And I press "Add"
   Then I should see "full3 was successfully added to fam1"
 
-Scenario: update a person name
+Scenario: update a person name #152940884
   When I am on the edit person page for "full1"
   When I fill in "full_name" with "full1_changed"
   And I press "Update Person"
