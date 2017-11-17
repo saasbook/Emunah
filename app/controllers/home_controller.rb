@@ -24,8 +24,8 @@ class HomeController < ApplicationController
       # Check that passwords match.
       if user_pw == @user.password
         session[:user_id] = @user.id
-        @user.last_login = Date.current
-        @user.save
+        session[:last_login] = Date.current
+        session[:expires_at] = Time.current + 24.hours
         redirect_to dash_path
       else
         flash[:notice] = "Wrong password for #{user_email}, try again."
@@ -45,7 +45,12 @@ class HomeController < ApplicationController
   end
   
   def logout
+    user_id = session[:user_id]
     session.delete(:user_id)
+    user = User.find(user_id)
+    last_login = session[:last_login]
+    user.last_login = last_login
+    user.save
     redirect_to home_path
   end
 end
