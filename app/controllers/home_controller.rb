@@ -24,6 +24,8 @@ class HomeController < ApplicationController
       # Check that passwords match.
       if user_pw == @user.password
         session[:user_id] = @user.id
+        @user.last_login = Date.current
+        @user.save
         redirect_to dash_path
       else
         flash[:notice] = "Wrong password for #{user_email}, try again."
@@ -36,6 +38,9 @@ class HomeController < ApplicationController
     @user ||= User.find(session[:user_id]) if session[:user_id]
     if @user == nil
       redirect_to home_path
+    else
+      @last_login = @user.last_login == nil ? Date.current : @user.last_login
+      @last_login = @last_login.to_formatted_s(:long_ordinal)
     end
   end
   

@@ -1,6 +1,10 @@
 .container
   %h1.header-container 
     = "Welcome " + @user.full_name
+  %p 
+    = "Last login on "
+    %span.date
+      = @last_login
   - flash.each do |type, msg|
     %strong
       = msg

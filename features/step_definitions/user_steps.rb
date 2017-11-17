@@ -14,3 +14,13 @@ When("I delete user {string}") do |string|
   # I've also tried this.
   # delete_user_path(User.find_by_email(string))
 end
+
+When(/^I select "(.*)" from role/) do |role|
+  # label = page.find('label', text: "role")
+  select(role, :from => "user[role]")
+end
+
+When(/^I should see today's date/) do
+	today = Date.currentto_formatted_s(:long_ordinal)
+	page.should have_content(today)
+end

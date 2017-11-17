@@ -7,32 +7,38 @@ Feature: Basic users have a variety of actions they can take.
 Background: Rabbi (Seth) has been added as a super user of the Emunah organization
   
   Given the following users exist:
-  | first name | last name | age | privilege | position  | last login      | password (hashed) |
-  | Seth       | Emunah    | 30  | Sudo      | Concierge | 17-10-2017:1830 | Emunah123         |
-  | Wayne      | Li        | 21  | Basic     | Member    | 13-10-2017:1420 | Emunah456         |
+  | email                 | full_name     | role  | password  |
+  | sethseth@gmail.com    | Seth Emunah   | admin | Emunah123 |
+  | wayne.wayn@gmail.com  | Wayne Li      | user  | Emunah456 |
 
   And I am on the Emunah login page
 
 # Happy Paths
 
 Scenario: create a basic user #152061142
-  When I follow "Create User"
-  And I fill in "name" with "Wesley Wan"
-  And I fill in "password" with "Emunah789"
-  And I press "sign_up_submit"
-  Then I should see "Welcome to Emunah, Wesley."
+  When I fill in "Email" with "sethseth@gmail.com"
+  And I fill in "Password" with "Emunah123"
+  And I press "Log In"
+  And I go to the "Create User" page
+  And I fill in "Full Name" with "Wesley Wan"
+  And I fill in "Email" with "wesweswes@gmail.com"
+  And I fill in "Password" with "abcdef"
+  And I fill in "Password" with "abcdef"
+  And I select "user" from role
+  And I press "Create User"
+  Then I should see "Wesley Wan was successfully created"
 
 Scenario: login as basic user, and see last log-in #152061070
-  When I fill in "name" with "Wayne Li"
-  And I fill in "password" with "Emunah456"
-  And I press "log_in_submit"
-  Then I should see "Welcome back to Emunah, Wayne. You last visited on October 13, 2017 at 2:20 PM."
+  When I fill in "Email" with "wayne.wayn@gmail.com"
+  And I fill in "Password" with "Emunah456"
+  And I press "Log In"
+  Then I should see todays date
 
 Scenario: attempt to login as a user that doesn't exist yet #152061029
-  When I fill in "name" with "Peter Lee"
-  And I fill in "password" with "whoami"
-  And I press "log_in_submit"
-  Then I should see "User does not exist."
+  When I fill in "Email" with "abcdef@gmail.com"
+  And I fill in "Password" with "whoami"
+  And I press "Log In"
+  Then I should see "Could not find abcdef@gmail.com"
 
 
 
