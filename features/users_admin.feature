@@ -7,9 +7,9 @@ Feature: Admin can create, update, and delete users.
 Background: Seth, an admin, has logged in
   
   Given the following users exist:
-  | email                 | password | full_name   | is_admin |
-  | seth.martin@gmail.com | abcdef   | Seth Martin | Yes      |
-  | wayne.li@gmail.com    | abcdef   | Wayne Li    | No       |
+  | email                 | password | full_name   | role |
+  | seth.martin@gmail.com | abcdef   | Seth Martin | admin      |
+  | wayne.li@gmail.com    | abcdef   | Wayne Li    | user       |
 
   And I am on the home page
   Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
@@ -23,7 +23,7 @@ Scenario: create a basic user #152941241
   And I fill in "Email" with "wesley.wan@berkeley.edu"
   And I fill in "Password" with "helloworld"
   And I fill in "Full Name" with "Wesley Wan"
-  And I select "No" from "Is Admin"
+  And I select "user" from "role"
   And I press "Create User"
   Then I should see "Wesley Wan was successfully created."
 
@@ -32,7 +32,7 @@ Scenario: try to create a basic user that already exists #152941308
   And I fill in "Email" with "seth.martin@gmail.com"
   And I fill in "Password" with "qwerty"
   And I fill in "Full Name" with "Fake Seth Martin"
-  And I select "Yes" from "Is Admin"
+  And I select "admin" from "role"
   And I press "Create User"
   Then I should see "Could not create user. Email has already been taken."
 

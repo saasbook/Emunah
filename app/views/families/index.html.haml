@@ -5,7 +5,7 @@
     %strong
       = msg
   
-  - if @user.is_admin
+  - if @user.role === "admin"
     .resource-container
       = react_component("CreateResource", {title:"Family", url:new_family_path, color: '#CBB3BF'}, {:style => "display:inline-block"})
     .family-container

@@ -1,10 +1,51 @@
 class UserList extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { ... props }
+    this.state = { ... props, total: this.props.users }
   }
 
   handleDelete(id) {
+    var users = this.state.users.filter((user) => {
+      return !(user.id === id);
+    })
+    this.setState({
+      users: users
+    })
+  }
+
+  filterUsers(key) {
+    return (a,b) => {
+      aLower = a[key].toLowerCase();
+      bLower = b[key].toLowerCase();
+      if (a[key] > b[key]) return 1;
+      if (a[key] < b[key]) return -1;
+      return 0
+    }
+  }
+
+  sort(key) {
+    console.log("Sorting by " + key);
+    var users = this.state.users.sort(this.filterUsers(key));
+    this.setState({
+      users: users
+    })
+  }
+
+  handleKeyPress(event) {
+    str = event.target.value;
+    if (str == '') {
+      this.setState({
+        users: this.state.total
+      })
+    } else {
+      var users = this.state.users.filter((user) => {
+        str = str.toLowerCase()
+        return (user['full_name'].toLowerCase().includes(str) || user['email'].toLowerCase().includes(str) || user['role'].toLowerCase().includes(str))
+      });
+      this.setState({
+        users: users
+      });
+    }
   }
 
   render () {
@@ -12,7 +53,7 @@ class UserList extends React.Component {
   	for (var i=0; i < this.state.users.length; i++) {
   		var user = this.state.users[i]
   		users.push(
-  			<ListRow 
+  			<UserListRow 
           key={user.id} 
           user={user} 
           current={this.state.user.id} 
@@ -21,24 +62,35 @@ class UserList extends React.Component {
   		);
   	}
     return (
-    <table className="table">
-    	<thead>
-    		<tr>
-    			<th> Name </th>
-    			<th> Email </th>
-    			<th> Role </th>
-    			<th> Actions </th>
-    		</tr>
-    	</thead>
-    	<tbody>
-    		{users}
-    	</tbody>
-    </table>
+    <div>
+      <div className="input-group">
+        <input 
+          type="text" 
+          className="form-control" 
+          aria-describedby="basic-addon1" 
+          onChange={(e) => this.handleKeyPress(e)}
+          />
+        <br/>
+      </div>
+      <table className="table">
+      	<thead>
+      		<tr>
+      			<th onClick={() => this.sort("full_name") }> Name </th>
+      			<th onClick={() => this.sort("email") }> Email </th>
+      			<th onClick={() => this.sort("role") }> Role </th>
+      			<th> Actions </th>
+      		</tr>
+      	</thead>
+      	<tbody>
+      		{users}
+      	</tbody>
+      </table>
+    </div>
     ); 
   }
 }
 
-class ListRow extends React.Component {
+class UserListRow extends React.Component {
 
   constructor(props) {
     super(props)
@@ -51,10 +103,21 @@ class ListRow extends React.Component {
   }
 
   handleDelete() {
+    var token = document.getElementsByName("csrf-token")[0].content;
+    if (this.state.delete != null) {
+      fetch(this.state.delete, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-TOKEN': token
+        },
+        credentials: 'same-origin'
+      })
+    }
+    this.props.handleDelete(this.props.user.id)
   }
 
 	render () {
-		var role = this.props.user.is_admin == "Yes" ? "admin" : "user";
+		var role = this.props.user.role;
     var edit = "users/" + this.props.user.id + "/edit";
     var del = "users/" + this.props.user.id;
     var button = (<button className="btn btn-danger" onClick={() => this.handleDelete()}>Delete</button>);

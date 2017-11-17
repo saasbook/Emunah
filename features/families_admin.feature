@@ -7,9 +7,9 @@ Feature: Admins should be able to create, update, and delete families
 Background: I should be on the home page and logged in.
   
   Given the following users exist:
-  | email                 | password | full_name   | is_admin |
-  | seth.martin@gmail.com | abcdef   | Seth Martin | Yes      |
-  | wli2@berkeley.edu     | 123456   | Wayne Li    | No       |
+  | email                 | password | full_name   | role |
+  | seth.martin@gmail.com | abcdef   | Seth Martin | admin      |
+  | wli2@berkeley.edu     | 123456   | Wayne Li    | user       |
   
   And the following families exist:
   | family_name |
