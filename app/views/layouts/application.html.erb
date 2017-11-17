@@ -14,9 +14,9 @@
     <%= link_to image_tag("emunah.png", height: '40px'), home_path, class: "navbar-brand"%>
     <div class="navbar-right center-navbar">
       <% if !@user.nil? %>
-        <%= link_to "Logout", logout_path %>
+        <%= link_to "Logout", logout_path, class: "navbar-link"%>
       <% else %>
-        <%= link_to "Login", home_path %>
+        <%= link_to "Login", home_path, class: "navbar-link" %>
       <% end %>
     </div>
 	</nav>

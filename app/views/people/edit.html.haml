@@ -2,77 +2,94 @@
   %h1.header-container 
     = "Edit Person: " + @person.full_name
   %br
-
+  
   .jumbotron
     = form_for("people", html: {method: "patch"}) do
       .row      
         = label :person, :full_name, 'Full Name'
         %br
-        = text_field :person, 'full_name', :id => 'full_name'
+        .col-xs-4.no-left-padding.bot-padding
+          = text_field :person, 'full_name', :id => 'full_name', class: "form-control"
       .row
         = label :person, :hebrew_name, 'Hebrew Name'
         %br
-        = text_field :person, 'hebrew_name', :id => 'hebrew_name'
+        .col-xs-4.no-left-padding.bot-padding
+          = text_field :person, 'hebrew_name', :id => 'hebrew_name', class: "form-control"
       .row
         = label :person, :birthday, 'Birthday'
         %br
-        = date_select(:person, 'birthday', :id => 'birthday')
+        .col-xs-4.no-left-padding.bot-padding
+          = date_select(:person, 'birthday', :id => 'birthday'), class: "form-control"
       .row
         = label :person, :home_address, 'Home Address'
         %br
-        = text_field :person, 'home_address', :id => 'home_address'
+        .col-xs-4.no-left-padding.bot-padding
+          = text_field :person, 'home_address', :id => 'home_address', class: "form-control"
       .row
         = label :person, :telephone, 'Telephone'
         %br
-        = text_field :person, 'telephone', :id => 'telephone'
+        .col-xs-4.no-left-padding.bot-padding
+          = text_field :person, 'telephone', :id => 'telephone', class: "form-control"
       .row
         = label :person, :telephone_type, 'Telephone Type'
         %br
-        = text_field :person, 'telephone_type', :id => 'telephone_type'
+        .col-xs-4.no-left-padding.bot-padding
+          = text_field :person, 'telephone_type', :id => 'telephone_type', class: "form-control"
       .row
         = label :person, :email_address, 'Email Address'
         %br
-        = text_field :person, 'email_address', :id => 'email_address'
+        .col-xs-4.no-left-padding.bot-padding
+          = text_field :person, 'email_address', :id => 'email_address', class: "form-control"
       .row
         = label :person, :employer, 'Employer'
         %br
-        = text_field :person, 'employer', :id => 'employer'
+        .col-xs-4.no-left-padding.bot-padding
+          = text_field :person, 'employer', :id => 'employer', class: "form-control"
       .row
         = label :person, :occupation, 'Occupation'
         %br
-        = text_field :person, 'occupation', :id => 'occupation'
+        .col-xs-4.no-left-padding.bot-padding
+          = text_field :person, 'occupation', :id => 'occupation', class: "form-control"
       .row
         = label :person, :anniversary, 'Anniversary'
         %br
-        = text_field :person, 'anniversary', :id => 'annivery'
+        .col-xs-4.no-left-padding.bot-padding
+          = text_field :person, 'anniversary', :id => 'annivery', class: "form-control"
       .row
         = label :person, :is_child, 'Is Child?'
         %br
-        = select :person, :is_child, ['Yes', 'No'], :id => 'is_child'
+        .col-xs-4.no-left-padding.bot-padding
+          = select :person, :is_child, ['Yes', 'No'], :id => 'is_child', class: "form-control"
       .row
         = label :person, :discovery, 'How did you meet this person?'
         %br
-        = text_field :person, 'discovery', :id => 'discovery'
+        .col-xs-4.no-left-padding.bot-padding
+          = text_field :person, 'discovery', :id => 'discovery', class: "form-control"
       .row
         = label :person, :hobbies, 'Any hobbies?'
         %br
-        = text_field :person, 'hobbies', :id => 'hobbies'
+        .col-xs-4.no-left-padding.bot-padding
+          = text_field :person, 'hobbies', :id => 'hobbies', class: "form-control"
       .row
         = label :person, :skills, 'Any Skills?'
         %br
-        = text_field :person, 'skills', :id => 'skills'
+        .col-xs-4.no-left-padding.bot-padding
+          = text_field :person, 'skills', :id => 'skills', class: "form-control"
       .row
         = label :person, :activities, 'Any activities?'
         %br
-        = text_field :person, 'activities', :id => 'activities'
+        .col-xs-4.no-left-padding.bot-padding
+          = text_field :person, 'activities', :id => 'activities', class: "form-control"
       .row
         = label :person, :committees, 'Any committees?'
         %br
-        = text_field :person, 'committees', :id => 'committees'
+        .col-xs-4.no-left-padding.bot-padding
+          = text_field :person, 'committees', :id => 'committees', class: "form-control"
       .row
         = label :person, :allow_contact, 'Allow contact?'
         %br
-        = select :person, :allow_contact, ['Yes', 'No'], :id => 'allow_contact'
+        .col-xs-4.no-left-padding.bot-padding
+          = select :person, :allow_contact, ['Yes', 'No'], :id => 'allow_contact', class: "form-control"
       %br
-      .row
+        .row, class: "form-control"
         = submit_tag 'Update Person', class: "btn btn-default"

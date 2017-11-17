@@ -1,13 +1,14 @@
 .container
-  %h1.header-container 
-    = "Families"
+  %h1
   - flash.each do |type, msg|
     %strong
       = msg
-  
-  - if @user.role === "admin"
+ 
+  - if @user.role === "admin" 
     .resource-container
-      = react_component("CreateResource", {title:"Family", url:new_family_path, color: '#CBB3BF'}, {:style => "display:inline-block"})
+      = react_component("CreateResource", {title:"Family", url:new_family_path, color: '#E3B505'}, {:style => "display:inline-block"})
+ 
+  .jumbotron 
     .family-container
       %h2 Families
-      = react_component("FamilyList", {families: @families})
+      = react_component("FamilyList", {families: @families, role: @user.role})

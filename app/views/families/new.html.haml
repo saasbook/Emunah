@@ -5,7 +5,8 @@
 			.row		
 				= label :family, :family_name, 'Family Name'
 				%br
-				= text_field :family, 'family_name'
+				.col-xs-4.no-left-padding.bot-padding
+					= text_field :family, 'family_name', class: "form-control"
 			%br
 			.row
 				= submit_tag 'Create Family', class: "btn btn-default"
