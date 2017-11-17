@@ -20,3 +20,4 @@
 
   .jumbotron 
     %h2 Submittals
+    = button_to "Create Submittal", new_family_submittal_path(@family.id), :method => :get, class: 'btn btn-default'

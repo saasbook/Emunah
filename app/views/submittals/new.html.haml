@@ -8,15 +8,18 @@
 			.row		
 				= label :submittal, :family, 'Family'
 				%br
-				= text_field(:submittal, :family)
+				.col-xs-4.no-left-padding.bot-padding
+					= text_field(:submittal, :family, class: 'form-control')
 			.row
 				= label :submittal, :title, 'Title'
 				%br
-				= text_field(:submittal, :title)
+				.col-xs-4.no-left-padding.bot-padding
+					= text_field(:submittal, :title, class: 'form-control')
 			.row 
 				= label :submittal, :notes, 'Notes'
 				%br
-				= text_field(:submittal, :notes)
+				.col-xs-4.no-left-padding.bot-padding
+					= text_field(:submittal, :notes, class: 'form-control')
 			%br
 			.row
-				= submit_tag 'Create submittal'
+				= submit_tag 'Create submittal', class: 'btn btn-default'
