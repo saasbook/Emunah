@@ -18,7 +18,7 @@ Background: Seth, an admin, has logged in
   And I press "Log In"
   Then I should see "Welcome Seth Martin"
 
-Scenario: create a basic user
+Scenario: create a basic user #152941241
   When I go to the "Create User" page
   And I fill in "Email" with "wesley.wan@berkeley.edu"
   And I fill in "Password" with "helloworld"
@@ -27,7 +27,7 @@ Scenario: create a basic user
   And I press "Create User"
   Then I should see "Wesley Wan was successfully created."
 
-Scenario: try to create a basic user that already exists
+Scenario: try to create a basic user that already exists #152941308
   When I go to the "Create User" page
   And I fill in "Email" with "seth.martin@gmail.com"
   And I fill in "Password" with "qwerty"
@@ -36,12 +36,12 @@ Scenario: try to create a basic user that already exists
   And I press "Create User"
   Then I should see "Could not create user. Email has already been taken."
 
-Scenario: try create a user with no fields filled out
+Scenario: try create a user with no fields filled out #152941423
   When I go to the "Create User" page
   And I press "Create User"
   Then I should see "Could not create user. Full name can't be blank, Full name is too short (minimum is 3 characters), Email can't be blank, Email is invalid, Password is too short (minimum is 6 characters)."
 
-Scenario: update a user
+Scenario: update a user #152941458
   When I go to the edit user page for "wayne.li@gmail.com"
   Then I should see "Edit User: Wayne Li"
   When I fill in "Email" with "new_wayne.li@gmail.com"

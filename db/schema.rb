@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171115032449) do
+ActiveRecord::Schema.define(version: 20171117075457) do
 
   create_table "families", force: :cascade do |t|
     t.string "family_name"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20171115032449) do
     t.string "encrypted_password"
     t.string "password_digest"
     t.string "role"
+    t.date "last_login"
   end
 
 end

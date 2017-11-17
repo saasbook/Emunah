@@ -1,0 +1,86 @@
+.row      
+  = label :person, :full_name, 'Full Name'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = text_field :person, 'full_name', :id => 'full_name', class: "form-control"
+.row
+  = label :person, :hebrew_name, 'Hebrew Name'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = text_field :person, 'hebrew_name', :id => 'hebrew_name', class: "form-control"
+.row
+  = label :person, :birthday, 'Birthday'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = date_select(:person, 'birthday', :id => 'birthday', :start_year => 1990)
+.row
+  = label :person, :home_address, 'Home Address'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = text_field :person, 'home_address', :id => 'home_address', class: "form-control"
+.row
+  = label :person, :telephone, 'Telephone'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = text_field :person, 'telephone', :id => 'telephone', class: "form-control"
+.row
+  = label :person, :telephone_type, 'Telephone Type'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = text_field :person, 'telephone_type', :id => 'telephone_type', class: "form-control"
+.row
+  = label :person, :email_address, 'Email Address'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = text_field :person, 'email_address', :id => 'email_address', class: "form-control"
+.row
+  = label :person, :employer, 'Employer'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = text_field :person, 'employer', :id => 'employer', class: "form-control"
+.row
+  = label :person, :occupation, 'Occupation'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = text_field :person, 'occupation', :id => 'occupation', class: "form-control"
+.row
+  = label :person, :anniversary, 'Anniversary'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = text_field :person, 'anniversary', :id => 'annivery', class: "form-control"
+.row
+  = label :person, :is_child, 'Is Child?'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = select :person, :is_child, ['Yes', 'No'], :id => 'is_child'
+.row
+  = label :person, :discovery, 'How did you meet this person?'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = text_field :person, 'discovery', :id => 'discovery', class: "form-control"
+.row
+  = label :person, :hobbies, 'Any hobbies?'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = text_field :person, 'hobbies', :id => 'hobbies', class: "form-control"
+.row
+  = label :person, :skills, 'Any Skills?'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = text_field :person, 'skills', :id => 'skills', class: "form-control"
+.row
+  = label :person, :activities, 'Any activities?'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = text_field :person, 'activities', :id => 'activities', class: "form-control"
+.row
+  = label :person, :committees, 'Any committees?'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = text_field :person, 'committees', :id => 'committees', class: "form-control"
+.row
+  = label :person, :allow_contact, 'Allow contact?'
+  %br
+  .col-xs-4.no-left-padding.bot-padding
+    = select :person, :allow_contact, ['Yes', 'No'], :id => 'allow_contact'
+%br

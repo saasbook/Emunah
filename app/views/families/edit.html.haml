@@ -14,7 +14,8 @@
       .row
         = label :family, :family_name, 'Family Name'
         %br
-        = text_field :family, 'family_name'
+        .col-xs-4.no-left-padding
+          = text_field :family, 'family_name', class: 'form-control'
       %br
       .row
         = submit_tag 'Update Family', class: "btn btn-default"
@@ -25,6 +26,4 @@
 
   = button_to 'Add Person', new_person_path, :method => :get, class: 'btn btn-default'
 
-%br
-%br
 %br
