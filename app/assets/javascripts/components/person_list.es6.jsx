@@ -23,6 +23,7 @@ class PeopleList extends React.Component {
           key={person.id} 
           person={person} 
           role={this.props.role}
+          path={this.props.path}
           handleDelete={(id) => this.handleDelete(id)}
           />
   		);
@@ -48,10 +49,12 @@ class PeopleListRow extends React.Component {
 
   constructor(props) {
     super(props)
-    var edit = "people/" + this.props.person.id + "/edit"
-    var del = "people/" + this.props.person.id
+    var edit = this.props.path + "/people/" + this.props.person.id + "/edit"
+    var del = this.props.path + "/people/" + this.props.person.id
+    var show = this.props.path + "/people/" + this.props.person.id
     this.state = {
       edit: edit,
+      show: show,
       delete: del
     }
   }
@@ -71,14 +74,12 @@ class PeopleListRow extends React.Component {
   }
 
 	render () {
-    var show = "/person/" + this.props.person.id
-    var edit = "/person/" + this.props.person.id + "/edit";
     var name = this.props.person.first_name + " " + this.props.person.last_name;
 
     var actions = (this.props.role == "admin") ? 
       (<td>
-        <a href={show} className="btn btn-default">Show</a>
-        <a href={edit} className="btn btn-default">Edit</a>
+        <a href={this.state.show} className="btn btn-default">Show</a>
+        <a href={this.state.edit} className="btn btn-default">Edit</a>
         <button className="btn btn-danger" onClick={() => this.handleDelete()}>Delete</button>
        </td>
       ) : null;
