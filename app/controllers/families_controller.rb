@@ -7,6 +7,7 @@ class FamiliesController < ApplicationController
   def show
     @family = Family.find(params[:id])
     @people = @family.people
+    @submittals = @family.submittals.order("created_at DESC").limit(5)
     @user ||= User.find(session[:user_id]) if session[:user_id]
     # TODO distinction between confidential user and regular user
   end
@@ -45,8 +46,10 @@ class FamiliesController < ApplicationController
   end
 
   def edit
+    @user ||= User.find(session[:user_id]) if session[:user_id]
     @family = Family.find(params[:id])
     @people = @family.people
+    @submittals = @family.submittals.order("created_at DESC").limit(5)
   end
 
   def update

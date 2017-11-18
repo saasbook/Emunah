@@ -39,6 +39,7 @@ class HomeController < ApplicationController
     if @user == nil
       redirect_to home_path
     else
+      @submittals = Submittal.all.order("created_at DESC").limit(5)
       @last_login = @user.last_login == nil ? Date.current : @user.last_login
       @last_login = @last_login.to_formatted_s(:long_ordinal)
     end

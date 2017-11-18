@@ -1,0 +1,11 @@
+.container
+  %h1.header-container 
+    = "Edit Submittal: " + @submittal.title
+  %br
+
+  .jumbotron
+    = form_for([@family, @submittal], html: {method: "patch"}) do
+      = render :partial => "submittal_form" 
+      .row
+        = submit_tag 'Update Submittal', class: "btn btn-default"
+        
