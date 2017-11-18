@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 20171118073010) do
     t.string "password_digest"
     t.string "role"
     t.date "last_login"
-    t.date "birthday"
   end
 
 end
