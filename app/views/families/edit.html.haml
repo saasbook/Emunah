@@ -12,18 +12,53 @@
   .jumbotron
     = form_for(@family, html: {method: "patch"}) do
       .row
-        = label :family, :family_name, 'Family Name'
+        = label :family, :discovery, 'How did you hear about Emunah?'
         %br
         .col-xs-4.no-left-padding
-          = text_field :family, 'family_name', class: 'form-control'
+          = text_field :family, 'discovery', :id => 'discovery', class: 'form-control'
+      %br
+      .row		
+        = label :family, :hobbies, 'Hobbies?'
+        %br
+        .col-xs-4.no-left-padding
+          = text_field :family, 'hobbies', :id => 'hobbies', class: 'form-control'
+      %br
+      .row		
+        = label :family, :skills, 'Skills?'
+        %br
+        .col-xs-4.no-left-padding
+          = text_field :family, 'skills', :id => 'skills', class: 'form-control'
+      %br
+      .row		
+        = label :family, :activities, 'Activities?'
+        %br
+        .col-xs-4.no-left-padding
+          = text_field :family, 'activities', :id => 'activities', class: 'form-control'
+      %br
+      .row		
+        = label :family, :committees, 'Committees?'
+        %br
+        .col-xs-4.no-left-padding
+          = text_field :family, 'committees', :id => 'committees', class: 'form-control'
+      %br
+      .row
+        = label :family, :membership, 'Membership status?'
+        %br
+        = select :family, :membership, ['Member', 'Non-Member',
+        'Prospective Member',
+        'Past Member', 'Friend of BE',
+        'Deceased'], :id => 'is_child', class: 'form-control'
       %br
       .row
         = submit_tag 'Update Family', class: "btn btn-default"
+  
+  %br
+  = button_to 'Create submittal', new_family_submittal_path(@family), :method => :get, class: "btn btn-default"
 
   .people-container
     %h2 People in your Family
     = react_component("PeopleList", {people: @people})
 
-  = button_to 'Add Person', new_person_path, :method => :get, class: 'btn btn-default'
+  = button_to 'Add Person', new_family_person_path(@family), :method => :get, class: 'btn btn-default'
 
 %br

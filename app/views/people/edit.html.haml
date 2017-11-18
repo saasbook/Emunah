@@ -1,10 +1,10 @@
 .container
   %h1.header-container 
-    = "Edit Person: " + @person.full_name
+    = "Edit Person: " + @person.first_name + " for family: " + @family.family_name
   %br
 
   .jumbotron
-    = form_for("people", html: {method: "patch"}) do
+    = form_for([@family, @person], html: {method: "patch"}) do
       = render :partial => "person_form"  
       .row
         = submit_tag 'Update Person', class: "btn btn-default"

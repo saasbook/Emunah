@@ -18,11 +18,20 @@ User.create(email: 'mani@gmail.com', password: 'abcdef', full_name: 'Mani Law', 
 User.create(email: 'Jann@gmail.com', password: 'abcdef', full_name: 'Jan Mark', "role": 'user')
 
 
-family = Family.create(:family_name => "Wayne and Seth")
+family = Family.create({
+	family_name: "Wayne and Seth",
+	discovery: "Discovery A, Discovery B",
+	hobbies: "Running, Reading",
+	skills: "Cooking, Drawing",
+	activities: "Skiing, Skydiving",
+	committees: "Art",
+	membership: "Member"
+	})
 
 peopleOne = family.people.build({
-	full_name: "Armando Fox",
-	hebrew_name: "Armaindai Faix",
+	first_name: "Armando",
+	last_name: "Fox",
+	hebrew_name: "Hebrew Armando Fox",
 	birthday: Date.today,
 	home_address: "1234 Telegraph Ave",
 	telephone: '1112221234',
@@ -32,11 +41,6 @@ peopleOne = family.people.build({
 	occupation: "Clerk",
 	anniversary: "1/1/2017",
 	is_child: false,
-	discovery: "Discovery A, Discovery B",
-	hobbies: "Running, Reading",
-	skills: "Cooking, Drawing",
-	activities: "Skiing, Skydiving",
-	committees: "Art",
 	allow_contact: "Yes"
 	})
 

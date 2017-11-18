@@ -16,10 +16,15 @@ ActiveRecord::Schema.define(version: 20171117075457) do
     t.string "family_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "discovery"
+    t.string "hobbies"
+    t.string "skills"
+    t.string "activities"
+    t.string "committees"
+    t.string "membership"
   end
 
   create_table "people", force: :cascade do |t|
-    t.string "full_name"
     t.string "hebrew_name"
     t.date "birthday"
     t.string "home_address"
@@ -33,12 +38,9 @@ ActiveRecord::Schema.define(version: 20171117075457) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "family_id"
-    t.string "discovery"
-    t.string "hobbies"
-    t.string "skills"
-    t.string "activities"
-    t.string "committees"
     t.string "allow_contact"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["family_id"], name: "index_people_on_family_id"
   end
 

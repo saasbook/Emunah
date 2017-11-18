@@ -1,7 +1,7 @@
 class FamiliesController < ApplicationController
   
   def family_params
-    params.require(:family).permit(:family_name)
+    params.require(:family).permit(:family_name, :hobbies, :skills, :activites, :committees, :membership)
   end
 
   def show
@@ -20,27 +20,25 @@ class FamiliesController < ApplicationController
     # Create form.
   end
 
-  def new_person
-    # Create form to add new person to family.
-  end
-
-  def add_person
-    # If person already exists in family, error out. Else, add person to family.
-    @family = Family.find(params[:id])
-    person = @family.people.build(person_params)
-    person.save!
-    flash[:notice] = "#{person.full_name} was successfully added to #{@family.family_name}!"
-    redirect_to edit_family_path
-  end
-
   # If family already exists, error out. Else, create the family.
   def create
-    family_name = params[:family][:family_name]
-    family = Family.find_by(family_name: family_name)
+    # Modify change to family_name
+    last_name = params[:person][:last_name]
+    family = Family.find_by(family_name: last_name)
     if family != nil
-      flash[:notice] = "#{family_name} already exists."
+      flash[:warning] = "#{family.family_name} already exists."
+    elsif last_name == ""
+      flash[:warning] = "Person1 needs a last name."
     else
-      @family = Family.create!(family_params)
+      @family = Family.create(family_params)
+      @family.family_name = last_name
+      @family.save!
+      if person2_params[:last_name] == ""
+        @family.people.create!(person_params)
+      else
+        @family.people.create!([person_params, person2_params])
+      end
+      # Modify flash[:notice] for family's family_name to person1's last_name?
       flash[:notice] = "#{@family.family_name} was successfully created."
     end
     redirect_to families_path
@@ -54,7 +52,7 @@ class FamiliesController < ApplicationController
   def update
     @family = Family.find(params[:id])
     @family.update_attributes!(family_params)
-    flash[:notice] = "#{@family.family_name}'s family name was successfully updated."
+    flash[:notice] = "#{@family.family_name} was successfully updated."
     redirect_to families_path
   end
 
