@@ -26,7 +26,7 @@ class FamiliesController < ApplicationController
     last_name = params[:person][:last_name]
     family = Family.find_by(family_name: last_name)
     if family != nil
-      flash[:warning] = "#{family_name} already exists."
+      flash[:warning] = "#{family.family_name} already exists."
     elsif last_name == ""
       flash[:warning] = "Person1 needs a last name."
     else
