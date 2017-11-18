@@ -54,7 +54,7 @@ Scenario: update a family #152940884
 
 Scenario: check person information #152941019
   When I am on the show person page for "last1"
-  Then I should see "Showing information for full1"
+  Then I should see "Showing information for first1"
 
 Scenario: add person to a family #152940978
   When I am on the edit family page for "fam1"
