@@ -69,7 +69,6 @@ Scenario: add person to a family #152940978
   And I fill in "email_address" with "email3"
   And I fill in "employer" with "emplo3"
   And I fill in "occupation" with "job3" 
-  And I fill in "anniversary" with "non3"
   And I press "Add"
   Then I should see "first was successfully added to fam1!"
 
