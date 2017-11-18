@@ -59,7 +59,8 @@ Scenario: check person information #152941019
 Scenario: add person to a family #152940978
   When I am on the edit family page for "fam1"
   And I press "Add Person"
-  And I fill in "full_name" with "full3"
+  And I fill in "first_name" with "first"
+  And I fill in "last_name" with "last"
   And I fill in "hebrew_name" with "hebrew3"
   And I select the time 1990-January-1 from "Birthday"
   And I fill in "home_address" with "home3"
@@ -70,7 +71,7 @@ Scenario: add person to a family #152940978
   And I fill in "occupation" with "job3" 
   And I fill in "anniversary" with "non3"
   And I press "Add"
-  Then I should see "full3 was successfully added to fam1"
+  Then I should see "first was successfully added to fam1!"
 
 Scenario: update a person name #152940884
   When I am on the edit person page for "full1"
