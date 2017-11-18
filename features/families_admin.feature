@@ -77,4 +77,4 @@ Scenario: update a person name #152940884
   When I am on the edit person page for "last1"
   When I fill in "last_name" with "last3"
   And I press "Update Person"
-  Then I should see "last3 was successfully updated."
+  Then I should see "first1 was successfully updated."

@@ -4,7 +4,7 @@
   %br
 
   .jumbotron
-    = form_for("people", html: {method: "patch"}) do
+    = form_for([@family, @person], html: {method: "patch"}) do
       = render :partial => "person_form"  
       .row
         = submit_tag 'Update Person', class: "btn btn-default"
