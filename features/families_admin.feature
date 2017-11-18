@@ -53,7 +53,7 @@ Scenario: update a family #152940884
   Then I should see "fam1 was successfully updated."
 
 Scenario: check person information #152941019
-  When I am on the show person page for "full1"
+  When I am on the show person page for "last1"
   Then I should see "Showing information for full1"
 
 Scenario: add person to a family #152940978
@@ -74,7 +74,7 @@ Scenario: add person to a family #152940978
   Then I should see "first was successfully added to fam1!"
 
 Scenario: update a person name #152940884
-  When I am on the edit person page for "full1"
-  When I fill in "full_name" with "full1_changed"
+  When I am on the edit person page for "last1"
+  When I fill in "last_name" with "last3"
   And I press "Update Person"
-  Then I should see "full1_changed was successfully updated."
+  Then I should see "last3 was successfully updated."
