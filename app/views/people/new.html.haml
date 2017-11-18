@@ -2,7 +2,7 @@
   %h1 Create a Person
   %br
   .jumbotron
-    = form_tag add_person_path do
-      = render :partial => "people/person_form" 
+    = form_tag family_people_path do
+      = render :partial => "people/person_form", locals: {name: "person"}
       .row
         = submit_tag 'Add', class: 'btn btn-default'
