@@ -8,7 +8,7 @@
 
 Pivotal Tracker: https://www.pivotaltracker.com/n/projects/2117630
 
-Heroku: [enigmatic-mesa-26908.herokuapp.com](enigmatic-mesa-26908.herokuapp.com)
+Heroku: http://enigmatic-mesa-26908.herokuapp.com
 
 ## Customer Website
 https://www.bnaiemunahsf.org/
