@@ -7,19 +7,19 @@ Feature: Admins should be able to create, update, and delete families
 Background: I should be on the home page and logged in.
   
   Given the following users exist:
-  | email                 | password | full_name   | role |
-  | seth.martin@gmail.com | abcdef   | Seth Martin | admin      |
-  | wli2@berkeley.edu     | 123456   | Wayne Li    | user       |
+  | email                 | password | full_name   | role  |
+  | seth.martin@gmail.com | abcdef   | Seth Martin | admin |
+  | wli2@berkeley.edu     | 123456   | Wayne Li    | user  |
   
   And the following families exist:
-  | family_name |
-  | fam1        |
-  | fam2        |
+  | family_name | discovery | hobbies | skills | activities | committees | membership |
+  | fam1        | outreach  | none    | none   | none       | com1       | member     |
+  | fam2        | born_into | none    | none   | none       | com2       | non-member |
 
   And the following people exist:
-  | full_name | hebrew_name | birthday | home_address | telephone | telephone_type | email_address | employer | occupation | anniversary | is_child | discovery | hobbies | skills | activities | committees | allow_contact | family_id |
-  | full1     | hebrew1     | birth1   | home1        | tele1     | tele_num_type1 | email1        | emplo1   | job1       | non1        | False    | outreach  | none    | none   | none       | com1       | yes           | 1         |
-  | full2     | hebrew2     | birth2   | home2        | tele2     | tele_num_type2 | email2        | emplo2   | job2       | non2        | True     | born_into | none    | none   | none       | com2       | no            | 2         |
+  | first_name | last_name | hebrew_name | birthday | home_address | telephone | telephone_type | email_address | employer | occupation | anniversary | is_child | allow_contact | family_id |
+  | first1     | last1     | hebrew1     | birth1   | home1        | tele1     | tele_num_type1 | email1        | emplo1   | job1       | non1        | False    | yes           | 1         |
+  | first2     | last2     | hebrew2     | birth2   | home2        | tele2     | tele_num_type2 | email2        | emplo2   | job2       | non2        | True     | no            | 2         |
 
   And I am on the home page
   Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
