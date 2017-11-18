@@ -24,6 +24,8 @@ module NavigationHelpers
     when /^the "Create Family" page$/ then '/families/new'
     when /^the edit family page for "(.*)"/ then
       edit_family_path(Family.find_by_family_name($1))
+    when /^the show family page for "(.*)"/ then
+      family_path(Family.find_by_family_name($1))
 
     when /^the edit person page for "(.*)"/ then
       p = Person.find_by_last_name($1)
