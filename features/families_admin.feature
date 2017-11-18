@@ -28,23 +28,29 @@ Background: I should be on the home page and logged in.
   And I press "Log In"
   Then I should see "Welcome Seth Martin"
 
-Scenario: create a family #152940813
+Scenario: block creating families with no people #152940813
   When I go to the "Create Family" page
-  And I fill in "Family" with "fam3"
   And I press "Create Family"
-  Then I should see "fam3 was successfully created."
- 
-Scenario: only one unique family persists in database #152940921
-  When I go to the "Create Family" page
-  And I fill in "Family" with "fam1"
-  And I press "Create Family"
-  Then I should see "fam1 already exists."
+  Then I should see "Person1 needs a last name."
 
-Scenario: update a family name #152940884
+Scenario: create a family with one person #152940813
+  When I go to the "Create Family" page
+  And I fill in "last_name1" with "Takeda"
+  And I press "Create Family"
+  Then I should see "Takeda was successfully created."
+
+Scenario: create a family with two people #152940813
+  When I go to the "Create Family" page
+  And I fill in "last_name1" with "Takeda"
+  And I fill in "last_name2" with "Li"
+  And I press "Create Family"
+  Then I should see "Takeda was successfully created."
+
+Scenario: update a family #152940884
   When I am on the edit family page for "fam1"
-  When I fill in "Family Name" with "ultra_fam"
+  When I fill in "hobbies" with "Cooking"
   And I press "Update Family"
-  Then I should see "ultra_fam's family name was successfully updated."
+  Then I should see "fam1 was successfully updated."
 
 Scenario: check person information #152941019
   When I am on the show person page for "full1"

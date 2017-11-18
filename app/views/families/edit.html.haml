@@ -12,12 +12,6 @@
   .jumbotron
     = form_for(@family, html: {method: "patch"}) do
       .row
-        = label :family, :family_name, 'Family Name'
-        %br
-        .col-xs-4.no-left-padding
-          = text_field :family, 'family_name', class: 'form-control'
-      %br
-      .row
         = label :family, :discovery, 'How did you hear about Emunah?'
         %br
         .col-xs-4.no-left-padding

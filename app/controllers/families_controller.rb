@@ -39,7 +39,7 @@ class FamiliesController < ApplicationController
         @family.people.create!([person_params, person2_params])
       end
       # Modify flash[:notice] for family's family_name to person1's last_name?
-      flash[:notice] = "#{@family.family_name} was successfully created"
+      flash[:notice] = "#{@family.family_name} was successfully created."
     end
     redirect_to families_path
   end
@@ -52,7 +52,7 @@ class FamiliesController < ApplicationController
   def update
     @family = Family.find(params[:id])
     @family.update_attributes!(family_params)
-    flash[:notice] = "#{@family.family_name}'s family name was successfully updated."
+    flash[:notice] = "#{@family.family_name} was successfully updated."
     redirect_to families_path
   end
 
