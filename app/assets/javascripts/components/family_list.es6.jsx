@@ -1,16 +1,70 @@
+const KEYS = ["membership", "discovery", "hobbies", "skills", "activities", "committees"]
+
 class FamilyList extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { ... props }
+    var families = this.contructExpandedList(this.props.families)
+    this.state = { ... props, total: this.props.families, compact: true, expanded: families}
+  }
+
+  contructExpandedList(families) {
+    expanded = {}
+    for (var i=0; i<families.length; i++) {
+      var family = families[i]
+      expanded[family.id] = false
+    }
+    return expanded
   }
 
   handleDelete(id) {
-    console.log("Delete " + id)
     var families = this.state.families.filter((family) => {
       return !(family.id === id);
     })
     this.setState({
       families: families
+    })
+  }
+
+  filterFamilies(key) {
+    return (a,b) => {
+      aLower = a[key].toLowerCase();
+      bLower = b[key].toLowerCase();
+      if (a[key] > b[key]) return 1;
+      if (a[key] < b[key]) return -1;
+      return 0
+    }
+  }
+
+
+  sort(key) {
+    var families = this.state.families.sort(this.filterFamilies(key));
+    this.setState({
+      families: families
+    })
+  }
+
+  handleKeyPress(event) {
+    str = event.target.value;
+    if (str == '') {
+      this.setState({
+        families: this.state.total
+      })
+    } else {
+      var families = this.state.families.filter((family) => {
+        str = str.toLowerCase()
+        return family['family_name'].toLowerCase().includes(str) 
+      });
+      this.setState({
+        families: families
+      });
+    }
+  }
+
+  handleExpand(id) {
+    var swap = this.state.expanded
+    swap[id] = !swap[id]
+    this.setState({
+      expanded: swap
     })
   }
 
@@ -22,25 +76,54 @@ class FamilyList extends React.Component {
   			<FamilyListRow 
           key={family.id} 
           family={family} 
+          people={this.props.people[family.id]}
           role={this.props.role}
+          handleExpand={(id) => this.handleExpand(id)}
           handleDelete={(id) => this.handleDelete(id)}
+          compact={this.state.compact}
           />
-  		);
-  	}
-    console.log(this.props.role == "admin");
+  		)
+      if (this.state.expanded[family.id]) {
+        families.push(
+          <tr>
+            <td colSpan={4} className="detail-row">
+              <FamilyCard
+                key={family.id + " " + family.id}
+                expanded={this.state.expanded[family.id]}
+                family={family}
+                />
+            </td>
+          </tr>
+        )
+      }
+    }
+
     var actions = (this.props.role == "admin") ? (<th> Actions </th>) : null;
     return (
-    <table className="table">
-    	<thead>
-    		<tr>
-    			<th> Family Name </th>
-   			  {actions}
-    		</tr>
-    	</thead>
-    	<tbody>
-    		{families}
-    	</tbody>
-    </table>
+    <div>
+      <div className="input-group">
+        <input 
+          type="text" 
+          className="form-control" 
+          aria-describedby="basic-addon1" 
+          onChange={(e) => this.handleKeyPress(e)}
+          />
+        <br/>
+      </div>
+      <table className="table">
+      	<thead>
+      		<tr>
+      			<th onClick={() => this.sort("family_name")}> Family Name </th>
+            <th> Person 1 </th>
+            <th> Person 2 </th>
+     			  {actions}
+      		</tr>
+      	</thead>
+      	<tbody>
+      		{families}
+      	</tbody>
+      </table>
+    </div>
     ); 
   }
 }
@@ -53,7 +136,8 @@ class FamilyListRow extends React.Component {
     var del = "/families/" + this.props.family.id
     this.state = {
       edit: edit,
-      delete: del
+      delete: del,
+      expanded: false
     }
   }
 
@@ -71,10 +155,28 @@ class FamilyListRow extends React.Component {
     this.props.handleDelete(this.props.family.id)
   }
 
+  getPersonName(person) {
+    return (person != null) ? person.first_name + " " + person.last_name : "none";
+  }
+
+  toggleExpand(id) {
+    var swap = !this.expanded;
+    this.setState({
+      expanded: swap
+    })
+  }
+
 	render () {
     var edit = "/families/" + this.props.family.id + "/families";
     var del = "/families/" + this.props.family.id;
     var show = "/families/" + this.props.family.id;
+
+    var people = JSON.parse(this.props.people);
+    var len = people.length
+    var p1 = (len > 0) ? people[0] : null;
+    var p2 = (len > 1) ? people[1] : null;
+
+    var details = this.props.compact ? (null) : null
 
     var actions = (this.props.role == "admin") ? (
       <div>
@@ -83,14 +185,76 @@ class FamilyListRow extends React.Component {
       </div>
       ) : null;
 		return (
-			<tr>
-				<th scope="row">
-          <a href={show} className="link">{this.props.family.family_name}</a>
+			<tr key={this.props.family_name + " " + this.props.family.id}>
+				<th scope="row" className="vertical-align-middle ">
+          <a href={show} className="link table-focus">
+            {this.props.family.family_name + "  "}
+          </a>
+          <span className="glyphicon glyphicon-resize-full glyph-expand" onClick={() => this.props.handleExpand(this.props.family.id)}></span>
         </th>
-				<td>
+        <td className="vertical-align-middle "> {this.getPersonName(p1)} </td>
+        <td className="vertical-align-middle "> {this.getPersonName(p2)} </td> 
+				<td className="vertical-align-middle ">
           {actions} 
         </td>
 			</tr>
 		)
 	}
+}
+
+class FamilyCard extends React.Component {
+
+  constructor(props) {
+    super(props)
+  }
+
+  generateRows(list, dataType) {
+    data = []
+    for (var i=0; i<list.length; i++) {
+      data.push(
+        <p> {list[i]} </p>
+      )
+    }
+
+    return (
+      <td className="padding-left padding-top vertical-align-top" rowSpan={list.length}>
+        {data}
+      </td>
+    )
+  }
+
+  render () {
+    var info = []
+    for (var i=0; i<KEYS.length; i++) {
+      var key = KEYS[i];
+      var fam = String(this.props.family[key]).split(', ')
+      var rows = this.generateRows(fam, key);
+      info.push(rows)
+    }
+    
+    return (
+      <div className="card">
+        <div className="card-body">
+          <table className="table">
+            <thead className="thead-dark">
+              <tr>
+                <th> Membership </th>
+                <th> Discovery </th>
+                <th> Hobbies </th>
+                <th> Skills </th>
+                <th> Activities </th>
+                <th> Committees </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {info}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    )
+  }
+
 }

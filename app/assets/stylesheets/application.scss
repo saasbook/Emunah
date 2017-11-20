@@ -17,23 +17,53 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "users";
+@import "families";
 @import "navbar";
 
 .desc {
 	display: inline-block;
 }
 
+.white-bg {
+	background-color: white !important;
+}
+
 .no-left-padding {
 	padding-left: 0;
+}
+
+.vertical-align-top {
+	vertical-align: top !important;
+}
+
+.vertical-align-middle {
+	vertical-align: middle !important;
+}
+
+.padding-left {
+	padding-left: 10px;
+}
+
+.padding-top {
+	padding-top: 10px;
 }
 
 .bot-padding {
 	padding-bottom: 10px;
 }
 
+.no-bot-padding {
+	padding-bottom: 0 !important;
+}
+
 .jumbotron {
 	background-color: white;
 	border: 1px solid #6F9CF7;
+}
+
+.jumbotron-inverse {
+	background-color: #6F9CF7 !important;
+	border: 0 !important;
 }
 
 .link {

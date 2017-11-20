@@ -67,7 +67,7 @@ class UserList extends React.Component {
         <input 
           type="text" 
           className="form-control" 
-          aria-describedby="basic-addon1" 
+          aria-describedby="basic-addon" 
           onChange={(e) => this.handleKeyPress(e)}
           />
         <br/>
