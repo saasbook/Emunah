@@ -11,4 +11,4 @@
   .jumbotron 
     .family-container
       %h2 Families
-      = react_component("FamilyList", {families: @families, role: @user.role})
+      = react_component("FamilyList", {families: @families, people: @people, role: @user.role})

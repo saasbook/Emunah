@@ -14,6 +14,11 @@ class FamiliesController < ApplicationController
   def index
     @user ||= User.find(session[:user_id]) if session[:user_id]
     @families = Family.all
+    @people = {}
+    @families.each { |family|
+      people = family.people
+      @people[family.id] = people.all.to_json
+    }
   end
 
   def new
