@@ -109,7 +109,7 @@ f2p1.save!
 f2p2.save!
 
 f3 = Family.create({
-	family_name: "Takeda",
+	family_name: "Tilamok",
 	discovery: "Discovery A, Discovery B",
 	hobbies: "Running, Reading",
 	skills: "Cooking, Drawing",
@@ -120,7 +120,7 @@ f3 = Family.create({
 
 f3p1 = f3.people.build({
 	first_name: "Casey",
-	last_name: "Takeda",
+	last_name: "Tilamok",
 	hebrew_name: "Hebrew Armando Fox",
 	birthday: Date.today,
 	home_address: "1234 Telegraph Ave",
