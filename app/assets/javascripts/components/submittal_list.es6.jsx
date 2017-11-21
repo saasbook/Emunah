@@ -25,7 +25,7 @@ class SubmittalsList extends React.Component {
           entry={submittal.updated_at} 
           role={this.props.role}
           is_dash={this.props.is_dash}
-          family_name={"subtitute family name here"}
+          family_name={submittal.family_name}
           path={"/families/" + submittal.family_id}
           handleDelete={(id) => this.handleDelete(id)}
           />

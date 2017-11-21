@@ -24,7 +24,7 @@ class SubmittalsController < ApplicationController
 
 	def create
 		@family = Family.find(params[:family_id])
-		@family.submittals.build(submittal_params).save!
+		@family.submittals.build(submittal_params.merge(:family_name => @family.family_name)).save!
 		flash[:notice] = "Submittal successfully created for family: #{@family.family_name}"
 		redirect_to family_path(@family)
 	end
