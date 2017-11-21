@@ -44,7 +44,7 @@ class FamilyList extends React.Component {
   }
 
   handleKeyPress(event) {
-    str = event.target.value;
+    str = String(event.target.value);
     if (str == '') {
       this.setState({
         families: this.state.total
@@ -52,7 +52,31 @@ class FamilyList extends React.Component {
     } else {
       var families = this.state.families.filter((family) => {
         str = str.toLowerCase()
-        return family['family_name'].toLowerCase().includes(str) 
+
+        family_name = family['family_name'].toLowerCase().includes(str)
+        if (family_name) {
+          return family_name
+        }
+
+        var people = JSON.parse(this.props.people[family.id])
+        for (var i=0; i<people.length; i++) {
+          var p = people[i]
+          var val = p.first_name + " " + p.last_name
+          console.log(val, str)
+          if (val.toLowerCase().includes(str)) {
+            return true
+          }
+        } 
+
+        var family_keys = Object.keys(family)
+        for (var i=0;i<family_keys.length;i++) {
+          var val = String(family[family_keys[i]])
+          if (val.toLowerCase().includes(str)) {
+            return true
+          }
+        }
+
+        return false
       });
       this.setState({
         families: families
@@ -72,11 +96,17 @@ class FamilyList extends React.Component {
   	families = []
   	for (var i=0; i < this.state.families.length; i++) {
   		var family = this.state.families[i]
+
+      var people = JSON.parse(this.props.people[family.id]);
+      var len = people.length
+      var p1 = (len > 0) ? people[0] : null;
+      var p2 = (len > 1) ? people[1] : null;
+
   		families.push(
   			<FamilyListRow 
           key={family.id} 
           family={family} 
-          people={this.props.people[family.id]}
+          people={people}
           role={this.props.role}
           handleExpand={(id) => this.handleExpand(id)}
           handleDelete={(id) => this.handleDelete(id)}
@@ -91,6 +121,7 @@ class FamilyList extends React.Component {
                 key={family.id + " " + family.id}
                 expanded={this.state.expanded[family.id]}
                 family={family}
+                people={people}
                 />
             </td>
           </tr>
@@ -171,7 +202,7 @@ class FamilyListRow extends React.Component {
     var del = "/families/" + this.props.family.id;
     var show = "/families/" + this.props.family.id;
 
-    var people = JSON.parse(this.props.people);
+    var people = this.props.people
     var len = people.length
     var p1 = (len > 0) ? people[0] : null;
     var p2 = (len > 1) ? people[1] : null;
