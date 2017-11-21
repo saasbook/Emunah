@@ -52,7 +52,7 @@
       .row
         = submit_tag 'Update Family', class: "btn btn-default"
   
-  %br
+  %h2 Submittals
   = button_to 'Create submittal', new_family_submittal_path(@family), :method => :get, class: "btn btn-default"
 
   .people-container
@@ -61,4 +61,6 @@
 
   = button_to 'Add Person', new_family_person_path(@family), :method => :get, class: 'btn btn-default'
 
+%br
+%br
 %br

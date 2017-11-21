@@ -18,7 +18,7 @@ User.create(email: 'mani@gmail.com', password: 'abcdef', full_name: 'Mani Law', 
 User.create(email: 'Jann@gmail.com', password: 'abcdef', full_name: 'Jan Mark', "role": 'user')
 
 
-family = Family.create({
+f1 = Family.create({
 	family_name: "Wayne and Seth",
 	discovery: "Discovery A, Discovery B",
 	hobbies: "Running, Reading",
@@ -28,7 +28,7 @@ family = Family.create({
 	membership: "Member"
 	})
 
-peopleOne = family.people.build({
+f1p1 = f1.people.build({
 	first_name: "Armando",
 	last_name: "Fox",
 	hebrew_name: "Hebrew Armando Fox",
@@ -44,4 +44,112 @@ peopleOne = family.people.build({
 	allow_contact: "Yes"
 	})
 
-peopleOne.save!
+f1p2 = f1.people.build({
+	first_name: "Freeway",
+	last_name: "Fox",
+	hebrew_name: "Hebrew Armando Fox",
+	birthday: Date.today,
+	home_address: "1234 Telegraph Ave",
+	telephone: '1112221234',
+	telephone_type: 'home',
+	email_address: "Armando@gmail.com",
+	employer: "Store A",
+	occupation: "Clerk",
+	anniversary: "1/1/2017",
+	is_child: false,
+	allow_contact: "Yes"
+	})
+
+f1p1.save!
+f1p2.save!
+
+f2 = Family.create({
+	family_name: "Wang",
+	discovery: "Discovery A, Discovery B",
+	hobbies: "Running, Reading",
+	skills: "Cooking, Drawing",
+	activities: "Skiing, Skydiving",
+	committees: "Art",
+	membership: "Member"
+	})
+
+f2p1 = f2.people.build({
+	first_name: "Wesley",
+	last_name: "Wang",
+	hebrew_name: "Hebrew Armando Fox",
+	birthday: Date.today,
+	home_address: "1234 Telegraph Ave",
+	telephone: '1112221234',
+	telephone_type: 'home',
+	email_address: "Armando@gmail.com",
+	employer: "Store A",
+	occupation: "Clerk",
+	anniversary: "1/1/2017",
+	is_child: false,
+	allow_contact: "Yes"
+	})
+
+f2p2 = f2.people.build({
+	first_name: "Ruowen",
+	last_name: "Li",
+	hebrew_name: "Hebrew Armando Fox",
+	birthday: Date.today,
+	home_address: "1234 Telegraph Ave",
+	telephone: '1112221234',
+	telephone_type: 'home',
+	email_address: "Armando@gmail.com",
+	employer: "Store A",
+	occupation: "Clerk",
+	anniversary: "1/1/2017",
+	is_child: false,
+	allow_contact: "Yes"
+	})
+
+f2p1.save!
+f2p2.save!
+
+f3 = Family.create({
+	family_name: "Tilamok",
+	discovery: "Discovery A, Discovery B",
+	hobbies: "Running, Reading",
+	skills: "Cooking, Drawing",
+	activities: "Skiing, Skydiving",
+	committees: "Art",
+	membership: "Member"
+	})
+
+f3p1 = f3.people.build({
+	first_name: "Casey",
+	last_name: "Tilamok",
+	hebrew_name: "Hebrew Armando Fox",
+	birthday: Date.today,
+	home_address: "1234 Telegraph Ave",
+	telephone: '1112221234',
+	telephone_type: 'home',
+	email_address: "Armando@gmail.com",
+	employer: "Store A",
+	occupation: "Clerk",
+	anniversary: "1/1/2017",
+	is_child: false,
+	allow_contact: "Yes"
+	})
+
+f3p2 = f3.people.build({
+	first_name: "Peter",
+	last_name: "Lee",
+	hebrew_name: "Hebrew Armando Fox",
+	birthday: Date.today,
+	home_address: "1234 Telegraph Ave",
+	telephone: '1112221234',
+	telephone_type: 'home',
+	email_address: "Armando@gmail.com",
+	employer: "Store A",
+	occupation: "Clerk",
+	anniversary: "1/1/2017",
+	is_child: false,
+	allow_contact: "Yes"
+	})
+
+f3p1.save!
+f3p2.save!
+
