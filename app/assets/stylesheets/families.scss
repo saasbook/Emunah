@@ -1,0 +1,46 @@
+.detail-row {
+	border: 0 !important;
+	padding: 0 40px !important;
+	padding-top: 0px !important;
+	padding-bottom: 10px !important;
+	p {
+		font-weight: 400;
+		font-size: 15px;
+	}
+	.card {
+
+	}
+	.card-body {
+		padding: 10px;
+		h4 {
+			font-size: 14px;			
+		}
+	}
+
+	.thead-dark {
+		tr {
+			background-color: #EEE !important;
+			border-bottom: none !important;
+			border-radius: 5px !important;
+		}
+		th {
+			border: none !important;
+			background-color: none !important;
+		}
+	}
+}
+
+.table-focus {
+	text-transform: uppercase;
+	font-size: 16px;
+	color: #6F9CF7 !important;
+}
+
+.glyph-expand {
+	position: relative;
+    transform: translateY(10%);
+    padding-left: 10px;
+    cursor: pointer;
+    color: #6F9CF7;
+}
+
