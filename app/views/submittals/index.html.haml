@@ -1,0 +1,10 @@
+.container
+  %h1
+  - flash.each do |type, msg|
+    %strong
+      = msg
+ 
+  .jumbotron 
+    .family-container
+      %h2 Submittals
+      = react_component("SubmittalsList", {submittals: @submittals, role: @user.role, is_dash: "false"})

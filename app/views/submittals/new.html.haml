@@ -5,21 +5,6 @@
 			= msg
 	.jumbotron
 		= form_tag family_submittals_path do
-			.row		
-				= label :submittal, :family, 'Family'
-				%br
-				.col-xs-4.no-left-padding.bot-padding
-					= text_field :submittal, 'family', :id => 'family', class: 'form-control'
-			.row
-				= label :submittal, :title, 'Title'
-				%br
-				.col-xs-4.no-left-padding.bot-padding
-					= text_field :submittal, 'title', :id => 'title', class: 'form-control'
-			.row 
-				= label :submittal, :notes, 'Notes'
-				%br
-				.col-xs-4.no-left-padding.bot-padding
-					= text_field :submittal, 'notes', :id => 'notes', class: 'form-control'
-			%br
+			= render :partial => "submittals/submittal_form" , locals: {name: "submittal"}
 			.row
 				= submit_tag 'Create submittal', class: 'btn btn-default'

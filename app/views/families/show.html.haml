@@ -19,5 +19,8 @@
       = button_to 'Add Person', new_family_person_path(@family.id), :method => :get, class: 'btn btn-default'
 
   .jumbotron 
-    %h2 Submittals
+    %h2 Recent Submittals
+    = react_component("SubmittalsList", {submittals: @submittals, role: @user.role, is_dash: "false"})
     = button_to "Create Submittal", new_family_submittal_path(@family.id), :method => :get, class: 'btn btn-default'
+    %br
+    = button_to 'View all submittals', family_submittals_path(@family), :method => :get, class: "btn btn-default"
