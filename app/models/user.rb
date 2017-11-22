@@ -21,4 +21,13 @@ class User < ApplicationRecord
 	def clear_password
 		self.password = nil
 	end
+
+	def is_admin?
+		return self.role === "admin"
+	end
+
+	def can_revoke?
+		return self.role === "admin" || self.role === "confidential user"
+	end
+	
 end

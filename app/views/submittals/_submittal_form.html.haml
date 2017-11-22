@@ -1,0 +1,12 @@
+.row
+  = label :submittal, :title, 'Title'
+  %br
+  .col-xs-4.no-left-padding
+    = text_field :submittal, 'title', :id => 'title', class: 'form-control'
+%br
+.row    
+  = label :submittal, :notes, 'Notes'
+  %br
+  .col-xs-4.no-left-padding
+    = text_area :submittal, 'notes', :id => 'notes', class: 'form-control', placeholder: "Write something about this family.", :style => "height: 250px; width: 450px; text-align: left; padding: 0.4em;"
+%br
