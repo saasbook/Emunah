@@ -28,11 +28,13 @@ module NavigationHelpers
       family_path(Family.find_by_family_name($1))
 
     when /^the edit person page for "(.*)"/ then
-      p = Person.find_by_last_name($1)
-      edit_family_person_path(p.family, p)
+      person = Person.find_by_last_name($1)
+      byebug
+      edit_family_person_path(person.family.id, person.id)
     when /^the show person page for "(.*)"$/ then
-      p = Person.find_by_last_name($1)
-      family_person_path(p.family, p)
+      person = Person.find_by_last_name($1)
+      byebug
+      family_person_path(person.family.id, person.id)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
