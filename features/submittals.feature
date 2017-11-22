@@ -29,7 +29,6 @@ Background: Seth, an admin, has logged in
 Scenario: create a submittal #152061029
   When I am on the show family page for "fam0"
   And I press "Create Submittal"
-  And I fill in "family" with "fam0"
   And I fill in "title" with "Some random Title"
   And I fill in "notes" with "We need delegation to come to rescue"
   And I press "Create submittal"
@@ -38,5 +37,4 @@ Scenario: create a submittal #152061029
 Scenario: try create a submittal with no fields filled out #152941625
   When I am on the show family page for "fam0"
   And I press "Create Submittal"
-  And I press "Create submittal"
   Then I should see "Need to fill in the family field."
