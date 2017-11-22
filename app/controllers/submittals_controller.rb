@@ -38,4 +38,30 @@ class SubmittalsController < ApplicationController
 		family = Submittal.find_by_id_and_family_id(params[:id], params[:family_id])
 		family.destroy!
 	end
+
+	def approve
+		@user ||= User.find(session[:user_id]) if session[:user_id]
+		if @user.is_admin?
+			submittal = Submittal.find(params[:id])
+			submittal.approve
+			submittal.save!
+			redirect_to family_path(params[:family_id]), :flash => { success: "Submittal was successfully approved."}
+		else
+			redirect_to family_path(params[:family_id]), :flash => { error: "Unauthorized"}
+		end
+	end
+
+	def revoke
+		@user ||= User.find(session[:user_id]) if session[:user_id]
+		if @user.is_admin?
+			submittal = Submittal.find(params[:id])
+			submittal.revoke
+			submittal.save!
+			redirect_to family_path(params[:family_id]), :flash => { success: "Submittal was successfully revoked."}
+		else
+			redirect_to family_path(params[:family_id]), :flash => { error: "Unauthorized"}
+		end
+	end	
+
+
 end

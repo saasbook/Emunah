@@ -16,12 +16,17 @@
 @import url('https://rsms.me/inter/inter-ui.css');
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "navbar";
 @import "users";
 @import "families";
-@import "navbar";
+@import "submittals";
 
 .desc {
 	display: inline-block;
+}
+
+.blue-highlight {
+	color: #6F9CF7;
 }
 
 .white-bg {
