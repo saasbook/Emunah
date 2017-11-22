@@ -7,9 +7,13 @@ class FamiliesController < ApplicationController
   def show
     @family = Family.find(params[:id])
     @people = @family.people
-    @submittals = @family.submittals.order("created_at DESC").limit(5)
     @user ||= User.find(session[:user_id]) if session[:user_id]
-    # TODO distinction between confidential user and regular user
+
+    if @user.can_revoke?
+        @submittals = @family.submittals.order("created_at DESC")
+    else
+        @submittals = @family.submittals.where(:reviewed => true).order("created_at DESC")
+    end
   end
 
   def index

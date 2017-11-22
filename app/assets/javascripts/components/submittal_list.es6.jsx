@@ -1,11 +1,10 @@
 class SubmittalsList extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { ... props }
+    this.state = { ... props, submittals: this.props.submittals, total_submittals: this.props.submittals }
   }
 
   handleDelete(id) {
-    console.log("Delete " + id)
     var submittals = this.state.submittals.filter((submittal) => {
       return !(submittal.id === id);
     })
@@ -14,34 +13,100 @@ class SubmittalsList extends React.Component {
     })
   }
 
+  handleKeyPress(event) {
+    str = String(event.target.value);
+    if (str == '') {
+      this.setState({
+        submittals: this.state.total
+      })
+    } else {
+      var submittals = this.state.submittals.filter((family) => {
+        str = str.toLowerCase()
+
+        family_name = family['family_name'].toLowerCase().includes(str)
+        if (family_name) {
+          return family_name
+        }
+
+        var people = JSON.parse(this.props.people[family.id])
+        for (var i=0; i<people.length; i++) {
+          var p = people[i]
+          var val = p.first_name + " " + p.last_name
+          console.log(val, str)
+          if (val.toLowerCase().includes(str)) {
+            return true
+          }
+        } 
+
+        var family_keys = Object.keys(family)
+        for (var i=0;i<family_keys.length;i++) {
+          var val = String(family[family_keys[i]])
+          if (val.toLowerCase().includes(str)) {
+            return true
+          }
+        }
+
+        return false
+      });
+      this.setState({
+        submittals: submittals
+      });
+    }
+  }
+
   render () {
   	submittals = []
   	for (var i=0; i < this.state.submittals.length; i++) {
   		var submittal = this.state.submittals[i]
+      console.log(submittal.reviewed)
   		submittals.push(
   			<SubmittalsListRow 
           key={submittal.id} 
           submittal={submittal}
-          entry={submittal.updated_at} 
+          entry={submittal.updated_at}
+          notes={submittal.notes}
           role={this.props.role}
+          reviewed={submittal.reviewed}
           is_dash={this.props.is_dash}
           family_name={submittal.family_name}
-          path={"/families/" + submittal.family_id}
+          family_id={submittal.family_id}
+          path={"/submittals/" + submittal.family_id}
           handleDelete={(id) => this.handleDelete(id)}
           />
-  		);
+  		)
+      submittals.push(
+        <tr>
+          <td className="no-border no-padding" colSpan={4}>
+            <div className="well">
+              {submittal.notes}
+            </div>
+          </td> 
+        </tr>
+      )
   	}
 
     var recent = (<th> Entry Date </th>)
+    var status = (this.props.role == "admin") ? (<th> Status </th>) : null;
     var family = (this.props.is_dash == "true") ? (<th> Family Name </th>) : null;
     var actions = (this.props.role == "admin") ? (<th> Actions </th>) : null;
 
     return (
+    <div>
+    <div className="input-group">
+        <input 
+          type="text" 
+          className="form-control" 
+          aria-describedby="basic-addon1" 
+          onChange={(e) => this.handleKeyPress(e)}
+          />
+        <br/>
+      </div>
     <table className="table">
     	<thead>
     		<tr>
     			<th> Submittal Name </th>
           {recent}
+          {status}
           {family}
     			{actions}
     		</tr>
@@ -50,6 +115,7 @@ class SubmittalsList extends React.Component {
     		{submittals}
     	</tbody>
     </table>
+    </div>
     ); 
   }
 }
@@ -68,7 +134,8 @@ class SubmittalsListRow extends React.Component {
       family_name: family_name,
       edit: edit,
       show: show,
-      delete: del
+      delete: del,
+      expanded: false
     }
   }
 
@@ -86,11 +153,20 @@ class SubmittalsListRow extends React.Component {
     this.props.handleDelete(this.props.submittal.id)
   }
 
+
+  printDate(date) {
+    return date.split(' ').slice(0,5).join(' ')
+  }
+
+  getStatusLink(endpoint) {
+    return "/families/" + this.props.family_id + "/submittals/" + this.props.submittal.id + "/" + endpoint;
+  }
+
 	render () {
-    var name = this.props.submittal.title;
+    var name = (<a href={this.state.show}> {this.props.submittal.title}  </a>);
     var recent = 
-      (<td>
-        {this.state.entry}
+      (<td className="blue-highlight">
+        {this.printDate(Date(this.state.entry))}
         </td>
       );
     var family = (this.props.is_dash == "true") ?
@@ -98,18 +174,28 @@ class SubmittalsListRow extends React.Component {
         <a href={this.props.path} className="btn btn-info">{this.state.family_name}</a>
        </td>
       ) : null;
+    var status = (!this.props.reviewed) ? 
+      (<a href={this.getStatusLink("approve")} className="btn btn-default">Approve</a>) :
+      (<a href={this.getStatusLink("revoke")} className="btn btn-warning">Revoke</a>);
+
     var actions = (this.props.role == "admin") ? 
       (<td>
-        <a href={this.state.show} className="btn btn-default">Show</a>
         <a href={this.state.edit} className="btn btn-default">Edit</a>
+        {status} 
         <button className="btn btn-danger" onClick={() => this.handleDelete()}>Delete</button>
        </td>
+      ) : null;
+    var status = (this.props.role == "admin") ?
+      (<td>
+        <p> {(this.props.reviewed) ? "approved" : "pending"} </p>
+      </td>
       ) : null;
 
 		return (
 			<tr>
 				<th scope="row">{name}</th>
         {recent}
+        {status}
         {family}
         {actions}
 			</tr>

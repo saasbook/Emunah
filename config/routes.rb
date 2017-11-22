@@ -2,8 +2,14 @@ Rails.application.routes.draw do
   resources :users
   resources :families do
     resources :people
-    resources :submittals
+    resources :submittals do 
+      get '/approve' => 'submittals#approve', :as => 'approve_submittal'
+      get 'revoke' => 'submittals#revoke', :as => 'revoke_submittal'
+    end
   end
+
+  # get '/families/:family_id/submittals/:id/approve' => 'submittals#approve', :as => 'approve_submittal'
+  # get '/families/:family_id/submittals/:id/revoke' => 'submittals#revoke', :as => 'revoke_submittal'
   
   # Entry point, login and logout.
   get '/home' => 'home#index', :as => 'home'
