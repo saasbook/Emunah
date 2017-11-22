@@ -41,7 +41,7 @@ class SubmittalsController < ApplicationController
 
 	def approve
 		@user ||= User.find(session[:user_id]) if session[:user_id]
-		if @user.is_admin?
+		if @user.can_revoke?
 			submittal = Submittal.find(params[:id])
 			submittal.approve
 			submittal.save!
@@ -53,7 +53,7 @@ class SubmittalsController < ApplicationController
 
 	def revoke
 		@user ||= User.find(session[:user_id]) if session[:user_id]
-		if @user.is_admin?
+		if @user.can_revoke?
 			submittal = Submittal.find(params[:id])
 			submittal.revoke
 			submittal.save!

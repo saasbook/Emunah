@@ -5,13 +5,53 @@ class SubmittalsList extends React.Component {
   }
 
   handleDelete(id) {
-    console.log("Delete " + id)
     var submittals = this.state.submittals.filter((submittal) => {
       return !(submittal.id === id);
     })
     this.setState({
       submittals: submittals
     })
+  }
+
+  handleKeyPress(event) {
+    str = String(event.target.value);
+    if (str == '') {
+      this.setState({
+        submittals: this.state.total
+      })
+    } else {
+      var submittals = this.state.submittals.filter((family) => {
+        str = str.toLowerCase()
+
+        family_name = family['family_name'].toLowerCase().includes(str)
+        if (family_name) {
+          return family_name
+        }
+
+        var people = JSON.parse(this.props.people[family.id])
+        for (var i=0; i<people.length; i++) {
+          var p = people[i]
+          var val = p.first_name + " " + p.last_name
+          console.log(val, str)
+          if (val.toLowerCase().includes(str)) {
+            return true
+          }
+        } 
+
+        var family_keys = Object.keys(family)
+        for (var i=0;i<family_keys.length;i++) {
+          var val = String(family[family_keys[i]])
+          if (val.toLowerCase().includes(str)) {
+            return true
+          }
+        }
+
+        return false
+      });
+      this.setState({
+        submittals: submittals
+      });
+    }
   }
 
   render () {
@@ -29,10 +69,19 @@ class SubmittalsList extends React.Component {
           reviewed={submittal.reviewed}
           is_dash={this.props.is_dash}
           family_name={submittal.family_name}
-          path={"/families/" + submittal.family_id}
+          path={"/submittals/" + submittal.family_id}
           handleDelete={(id) => this.handleDelete(id)}
           />
-  		);
+  		)
+      submittals.push(
+        <tr>
+          <td className="no-border no-padding" colSpan={4}>
+            <div className="well">
+              {submittal.notes}
+            </div>
+          </td> 
+        </tr>
+      )
   	}
 
     var recent = (<th> Entry Date </th>)
@@ -41,6 +90,16 @@ class SubmittalsList extends React.Component {
     var actions = (this.props.role == "admin") ? (<th> Actions </th>) : null;
 
     return (
+    <div>
+    <div className="input-group">
+        <input 
+          type="text" 
+          className="form-control" 
+          aria-describedby="basic-addon1" 
+          onChange={(e) => this.handleKeyPress(e)}
+          />
+        <br/>
+      </div>
     <table className="table">
     	<thead>
     		<tr>
@@ -55,6 +114,7 @@ class SubmittalsList extends React.Component {
     		{submittals}
     	</tbody>
     </table>
+    </div>
     ); 
   }
 }

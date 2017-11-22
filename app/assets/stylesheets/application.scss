@@ -25,6 +25,10 @@
 	display: inline-block;
 }
 
+.no-border {
+	border: 0 !important;
+}
+
 .blue-highlight {
 	color: #6F9CF7;
 }
@@ -35,6 +39,10 @@
 
 .no-left-padding {
 	padding-left: 0;
+}
+
+.no-padding {
+	padding: 0 !important;
 }
 
 .vertical-align-top {
