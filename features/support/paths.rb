@@ -29,11 +29,9 @@ module NavigationHelpers
 
     when /^the edit person page for "(.*)"/ then
       person = Person.find_by_last_name($1)
-      byebug
       edit_family_person_path(person.family.id, person.id)
     when /^the show person page for "(.*)"$/ then
       person = Person.find_by_last_name($1)
-      byebug
       family_person_path(person.family.id, person.id)
 
     # Add more mappings here.
