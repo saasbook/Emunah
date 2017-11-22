@@ -69,6 +69,7 @@ class SubmittalsList extends React.Component {
           reviewed={submittal.reviewed}
           is_dash={this.props.is_dash}
           family_name={submittal.family_name}
+          family_id={submittal.family_id}
           path={"/submittals/" + submittal.family_id}
           handleDelete={(id) => this.handleDelete(id)}
           />
@@ -158,7 +159,7 @@ class SubmittalsListRow extends React.Component {
   }
 
   getStatusLink(endpoint) {
-    return this.props.path + "/submittals/" + this.props.submittal.id + "/" + endpoint;
+    return "/families/" + this.props.family_id + "/submittals/" + this.props.submittal.id + "/" + endpoint;
   }
 
 	render () {

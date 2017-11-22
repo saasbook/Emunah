@@ -21,6 +21,14 @@ module NavigationHelpers
     when /^the edit user page for "(.*)"$/ then
       edit_user_path(User.find_by_email($1))
 
+    when /^the approve submittals page "(.*)"$/ then 
+      submittal = Submittal.find_by_title($1)
+      family_submittal_approve_submittal_path(submittal.family_id, submittal.id)
+
+    when /^the revoke submittals page "(.*)"$/ then 
+      submittal = Submittal.find_by_title($1)
+      family_submittal_revoke_submittal_path(submittal.family_id, submittal.id)
+
     when /^the "Create Family" page$/ then '/families/new'
     when /^the edit family page for "(.*)"/ then
       edit_family_path(Family.find_by_family_name($1))
