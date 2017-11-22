@@ -5,9 +5,7 @@
   %br
 
   .container
-    - flash.each do |type, msg|
-      %strong
-        = msg
+    = render :partial => "partials/alert" 
 
   .jumbotron
     .people-container
