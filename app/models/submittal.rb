@@ -8,4 +8,5 @@ class Submittal < ApplicationRecord
 	def revoke
 		self.reviewed = false
 	end
+
 end

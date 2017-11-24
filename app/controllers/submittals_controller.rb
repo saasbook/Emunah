@@ -30,6 +30,11 @@ class SubmittalsController < ApplicationController
         notes = params[:notes]
         if !title.nil? and !notes.nil? and !title.empty? and !notes.empty?
             @family.submittals.build(submittal_params.merge(:family_name => @family.family_name)).save!
+            # Tasks, need to change to handle multiple tasks later
+			# currently we could do,
+			# :users => params[:task][:task_users] where params[:task][:task_users] is an array of User objects
+			# but params[:task][:task_users] front-end isn't there to handle User objects
+			@task = Task.create!(task_params.merge(:users => [User.first, User.second]))
             redirect_to family_path(@family), :flash => { :success => "Submittal successfully created for family: #{@family.family_name}"}
         else
             redirect_to new_family_submittal_path(@family.id), :flash => { :error => "Please fill out all fields"}

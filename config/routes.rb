@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :users
+  
+  resources :users do 
+    resources :tasks
+  end
+
   resources :families do
     resources :people
     resources :submittals do 
