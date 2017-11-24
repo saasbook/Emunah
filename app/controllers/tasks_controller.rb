@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    # Unused. 
+    @tasks = User.find(params[:user_id]).tasks
   end
 
   def new
