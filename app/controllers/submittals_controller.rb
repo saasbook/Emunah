@@ -30,19 +30,23 @@ class SubmittalsController < ApplicationController
     	@submittals = @family.submittals
 	end
 
-	def create
-		# Submittals
-		@family = Family.find(params[:family_id])
-		@family.submittals.build(submittal_params.merge(:family_name => @family.family_name)).save!
-		flash[:notice] = "Submittal successfully created for family: #{@family.family_name}"
-		# Tasks, need to change to handle multiple users later
-		# We need to also look for boolean too.
-		# currently we could do,
-		# :users => params[:task][:task_users] where params[:task][:task_users] is an array of User objects
-		# but params[:task][:task_users] front-end isn't there to handle User objects
-		@task = Task.create!(task_params.merge(:users => [User.first, User.second], :completed => false))
-		redirect_to family_path(@family)
-	end
+    def create
+        @family = Family.find(params[:family_id])
+        params = submittal_params
+        title = params[:title]
+        notes = params[:notes]
+        if !title.nil? and !notes.nil? and !title.empty? and !notes.empty?
+            @family.submittals.build(submittal_params.merge(:family_name => @family.family_name)).save!
+            # Tasks, need to change to handle multiple tasks later
+			# currently we could do,
+			# :users => params[:task][:task_users] where params[:task][:task_users] is an array of User objects
+			# but params[:task][:task_users] front-end isn't there to handle User objects
+			@task = Task.create!(task_params.merge(:users => [User.first, User.second]))
+            redirect_to family_path(@family), :flash => { :success => "Submittal successfully created for family: #{@family.family_name}"}
+        else
+            redirect_to new_family_submittal_path(@family.id), :flash => { :error => "Please fill out all fields"}
+        end
+    end
 
      def destroy
         submittal = Submittal.find_by_id_and_family_id(params[:id], params[:family_id])
