@@ -26,4 +26,8 @@ class ApplicationController < ActionController::Base
        :activities, :committees, :allow_contact)
   end
 
+  def task_params
+    params.require(:task).permit(:title, :notes)
+  end
+
 end
