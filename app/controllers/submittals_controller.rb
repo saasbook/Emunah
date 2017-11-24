@@ -23,9 +23,15 @@ class SubmittalsController < ApplicationController
 	end
 
 	def create
+		# Submittals
 		@family = Family.find(params[:family_id])
 		@family.submittals.build(submittal_params.merge(:family_name => @family.family_name)).save!
 		flash[:notice] = "Submittal successfully created for family: #{@family.family_name}"
+		# Tasks, need to change to handle multiple tasks later
+		# currently we could do,
+		# :users => params[:task][:task_users] where params[:task][:task_users] is an array of User objects
+		# but params[:task][:task_users] front-end isn't there to handle User objects
+		@task = Task.create!(task_params.merge(:users => [User.first, User.second]))
 		redirect_to family_path(@family)
 	end
 end

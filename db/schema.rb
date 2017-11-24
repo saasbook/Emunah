@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121110432) do
+ActiveRecord::Schema.define(version: 20171124061054) do
 
   create_table "families", force: :cascade do |t|
     t.string "family_name"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 20171121110432) do
     t.string "activities"
     t.string "committees"
     t.string "membership"
+  end
+
+  create_table "managements", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_managements_on_task_id"
+    t.index ["user_id"], name: "index_managements_on_user_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -53,6 +62,14 @@ ActiveRecord::Schema.define(version: 20171121110432) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "family_name"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "title"
+    t.string "notes"
+    t.boolean "completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
