@@ -10,25 +10,4 @@
   %br
   .col-xs-4.no-left-padding
     = text_area :submittal, 'notes', :id => 'notes', class: 'form-control', placeholder: "Write something about this family.", :style => "height: 250px; width: 450px; text-align: left; padding: 0.4em;"
-// Tasks
-// Need a button for follow up. Might need a button to generate more tasks too... but that probably is not required
-%br
-.row
-  = label :task, :title, 'Task Title'
-  %br
-  .col-xs-4.no-left-padding
-    = text_field :task, 'title', :id => 'task_title', class: 'form-control'
-%br
-.row    
-  = label :task, :notes, 'Task Description'
-  %br
-  .col-xs-4.no-left-padding
-    = text_area :task, 'notes', :id => 'task_notes', class: 'form-control', placeholder: "Write a description about this task.", :style => "height: 250px; width: 450px; text-align: left; padding: 0.4em;"
-// Need to change to satisfy front-end (grab which users?)
-%br
-.row
-  = label :task, :task_users, 'Assignables?'
-  %br
-  .col-xs-4.no-left-padding
-    = text_field :task, 'task_users', :id => 'task_users', class: 'form-control', multiple: true
 %br
