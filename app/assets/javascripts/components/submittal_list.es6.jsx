@@ -162,6 +162,10 @@ class SubmittalsListRow extends React.Component {
     return "/families/" + this.props.family_id + "/submittals/" + this.props.submittal.id + "/" + endpoint;
   }
 
+  getFamilyPath(id) {
+    return "/families/" + this.props.family_id + "/submittals/" + id;
+  }
+
 	render () {
     var name = (<a href={this.state.show}> {this.props.submittal.title}  </a>);
     var recent = 
@@ -171,7 +175,7 @@ class SubmittalsListRow extends React.Component {
       );
     var family = (this.props.is_dash == "true") ?
      (<td>
-        <a href={this.props.path} className="btn btn-info">{this.state.family_name}</a>
+        <a href={this.getFamilyPath(this.props.submittal.id)} className="btn btn-info">{this.state.family_name}</a>
        </td>
       ) : null;
     var status = (!this.props.reviewed) ? 

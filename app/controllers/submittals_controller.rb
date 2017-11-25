@@ -32,15 +32,17 @@ class SubmittalsController < ApplicationController
 
     def create
         @family = Family.find(params[:family_id])
-        params = submittal_params
-        title = params[:title]
-        notes = params[:notes]
+        title, notes = submittal_params[:title], submittal_params[:notes]
         if !title.nil? and !notes.nil? and !title.empty? and !notes.empty?
             @family.submittals.build(submittal_params.merge(:family_name => @family.family_name)).save!
             # Tasks, need to change to handle multiple tasks later
 			# currently we could do,
 			# :users => params[:task][:task_users] where params[:task][:task_users] is an array of User objects
 			# but params[:task][:task_users] front-end isn't there to handle User objects
+
+			# task_title, task_notes = task_params["title"], task_params["notes"]
+			# if !task_title.nil? and !task_notes.nil? and !task_title.empty? and !task_notes.empty?
+			# end
 			@task = Task.create!(task_params.merge(:users => [User.first, User.second]))
             redirect_to family_path(@family), :flash => { :success => "Submittal successfully created for family: #{@family.family_name}"}
         else
