@@ -1,4 +1,5 @@
 class Submittal < ApplicationRecord
+
 	belongs_to :family
 
 	def approve
