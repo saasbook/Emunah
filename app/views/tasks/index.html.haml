@@ -1,6 +1,8 @@
-- @tasks.each do |task|
-  = "Task #" + task.id.to_s
-  = "Task Title: " + task.title
-  = "Task Description: " + task.notes  
-  = "Completed? " + task.completed.to_s
-  %br
+.container 
+  %h2 Your Tasks
+  - @tasks.each do |task|
+    = "Task #" + task.id.to_s
+    = "Task Title: " + task.title
+    = "Task Description: " + task.notes  
+    = "Completed? " + task.completed.to_s
+    %br
