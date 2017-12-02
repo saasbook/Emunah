@@ -3,7 +3,7 @@
     = "Welcome " + @user.full_name
   %p 
     = "Last login on "
-    %span.date
+    %span
       = @last_login
   - flash.each do |type, msg|
     %strong
