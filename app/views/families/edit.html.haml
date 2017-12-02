@@ -8,7 +8,7 @@
     - flash.each do |type, msg|
       %strong
         = msg
-
+        %br
   .jumbotron
     = form_for(@family, html: {method: "patch"}) do
       .row
@@ -51,15 +51,6 @@
       %br
       .row
         = submit_tag 'Update Family', class: "btn btn-default"
-  
-  %h2 Submittals
-  = button_to 'Create submittal', new_family_submittal_path(@family), :method => :get, class: "btn btn-default"
-
-  .people-container
-    %h2 People in your Family
-    = react_component("PeopleList", {people: @people})
-
-  = button_to 'Add Person', new_family_person_path(@family), :method => :get, class: 'btn btn-default'
 
 %br
 %br

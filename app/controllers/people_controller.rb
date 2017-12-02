@@ -32,7 +32,7 @@ class PeopleController < ApplicationController
     @person.update_attributes!(person_params)
     @family = @person.family
     flash[:notice] = "#{@person.first_name} was successfully updated."
-    redirect_to edit_family_path(@family)
+    redirect_to family_path(@family)
   end
   
   def destroy

@@ -1,4 +1,12 @@
 class Submittal < ApplicationRecord
+
 	belongs_to :family
-	#belongs_to :user
+	def approve
+		self.reviewed = true
+	end
+
+	def revoke
+		self.reviewed = false
+	end
+
 end

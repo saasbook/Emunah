@@ -1,25 +1,13 @@
 .container
 	%h1 Create a submittal
-	- flash.each do |type, msg|
-		%strong
-			= msg
+	= render :partial => "partials/alert" 
+
 	.jumbotron
-		= form_tag family_submittals_path do
-			.row		
-				= label :submittal, :family, 'Family'
-				%br
-				.col-xs-4.no-left-padding.bot-padding
-					= text_field :submittal, 'family', :id => 'family', class: 'form-control'
-			.row
-				= label :submittal, :title, 'Title'
-				%br
-				.col-xs-4.no-left-padding.bot-padding
-					= text_field :submittal, 'title', :id => 'title', class: 'form-control'
-			.row 
-				= label :submittal, :notes, 'Notes'
-				%br
-				.col-xs-4.no-left-padding.bot-padding
-					= text_field :submittal, 'notes', :id => 'notes', class: 'form-control'
+		= form_tag family_submittals_path(@family.id) do
+			= render :partial => "submittals/submittal_form" , locals: {name: "submittal"}
 			%br
 			.row
-				= submit_tag 'Create submittal', class: 'btn btn-default'
+				= submit_tag 'Create Submittal', class: 'btn btn-default'
+
+// Need a button to toggle follow up? Need to handle the checkmark in back-end too
+// Need to change to satisfy front-end for task_users (grab which users?)

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
-	#has_many :submittals
+	has_many :managements
+	has_many :tasks, through: :managements
 
 	EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
 	validates :full_name, :presence => true, :length => { :in => 3..20 }
@@ -21,4 +22,13 @@ class User < ApplicationRecord
 	def clear_password
 		self.password = nil
 	end
+
+	def is_admin?
+		return self.role === "admin"
+	end
+
+	def can_revoke?
+		return self.role === "admin" || self.role === "confidential user"
+	end
+	
 end

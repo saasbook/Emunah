@@ -57,7 +57,7 @@ Scenario: check person information #152941019
   Then I should see "Showing information for first1"
 
 Scenario: add person to a family #152940978
-  When I am on the edit family page for "fam1"
+  When I am on the show family page for "fam1"
   And I press "Add Person"
   And I fill in "first_name" with "first"
   And I fill in "last_name" with "last"

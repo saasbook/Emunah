@@ -8,7 +8,7 @@ Background: Seth, an admin, has logged in
   
   Given the following users exist:
   | email                 | password | full_name   | role |
-  | wayne.li@gmail.com    | abcdef   | Wayne Li    | user     |
+  | Seth.li@gmail.com    | abcdef   | Seth Li    | user     |
 
   Given the following families exist:
   | family_name    |
@@ -21,22 +21,21 @@ Background: Seth, an admin, has logged in
 
   And I am on the home page
   Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
-  When I fill in "Email" with "wayne.li@gmail.com"
+  When I fill in "Email" with "Seth.li@gmail.com"
   And I fill in "Password" with "abcdef"
   And I press "Log In"
-  Then I should see "Welcome Wayne Li"
+  Then I should see "Welcome Seth Li"
 
 Scenario: create a submittal #152061029
   When I am on the show family page for "fam0"
   And I press "Create Submittal"
-  And I fill in "family" with "fam0"
   And I fill in "title" with "Some random Title"
   And I fill in "notes" with "We need delegation to come to rescue"
-  And I press "Create submittal"
+  And I press "Create Submittal"
   Then I should see "Submittal successfully created for family: fam0"
 
 Scenario: try create a submittal with no fields filled out #152941625
   When I am on the show family page for "fam0"
   And I press "Create Submittal"
-  And I press "Create submittal"
-  Then I should see "Need to fill in the family field."
+  And I press "Create Submittal"
+  Then I should see "Please fill out all fields"
