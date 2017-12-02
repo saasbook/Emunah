@@ -25,9 +25,4 @@ class ApplicationController < ActionController::Base
       :occupation, :anniversary, :is_child, :discovery, :hobbies, :skills,
        :activities, :committees, :allow_contact)
   end
-
-  def task_params
-    params.require(:task).permit(:title, :notes)
-  end
-
 end

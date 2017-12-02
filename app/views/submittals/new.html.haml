@@ -5,27 +5,8 @@
 	.jumbotron
 		= form_tag family_submittals_path(@family.id) do
 			= render :partial => "submittals/submittal_form" , locals: {name: "submittal"}
-			%br
 			.row
-				= label :task, :title, 'Task Title'
-				%br
-				.col-xs-4.no-left-padding
-					= text_field :task, 'title', :id => 'task_title', class: 'form-control'
-			%br
-			.row    
-				= label :task, :notes, 'Task Description'
-				%br
-				.col-xs-4.no-left-padding
-					= text_area :task, 'notes', :id => 'task_notes', class: 'form-control', placeholder: "Write a description about this task.", :style => "height: 250px; width: 450px; text-align: left; padding: 0.4em;"
-			%br
-			.row
-				= label :task, :task_users, 'Assignables?'
-				%br
-				.col-xs-4.no-left-padding
-					= text_field :task, 'task_users', :id => 'task_users', class: 'form-control', multiple: true
-			%br
-			.row
-				= submit_tag 'Create submittal', class: 'btn btn-default'
+				= submit_tag 'Create Submittal', class: 'btn btn-default'
 
 // Need a button to toggle follow up? Need to handle the checkmark in back-end too
 // Need to change to satisfy front-end for task_users (grab which users?)

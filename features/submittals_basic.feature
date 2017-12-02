@@ -16,7 +16,7 @@ Background: Wayne, a user, has logged in
 
   Given the following submittal exist:
   | family_id | title            | notes   | access_level          | user_id |
-  |    0      | Random_Title     | None    | Financially Sensitive |    0    |
+  |    1      | Submittal A      | lmfao   | Financially Sensitive |    1    |
 
   And I am on the home page
   Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"

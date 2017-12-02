@@ -15,8 +15,8 @@ Background: Seth, an admin, has logged in
   | fam0           |
 
   Given the following submittal exist:
-  | family_id | title            | notes   | access_level          | user_id |
-  |    0      | Submittal A     | "something" | Financially Sensitive |    0    |
+  | family_id | title           | notes       | access_level          | user_id | family_name |
+  |    1      | Submittal A     | "something" | Financially Sensitive |    1    | fam0        |
 
   And I am on the home page
   Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
