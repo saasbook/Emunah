@@ -3,7 +3,7 @@
   - flash.each do |type, msg|
     %strong
       = msg
- 
+      %br
   - if @user.role === "admin" 
     .resource-container
       = react_component("CreateResource", {title:"Family", url:new_family_path, color: '#E3B505'}, {:style => "display:inline-block"})

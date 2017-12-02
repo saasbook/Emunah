@@ -1,6 +1,6 @@
 class Submittal < ApplicationRecord
-	belongs_to :family
 
+	belongs_to :family
 	def approve
 		self.reviewed = true
 	end
@@ -8,4 +8,5 @@ class Submittal < ApplicationRecord
 	def revoke
 		self.reviewed = false
 	end
+
 end
