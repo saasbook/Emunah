@@ -44,10 +44,12 @@ class SubmittalsController < ApplicationController
 			# task_title, task_notes = task_params["title"], task_params["notes"]
 			# if !task_title.nil? and !task_notes.nil? and !task_title.empty? and !task_notes.empty?
 			# end
-
-            task_title, task_notes = params[:task][:title], params[:task][:notes]
-            if !task_title.nil? and !task_notes.nil? and !task_title.empty? and !task_notes.empty?
-			  @task = Task.create!(task_params.merge(:users => [User.first, User.second]))
+            
+            if !params[:task].nil?
+                task_title, task_notes = params[:task][:title], params[:task][:notes]
+                if !task_title.nil? and !task_notes.nil? and !task_title.empty? and !task_notes.empty?
+			      @task = Task.create!(task_params.merge(:users => [User.first, User.second]))
+                end
             end
 
             redirect_to family_path(@family), :flash => { :success => "Submittal successfully created for family: #{@family.family_name}"}
