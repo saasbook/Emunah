@@ -10,9 +10,9 @@ class FamiliesController < ApplicationController
     @user ||= User.find(session[:user_id]) if session[:user_id]
 
     if @user.can_revoke?
-        @submittals = @family.submittals.order("created_at DESC")
+        @submittals = @family.submittals.order("created_at DESC").limit(5)
     else
-        @submittals = @family.submittals.where(:reviewed => true).order("created_at DESC")
+        @submittals = @family.submittals.where(:reviewed => true).order("created_at DESC").limit(5)
     end
   end
 

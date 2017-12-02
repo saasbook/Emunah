@@ -48,7 +48,7 @@ class SubmittalsController < ApplicationController
             if !params[:task].nil?
                 task_title, task_notes = params[:task][:title], params[:task][:notes]
                 if !task_title.nil? and !task_notes.nil? and !task_title.empty? and !task_notes.empty?
-			      @task = Task.create!(task_params.merge(:users => [User.first, User.second]))
+			      @task = Task.create!(:title => task_title, :notes => task_notes, :users => [User.first, User.second])
                 end
             end
 
