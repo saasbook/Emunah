@@ -5,6 +5,7 @@
 	.jumbotron
 		= form_tag family_submittals_path(@family.id) do
 			= render :partial => "submittals/submittal_form" , locals: {name: "submittal"}
+			%br
 			.row
 				= submit_tag 'Create Submittal', class: 'btn btn-default'
 

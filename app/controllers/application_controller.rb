@@ -25,4 +25,5 @@ class ApplicationController < ActionController::Base
       :occupation, :anniversary, :is_child, :discovery, :hobbies, :skills,
        :activities, :committees, :allow_contact)
   end
+
 end
