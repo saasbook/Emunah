@@ -8,7 +8,7 @@
 
 Pivotal Tracker: https://www.pivotaltracker.com/n/projects/2117630
 
-Heroku: http://enigmatic-mesa-26908.herokuapp.com
+Heroku: https://lit-forest-78521.herokuapp.com/
 
 ## Customer Website
 https://www.bnaiemunahsf.org/
@@ -36,7 +36,7 @@ When you login, you have access to Five Areas.
 1) Clone or fork the repo
 2) Go to your designated Github working directory 
 3) bundle install --without production
-4) rake db:setup
+4) rake db:setup (ok if this fails)
 5) rake db:migrate
 6) rake db:seed                                           # populate the database
 
