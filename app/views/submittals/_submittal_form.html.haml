@@ -29,10 +29,13 @@
 // Need to change to satisfy front-end (grab which users?)
 %br
 .row
+  .col-xs-4.no-left-padding
+    = label :task, :completed, 'Completed'
+    = check_box_tag :task_completed, 1
+.row
   = label :task, :task_users, 'Assigned to'
   %br
   .col-xs-4.no-left-padding 
     = collection_select(:user, :id, @users, :id, :full_name) 
-  
 
 %br

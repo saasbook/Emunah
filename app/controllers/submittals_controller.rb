@@ -6,6 +6,7 @@ class SubmittalsController < ApplicationController
 
 	def new
         @family = Family.find(params[:family_id])
+        @users = User.all
 	end
 
 	def show
@@ -17,7 +18,6 @@ class SubmittalsController < ApplicationController
 		@family = Family.find(params[:family_id])
     	@submittal = Submittal.find(params[:id])
         @users = User.all
-        byebug
         # Include all users
 	end
 
@@ -25,12 +25,12 @@ class SubmittalsController < ApplicationController
 		@submittal = Submittal.find(params[:id])
     	@submittal.update_attributes!(submittal_params)
     	@family = Family.find_by(params[:family_id])
-        byebug
         user = User.find(params[:user][:id])
         if !params[:task].nil?
-            task_title, task_notes = params[:task][:title], params[:task][:notes]
+            task_title, task_notes = params[:task][:title], params[:task][:notes] 
+            completed = params[:task_completed].nil? ? false : true
             if !task_title.nil? and !task_notes.nil? and !task_title.empty? and !task_notes.empty?
-                @task = Task.create!(:title => task_title, :notes => task_notes)
+                @task = Task.create!(:title => task_title, :notes => task_notes, :completed => completed)
                 user.managements << Management.new(:task_id => @task.id, :user_id => user.id)
                 user.save!
               # @task = Task.create!(task_params.merge(:users => [User.first, User.second]))
@@ -59,13 +59,17 @@ class SubmittalsController < ApplicationController
 			# task_title, task_notes = task_params["title"], task_params["notes"]
 			# if !task_title.nil? and !task_notes.nil? and !task_title.empty? and !task_notes.empty?
 			# end
-            byebug
+            user = User.find(params[:user][:id])
             if !params[:task].nil?
-                task_title, task_notes = params[:task][:title], params[:task][:notes]
+                task_title, task_notes = params[:task][:title], params[:task][:notes] 
+                completed = params[:task_completed].nil? ? false : true
                 if !task_title.nil? and !task_notes.nil? and !task_title.empty? and !task_notes.empty?
-			      @task = Task.create!(task_params.merge(:users => [User.first, User.second]))
+                    @task = Task.create!(:title => task_title, :notes => task_notes, :completed => completed)
+                    user.managements << Management.new(:task_id => @task.id, :user_id => user.id)
+                    user.save!
+                  # @task = Task.create!(task_params.merge(:users => [User.first, User.second]))
                 end
-            end
+            end 
 
             redirect_to family_path(@family), :flash => { :success => "Submittal successfully created for family: #{@family.family_name}"}
         else
