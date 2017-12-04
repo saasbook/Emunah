@@ -30,3 +30,24 @@ When you login, you have access to Five Areas.
 4) Search Database by Family
 
 5) Lists of Families by Category
+
+## App Set-up
+
+1) Clone or fork the repo
+2) Go to your designating Github working directory 
+3) bundle install --without production
+4) rake db:setup
+5) rake db:seed                                           # populate the database
+
+rails s                                                   # start the server
+rake cucumber                                             # run features / BDDs
+rake rspec                                                # run tests / TDDs
+
+## Administrative .
+- Check out the db/seed.rb for dummy data.
+- Casey Takeda, Justin Zhong, Wayne Li, Tina Zheng, Peter Lee, Wesley Wan
+
+## Models / Associations
+- Many to Many Association with Users and Tasks
+- One to Many from Family to People
+- One to Many from Family to Submittals
