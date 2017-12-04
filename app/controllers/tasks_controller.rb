@@ -9,7 +9,6 @@ class TasksController < ApplicationController
   end
 
   def index
-    byebug
     @tasks = User.find(params[:user_id]).tasks
   end
 
@@ -18,7 +17,6 @@ class TasksController < ApplicationController
   end
 
   def create
-    byebug
     Task.create!(task_params)
     # UNUSED
   end
