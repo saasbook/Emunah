@@ -1,0 +1,38 @@
+Feature: Admins and Confidential users can approve and revoke submittals
+ 
+  As a concierge
+  so that only approved material is displayed on sate
+  all submittal information should be reviewed before others can view it.
+
+Background: Seth, an admin, has logged in
+  
+  Given the following users exist:
+  | email                 | password | full_name   | role |
+  | seth.martin@gmail.com | abcdef   | Seth Martin | admin      |
+  | wayne.li@gmail.com    | abcdef   | Wayne Li    | user       |
+
+  Given the following families exist:
+  | family_name    |
+  | fam0           |
+
+  Given the following submittal exist:
+  | family_id | title            | notes   | access_level          | user_id |
+  |    0      | Random_Title     | None    | Financially Sensitive |    0    |
+
+  And I am on the home page
+  Then I should see "Welcome to Congregation B'nai Emunah's Internal Tool!"
+  When I fill in "Email" with "seth.martin@gmail.com"
+  And I fill in "Password" with "abcdef"
+  And I press "Log In"
+  Then I should see "Welcome Seth Martin"
+
+Scenario: create a submittal and approve it #152061046
+  When I am on the show family page for "famo0"
+  And I click "Approve"
+  Then I should see "Submittal was successfully approved."
+
+Scenario: Create a submittal and revoke it #152061046
+  When I am on the show family page for "fam0"
+  And I click "Approve"
+  And I click "Revoke"
+  Then I should see "Submittal was successfully revoked."

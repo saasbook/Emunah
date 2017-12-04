@@ -29,9 +29,13 @@
 // Need to change to satisfy front-end (grab which users?)
 %br
 .row
-  = label :task, :task_users, 'Assignables?'
-  %br
   .col-xs-4.no-left-padding
-    = text_field :task, 'task_users', :id => 'task_users', class: 'form-control', multiple: true
+    = label :task, :completed, 'Completed'
+    = check_box_tag :task_completed, 1
+.row
+  = label :task, :task_users, 'Assigned to'
+  %br
+  .col-xs-4.no-left-padding 
+    = collection_select(:user, :id, @users, :id, :full_name) 
 
 %br
