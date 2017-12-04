@@ -34,7 +34,7 @@ RSpec.describe SubmittalsController, type: :controller do
 	describe "POST #create" do
 		it "should flash success" do
 			submittal_params = FactoryGirl.attributes_for(:submittal)
-			post :create, params: { :submittal => submittal_params, :family_id => 1}
+			post :create, params: { :user => { :id => 1 }, :submittal => submittal_params, :family_id => 1}
 			expect(flash[:success]).to include("Submittal successfully created for")
 		end
 
