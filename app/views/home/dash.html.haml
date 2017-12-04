@@ -22,5 +22,9 @@
   %br
   = button_to 'Assigned Tasks', user_tasks_path(@user.id), :method => :get, class: "btn btn-default"
   %br
+  = button_to 'All Tasks', user_all_tasks_path(@user.id), :method => :get, class: "btn btn-default"
+  %br
+  = button_to 'All Submittals', user_submittals_path(@user.id), :method => :get, class: "btn btn-default"
+  %br
   %h2 All Recent Submittal Entries
   = react_component("SubmittalsList", {submittals: @submittals, role: @user.role, is_dash: "true"})

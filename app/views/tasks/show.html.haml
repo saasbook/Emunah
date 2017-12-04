@@ -1,0 +1,13 @@
+.container 
+  %h2 All Tasks
+  - @tasks.each do |task|
+    .well 
+      %h3
+        = "#" + task.id.to_s + " " 
+        = task.title
+      %p
+        = "Task Description: " + task.notes 
+      %p
+        = task.completed ? "Completed" : "In Progress"
+    
+    %br

@@ -9,6 +9,10 @@ class SubmittalsController < ApplicationController
         @users = User.all
 	end
 
+    # def all
+    #     @submittal = Submittal.all.order(:reviewed)
+    # end
+
 	def show
         @user ||= User.find(session[:user_id]) if session[:user_id]
 		@submittal = Submittal.find(params[:id])
@@ -41,9 +45,11 @@ class SubmittalsController < ApplicationController
 	end 
 
 	def index
-		@user ||= User.find(session[:user_id]) if session[:user_id]
-		@family = Family.find_by(params[:family_id])
-    	@submittals = @family.submittals
+		# @user ||= User.find(session[:user_id]) if session[:user_id]
+		# @family = Family.find_by(params[:family_id])
+  #   	@submittals = @family.submittals
+        @user ||= User.find(session[:user_id]) if session[:user_id]
+        @submittals = Submittal.all.order(:reviewed)
 	end
 
     def create

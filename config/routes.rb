@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :users do 
     resources :tasks
       get '/show' => 'tasks#show', :as => 'all_tasks'
+    resources :submittals do
+      # get '/all' => 'submittals#all', :as => 'all_submittals'
+    end
   end
 
   resources :families do

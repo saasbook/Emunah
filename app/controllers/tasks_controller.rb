@@ -5,11 +5,11 @@ class TasksController < ApplicationController
   end
 
   def show
-    @tasks = Task.all.order('completed desc, title asc')
+    @tasks = Task.all.order(:completed)
   end
 
   def index
-    @tasks = User.find(params[:user_id]).tasks.order('completed desc, title asc')
+    @tasks = User.find(params[:user_id]).tasks.order(:completed)
   end
 
   def create
