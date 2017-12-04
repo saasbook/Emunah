@@ -45,5 +45,14 @@ Scenario: update a user #152941458
   When I go to the edit user page for "wayne.li@gmail.com"
   Then I should see "Edit User: Wayne Li"
   When I fill in "Email" with "new_wayne.li@gmail.com"
+  And I fill in "Password" with "abcdefg"
   And I press "Update User"
   Then I should see "Wayne Li was successfully updated."
+
+Scenario: can't update a user b/c password #152941458
+  When I go to the edit user page for "wayne.li@gmail.com"
+  Then I should see "Edit User: Wayne Li"
+  When I fill in "Email" with "new_wayne.li@gmail.com"
+  And I fill in "Password" with "abc"
+  And I press "Update User"
+  Then I should see "Could not update user. Password is too short (minimum is 6 characters)."
