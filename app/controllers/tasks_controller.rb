@@ -1,10 +1,15 @@
 class TasksController < ApplicationController
 
+  def task_params 
+    params.require(:task).permit(:title, :notes)
+  end
+
   def show
     # UNUSED yet.
   end
 
   def index
+    byebug
     @tasks = User.find(params[:user_id]).tasks
   end
 
@@ -13,6 +18,8 @@ class TasksController < ApplicationController
   end
 
   def create
+    byebug
+    Task.create!(task_params)
     # UNUSED
   end
   
@@ -21,6 +28,7 @@ class TasksController < ApplicationController
   end
 
   def update
+    byebug
     # UNUSED yet.
   end
   
