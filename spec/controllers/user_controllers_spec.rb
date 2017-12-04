@@ -60,6 +60,12 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "GET #delete" do
+      it "should call destroy" do
+        user_params = FactoryGirl.attributes_for(:user)
+        user_params[:id] = 2
+        post :create, params: { :user => user_params }
+        delete :destroy, :params => { :id => 2 }
+      end
   end
 
   describe "GET #new" do

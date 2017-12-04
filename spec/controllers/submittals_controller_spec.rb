@@ -42,6 +42,21 @@ RSpec.describe SubmittalsController, type: :controller do
 			post :create, params: { :submittal => {:title => "bleh", :notes => ""}, :family_id => 1 }
 			expect(response).to redirect_to	new_family_submittal_path(1)
 		end
+
+		it "should update tasks" do
+			submittal_params = FactoryGirl.attributes_for(:submittal)
+			post :create, params: { :user => { :id => 1 }, :task => { :title => "blah", :notes => "no" }, :submittal => submittal_params, :family_id => 1, :task_completed => true}
+			expect(flash[:success]).to include("Submittal successfully created for")
+		end
+	end
+
+	describe "PUT #update" do
+		it "should update with info" do
+			submittal_params = FactoryGirl.attributes_for(:submittal)
+			task_params = {:title => "asdf", :notes => "why"}
+			put :update, params: {:id => 1, :user => { :id => 1 }, :submittal => submittal_params, :family_id => 1, :task => task_params, :task_completed => false }
+			expect(flash[:notice]).to include("Submittal")
+		end
 	end
 
 	describe "GET #delete" do 
