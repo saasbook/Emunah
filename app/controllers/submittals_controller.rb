@@ -10,8 +10,8 @@ class SubmittalsController < ApplicationController
 	end
 
 	def show
+        @user ||= User.find(session[:user_id]) if session[:user_id]
 		@submittal = Submittal.find(params[:id])
-        @tasks = Tasks.find_by_subi
 	end
 
 	def edit

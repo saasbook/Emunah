@@ -14,6 +14,7 @@
     ="Click to"
     =link_to("edit", edit_user_path(@user.id))
     ="profile"
+  %br
   - if @user.role === "admin"
     = button_to 'Users', users_path, :method => :get, class: "btn btn-default"
   %br
