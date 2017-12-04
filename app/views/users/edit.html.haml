@@ -2,7 +2,7 @@
   %h1.header-container 
     = "Edit User: " + @user.full_name
   %br
-
+  = render :partial => "partials/alert" 
   .jumbotron
     = form_for(@user, html: {method: "patch"}) do
       = render :partial => "form" 

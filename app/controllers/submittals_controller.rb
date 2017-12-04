@@ -67,7 +67,6 @@ class SubmittalsController < ApplicationController
                     @task = Task.create!(:title => task_title, :notes => task_notes, :completed => completed)
                     user.managements << Management.new(:task_id => @task.id, :user_id => user.id)
                     user.save!
-                  # @task = Task.create!(task_params.merge(:users => [User.first, User.second]))
                 end
             end 
 
