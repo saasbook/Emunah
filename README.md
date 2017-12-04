@@ -34,14 +34,15 @@ When you login, you have access to Five Areas.
 ## App Set-up
 
 1) Clone or fork the repo
-2) Go to your designating Github working directory 
+2) Go to your designated Github working directory 
 3) bundle install --without production
 4) rake db:setup
-5) rake db:seed                                           # populate the database
+5) rake db:migrate
+6) rake db:seed                                           # populate the database
 
 - rails s                                                   # start the server
 - rake cucumber                                             # run features / BDDs
-- rake rspec                                                # run tests / TDDs
+- rake spec                                                # run tests / TDDs
 
 ## Administrative .
 - Check out the db/seed.rb for dummy data.
