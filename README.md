@@ -19,7 +19,7 @@ Each person who is given a login will have access to information based on their 
 
 Each family/individual can be coded as new/outreach member, longtime member, non member, prospective, Friend of BE, ex member, or deceased. 
 
-When you login, you have access to Five Areas.
+When you login, you have access to five areas.
 
 1) Submittals
 
@@ -44,7 +44,7 @@ When you login, you have access to Five Areas.
 - rake cucumber                                             # run features / BDDs
 - rake spec                                                # run tests / TDDs
 
-## Administrative .
+## Administrative
 - Check out the db/seed.rb for dummy data.
 - Casey Takeda, Justin Zhong, Wayne Li, Tina Zheng, Peter Lee, Wesley Wan
 
