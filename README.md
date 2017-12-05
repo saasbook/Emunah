@@ -34,7 +34,7 @@ When you login, you have access to five areas.
 ## App Set-up
 
 1) Clone or fork the repo
-2) Go to your designated Github working directory 
+2) Run 'cd Emunah'
 3) bundle install --without production
 4) rake db:setup (ok if this fails)
 5) rake db:migrate
