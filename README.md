@@ -39,6 +39,7 @@ When you login, you have access to five areas.
 4) rake db:setup (ok if this fails)
 5) rake db:migrate
 6) rake db:seed                                           # populate the database
+7) rake db:seed RAILS_ENV=test
 
 - rails s                                                   # start the server
 - rake cucumber                                             # run features / BDDs
