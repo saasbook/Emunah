@@ -1,6 +1,7 @@
 class Submittal < ApplicationRecord
 
 	belongs_to :family
+	has_many :managements
 	def approve
 		self.reviewed = true
 	end

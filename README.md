@@ -8,7 +8,7 @@
 
 Pivotal Tracker: https://www.pivotaltracker.com/n/projects/2117630
 
-Heroku: http://enigmatic-mesa-26908.herokuapp.com
+Heroku: https://lit-forest-78521.herokuapp.com/
 
 ## Customer Website
 https://www.bnaiemunahsf.org/
@@ -19,7 +19,7 @@ Each person who is given a login will have access to information based on their 
 
 Each family/individual can be coded as new/outreach member, longtime member, non member, prospective, Friend of BE, ex member, or deceased. 
 
-When you login, you have access to Five Areas.
+When you login, you have access to five areas.
 
 1) Submittals
 
@@ -30,3 +30,26 @@ When you login, you have access to Five Areas.
 4) Search Database by Family
 
 5) Lists of Families by Category
+
+## App Set-up
+
+1) Clone or fork the repo
+2) Run 'cd Emunah'
+3) bundle install --without production
+4) rake db:setup (ok if this fails)
+5) rake db:migrate
+6) rake db:seed                                           # populate the database
+7) rake db:seed RAILS_ENV=test
+
+- rails s                                                   # start the server
+- rake cucumber                                             # run features / BDDs
+- rake spec                                                # run tests / TDDs
+
+## Administrative
+- Check out the db/seed.rb for dummy data.
+- Casey Takeda, Justin Zhong, Wayne Li, Tina Zheng, Peter Lee, Wesley Wan
+
+## Models / Associations
+- Many to Many Association with Users and Tasks
+- One to Many from Family to People
+- One to Many from Family to Submittals
